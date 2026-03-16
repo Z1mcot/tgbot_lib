@@ -33,16 +33,12 @@ namespace TgBot {
             }
             co_await eventHandler_->handleUpdate(item);
         }
-
-        // confirm handled updates by fetching new ones
-        GetUpdatesRequest request;
-        request.offset = lastUpdateId_;
-        request.limit = limit_;
-        request.timeout = timeout_;
-        if (allowUpdates_)
-            request.allowed_updates = *allowUpdates_;
+        std::vector<std::string> allowed_updates{};
+        if (allowUpdates_) {
+            allowed_updates = *allowUpdates_;
+        }
         
-        auto response = co_await api_->getUpdates(request);
+        auto response = co_await api_->getUpdates(lastUpdateId_, limit_, timeout_, allowed_updates);
         if (response.result) {
             updates_ = response.result.value();
         }

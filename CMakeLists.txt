@@ -6,7 +6,7 @@ cmake_minimum_required(VERSION 4.1)
 set(CMAKE_TOOLCHAIN_FILE "$ENV{VCPKG_ROOT}/scripts/buildsystems/vcpkg.cmake" CACHE STRING "")
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
               
-project(tgbot_lib
+project(tgbot-lib
     VERSION 1.0.0
     LANGUAGES CXX
     DESCRIPTION "Telegram Bot API C++ models"
@@ -22,30 +22,30 @@ find_package(libcoro)
 #if(NOT TARGET coro::coro)
 #    include(FetchContent)
 #    FetchContent_Declare(
-        libcoro
-//        GIT_REPOSITORY https://github.com/jbaldwin/libcoro.git
-//        GIT_TAG v0.16.0 # Or a specific release version
-//    )
-//    FetchContent_MakeAvailable(libcoro)
-//endif()
+#        libcoro
+#        GIT_REPOSITORY https://github.com/jbaldwin/libcoro.git
+#        GIT_TAG v0.16.0 # Or a specific release version
+#    )
+#    FetchContent_MakeAvailable(libcoro)
+#endif()
 
 find_package(httplib)
-//if(NOT TARGET httplib::httplib)
-//    include(FetchContent)
-//    FetchContent_Declare(
-//            http
-//            GIT_REPOSITORY https://github.com/yhirose/cpp-httplib
-//            GIT_TAG v0.38.0 # Or a specific release version
-//    )
-//    FetchContent_MakeAvailable(http)
-//endif()
+#if(NOT TARGET httplib::httplib)
+#    include(FetchContent)
+#    FetchContent_Declare(
+#            http
+#            GIT_REPOSITORY https://github.com/yhirose/cpp-httplib
+#            GIT_TAG v0.38.0 # Or a specific release version
+#    )
+#    FetchContent_MakeAvailable(http)
+#endif()
 
 find_package(nlohmann_json)
-//if(NOT TARGET nlohmann_json::nlohmann_json)
-//    include(FetchContent)
-//    FetchContent_Declare(json URL https://github.com/nlohmann/json/releases/download/v3.12.0/json.tar.xz)
-//    FetchContent_MakeAvailable(json)
-//endif()
+#if(NOT TARGET nlohmann_json::nlohmann_json)
+#    include(FetchContent)
+#    FetchContent_Declare(json URL https://github.com/nlohmann/json/releases/download/v3.12.0/json.tar.xz)
+#    FetchContent_MakeAvailable(json)
+#endif()
 
 # Collect all source files
 set(TELEGRAM_MODELS_HEADERS
@@ -978,16 +978,16 @@ set(TELEGRAM_MODELS_SOURCES
 )
 
 # Create library target
-add_library(tgbot_lib SHARED
+add_library(tgbot-lib SHARED
     ${TELEGRAM_MODELS_SOURCES}
 )
 
-target_include_directories(tgbot_lib
+target_include_directories(tgbot-lib
     PUBLIC
     ${CMAKE_CURRENT_SOURCE_DIR}/include
 )
 
-target_link_libraries(tgbot_lib
+target_link_libraries(tgbot-lib
     PUBLIC
         nlohmann_json::nlohmann_json
         OpenSSL::SSL
@@ -996,8 +996,8 @@ target_link_libraries(tgbot_lib
         httplib::httplib
 )
 # Install rules (optional)
-#install(TARGETS tgbot_lib
-#    EXPORT tgbot_libTargets
+#install(TARGETS tgbot-lib
+#    EXPORT tgbot-libTargets
 #    LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
 #    ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
 #    RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
@@ -1006,11 +1006,11 @@ target_link_libraries(tgbot_lib
 #install(FILES ${TELEGRAM_MODELS_HEADERS}
 #    DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/telegram
 #)
-#install(EXPORT tgbot_libTargets
-#    FILE tgbot_libTargets.cmake
-#    NAMESPACE tgbot_lib::
-#    DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/tgbot_lib
+#install(EXPORT tgbot-libTargets
+#    FILE tgbot-libTargets.cmake
+#    NAMESPACE tgbot-lib::
+#    DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/tgbot-lib
 #)
 # Usage in other projects:
 #   add_subdirectory(path/to/telegram-api-generator/example/cpp)
-#   target_link_libraries(your_target PRIVATE tgbot_lib)
+#   target_link_libraries(your_target PRIVATE tgbot-lib)

@@ -1,5 +1,5 @@
 {
-    "name": "tgbot_lib",
+    "name": "tgbot-lib",
         "version": "1.0.0",
         "dependencies": [
             "nlohmann-json",
