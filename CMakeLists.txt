@@ -19,10 +19,10 @@ set(CMAKE_CXX_EXTENSIONS OFF)
 find_package(OpenSSL REQUIRED)
 
 find_package(libcoro)
-//if(NOT TARGET coro::coro)
-//    include(FetchContent)
-//    FetchContent_Declare(
-//        libcoro
+#if(NOT TARGET coro::coro)
+#    include(FetchContent)
+#    FetchContent_Declare(
+        libcoro
 //        GIT_REPOSITORY https://github.com/jbaldwin/libcoro.git
 //        GIT_TAG v0.16.0 # Or a specific release version
 //    )
