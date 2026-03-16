@@ -16,6 +16,8 @@ set(CMAKE_CXX_STANDARD 23)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
 
+include(GNUInstallDirs)
+
 find_package(OpenSSL REQUIRED)
 if(OpenSSL_FOUND)
     message("Found OpenSSL!")
@@ -966,7 +968,8 @@ add_library(tgbot-lib SHARED
 
 target_include_directories(tgbot-lib
     PUBLIC
-    ${CMAKE_CURRENT_SOURCE_DIR}/include
+        $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
+        $<INSTALL_INTERFACE:include/tgbot>
 )
 
 target_link_libraries(tgbot-lib
