@@ -977,22 +977,18 @@ target_link_libraries(tgbot-lib
         PkgConfig::test
         httplib::httplib
 )
-# Install rules (optional)
-#install(TARGETS tgbot-lib
-#    EXPORT tgbot-libTargets
-#    LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
-#    ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
-#    RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
-#    INCLUDES DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/telegram
-#)
-#install(FILES ${TELEGRAM_MODELS_HEADERS}
-#    DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/telegram
-#)
-#install(EXPORT tgbot-libTargets
-#    FILE tgbot-libTargets.cmake
-#    NAMESPACE tgbot-lib::
-#    DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/tgbot-lib
-#)
-# Usage in other projects:
-#   add_subdirectory(path/to/telegram-api-generator/example/cpp)
-#   target_link_libraries(your_target PRIVATE tgbot-lib)
+install(TARGETS ${PROJECT_NAME}
+        EXPORT ${PROJECT_NAME}-targets
+        LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
+        ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
+        RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
+        INCLUDES DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/tgbot
+)
+install(FILES ${TELEGRAM_MODELS_HEADERS}
+        DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/tgbot
+)
+install(EXPORT ${PROJECT_NAME}-targets
+        FILE ${PROJECT_NAME}Config.cmake
+        NAMESPACE ${PROJECT_NAME}::
+        DESTINATION lib/cmake/${PROJECT_NAME}
+)
