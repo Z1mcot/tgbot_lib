@@ -26,10 +26,10 @@ namespace TgBot {
 
         virtual ~PaidMediaPurchased() = default;
         // User who purchased the media
-        User::Ptr from;
+        User::Ptr from = nullptr;
 
         // Bot-specified paid media payload
-        std::string paid_media_payload;
+        std::string paid_media_payload = "";
     };
     void to_json(json& j, const PaidMediaPurchased& value);
     void from_json(const json& j, PaidMediaPurchased& value);

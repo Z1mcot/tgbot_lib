@@ -21,10 +21,10 @@ namespace TgBot {
     struct DeleteForumTopicRequest {
         typedef std::shared_ptr<DeleteForumTopicRequest> Ptr;
         // Unique identifier for the target chat or username of the target supergroup (in the format @supergroupusername)
-        int64_t chat_id = 0;
+        std::int64_t chat_id = 0;
 
         // Unique identifier for the target message thread of the forum topic
-        int64_t message_thread_id = 0;
+        std::int64_t message_thread_id = 0;
     };
     void to_json(json& j, const DeleteForumTopicRequest& value);
     void from_json(const json& j, DeleteForumTopicRequest& value);

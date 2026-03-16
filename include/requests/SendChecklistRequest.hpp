@@ -30,13 +30,13 @@ namespace TgBot {
     struct SendChecklistRequest {
         typedef std::shared_ptr<SendChecklistRequest> Ptr;
         // Unique identifier of the business connection on behalf of which the message will be sent
-        std::string business_connection_id;
+        std::string business_connection_id = "";
 
         // Unique identifier for the target chat
-        int64_t chat_id = 0;
+        std::int64_t chat_id = 0;
 
         // A JSON-serialized object for the checklist to send
-        InputChecklist::Ptr checklist;
+        InputChecklist::Ptr checklist = nullptr;
 
         // Sends the message silently. Users will receive a notification with no sound.
         bool disable_notification = false;
@@ -45,13 +45,13 @@ namespace TgBot {
         bool protect_content = false;
 
         // Unique identifier of the message effect to be added to the message
-        std::string message_effect_id;
+        std::string message_effect_id = "";
 
         // A JSON-serialized object for description of the message to reply to
-        ReplyParameters::Ptr reply_parameters;
+        ReplyParameters::Ptr reply_parameters = nullptr;
 
         // A JSON-serialized object for an inline keyboard
-        InlineKeyboardMarkup::Ptr reply_markup;
+        InlineKeyboardMarkup::Ptr reply_markup = nullptr;
     };
     void to_json(json& j, const SendChecklistRequest& value);
     void from_json(const json& j, SendChecklistRequest& value);

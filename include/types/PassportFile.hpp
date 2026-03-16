@@ -27,16 +27,16 @@ namespace TgBot {
 
         virtual ~PassportFile() = default;
         // Identifier for this file, which can be used to download or reuse the file
-        std::string file_id;
+        std::string file_id = "";
 
         // Unique identifier for this file, which is supposed to be the same over time and for different bots. Can't be used to download or reuse the file.
-        std::string file_unique_id;
+        std::string file_unique_id = "";
 
         // File size in bytes
-        int64_t file_size = 0;
+        std::int64_t file_size = 0;
 
         // Unix time when the file was uploaded
-        int64_t file_date = 0;
+        std::int64_t file_date = 0;
     };
     void to_json(json& j, const PassportFile& value);
     void from_json(const json& j, PassportFile& value);

@@ -24,7 +24,7 @@ namespace TgBot {
 
         virtual ~ChatBoostAdded() = default;
         // Number of boosts added by the user
-        int64_t boost_count = 0;
+        std::int64_t boost_count = 0;
     };
     void to_json(json& j, const ChatBoostAdded& value);
     void from_json(const json& j, ChatBoostAdded& value);

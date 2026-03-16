@@ -24,7 +24,7 @@ namespace TgBot {
 
         virtual ~VideoChatEnded() = default;
         // Video chat duration in seconds
-        int64_t duration = 0;
+        std::int64_t duration = 0;
     };
     void to_json(json& j, const VideoChatEnded& value);
     void from_json(const json& j, VideoChatEnded& value);

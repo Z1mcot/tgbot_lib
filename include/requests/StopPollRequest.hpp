@@ -24,16 +24,16 @@ namespace TgBot {
     struct StopPollRequest {
         typedef std::shared_ptr<StopPollRequest> Ptr;
         // Unique identifier for the target chat or username of the target channel (in the format @channelusername)
-        int64_t chat_id = 0;
+        std::int64_t chat_id = 0;
 
         // Identifier of the original message with the poll
-        int64_t message_id = 0;
+        std::int64_t message_id = 0;
 
         // Unique identifier of the business connection on behalf of which the message to be edited was sent
-        std::string business_connection_id;
+        std::string business_connection_id = "";
 
         // A JSON-serialized object for a new message inline keyboard.
-        InlineKeyboardMarkup::Ptr reply_markup;
+        InlineKeyboardMarkup::Ptr reply_markup = nullptr;
     };
     void to_json(json& j, const StopPollRequest& value);
     void from_json(const json& j, StopPollRequest& value);

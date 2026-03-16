@@ -20,7 +20,7 @@ namespace TgBot {
     struct GetCustomEmojiStickersRequest {
         typedef std::shared_ptr<GetCustomEmojiStickersRequest> Ptr;
         // A JSON-serialized list of custom emoji identifiers. At most 200 custom emoji identifiers can be specified.
-        std::vector<std::string> custom_emoji_ids;
+        std::vector<std::string> custom_emoji_ids = std::vector<std::string>();
     };
     void to_json(json& j, const GetCustomEmojiStickersRequest& value);
     void from_json(const json& j, GetCustomEmojiStickersRequest& value);

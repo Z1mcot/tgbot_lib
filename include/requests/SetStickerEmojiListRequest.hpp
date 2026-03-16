@@ -21,10 +21,10 @@ namespace TgBot {
     struct SetStickerEmojiListRequest {
         typedef std::shared_ptr<SetStickerEmojiListRequest> Ptr;
         // File identifier of the sticker
-        std::string sticker;
+        std::string sticker = "";
 
         // A JSON-serialized list of 1-20 emoji associated with the sticker
-        std::vector<std::string> emoji_list;
+        std::vector<std::string> emoji_list = std::vector<std::string>();
     };
     void to_json(json& j, const SetStickerEmojiListRequest& value);
     void from_json(const json& j, SetStickerEmojiListRequest& value);

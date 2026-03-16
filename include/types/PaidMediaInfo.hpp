@@ -25,10 +25,10 @@ namespace TgBot {
 
         virtual ~PaidMediaInfo() = default;
         // The number of Telegram Stars that must be paid to buy access to the media
-        int64_t star_count = 0;
+        std::int64_t star_count = 0;
 
         // Information about the paid media
-        std::vector<PaidMedia::Ptr> paid_media;
+        std::vector<PaidMedia::Ptr> paid_media = std::vector<PaidMedia::Ptr>();
     };
     void to_json(json& j, const PaidMediaInfo& value);
     void from_json(const json& j, PaidMediaInfo& value);

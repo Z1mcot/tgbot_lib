@@ -26,10 +26,10 @@ namespace TgBot {
 
         virtual ~PaidMediaVideo() = default;
         // Type of the paid media, always “video”
-        std::string type_;
+        std::string type_ = "";
 
         // The video
-        Video::Ptr video;
+        Video::Ptr video = nullptr;
     };
     void to_json(json& j, const PaidMediaVideo& value);
     void from_json(const json& j, PaidMediaVideo& value);

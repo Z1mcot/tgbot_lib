@@ -27,13 +27,13 @@ namespace TgBot {
 
         virtual ~ForumTopicCreated() = default;
         // Name of the topic
-        std::string name;
+        std::string name = "";
 
         // Color of the topic icon in RGB format
-        int64_t icon_color = 0;
+        std::int64_t icon_color = 0;
 
         // Optional. Unique identifier of the custom emoji shown as the topic icon
-        std::string icon_custom_emoji_id;
+        std::string icon_custom_emoji_id = "";
 
         // Optional. True, if the name of the topic wasn't specified explicitly by its creator and likely needs to be changed by the bot
         bool is_name_implicit = false;

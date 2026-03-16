@@ -24,7 +24,7 @@ namespace TgBot {
 
         virtual ~ReactionTypePaid() = default;
         // Type of the reaction, always “paid”
-        std::string type_;
+        std::string type_ = "";
     };
     void to_json(json& j, const ReactionTypePaid& value);
     void from_json(const json& j, ReactionTypePaid& value);

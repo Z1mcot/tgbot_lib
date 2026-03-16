@@ -25,10 +25,10 @@ namespace TgBot {
 
         virtual ~LabeledPrice() = default;
         // Portion label
-        std::string label;
+        std::string label = "";
 
         // Price of the product in the smallest units of the currency (integer, not float/double). For example, for a price of US$ 1.45 pass amount = 145. See the exp parameter in currencies.json, it shows the number of digits past the decimal point for each currency (2 for the majority of currencies).
-        int64_t amount = 0;
+        std::int64_t amount = 0;
     };
     void to_json(json& j, const LabeledPrice& value);
     void from_json(const json& j, LabeledPrice& value);

@@ -34,22 +34,22 @@ namespace TgBot {
 
         virtual ~ChatMemberUpdated() = default;
         // Chat the user belongs to
-        Chat::Ptr chat;
+        Chat::Ptr chat = nullptr;
 
         // Performer of the action, which resulted in the change
-        User::Ptr from;
+        User::Ptr from = nullptr;
 
         // Date the change was done in Unix time
-        int64_t date = 0;
+        std::int64_t date = 0;
 
         // Previous information about the chat member
-        ChatMember::Ptr old_chat_member;
+        ChatMember::Ptr old_chat_member = nullptr;
 
         // New information about the chat member
-        ChatMember::Ptr new_chat_member;
+        ChatMember::Ptr new_chat_member = nullptr;
 
         // Optional. Chat invite link, which was used by the user to join the chat; for joining by invite link events only.
-        ChatInviteLink::Ptr invite_link;
+        ChatInviteLink::Ptr invite_link = nullptr;
 
         // Optional. True, if the user joined the chat after sending a direct join request without using an invite link and being approved by an administrator
         bool via_join_request = false;

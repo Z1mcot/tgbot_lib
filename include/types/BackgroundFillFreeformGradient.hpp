@@ -25,10 +25,10 @@ namespace TgBot {
 
         virtual ~BackgroundFillFreeformGradient() = default;
         // Type of the background fill, always “freeform_gradient”
-        std::string type_;
+        std::string type_ = "";
 
         // A list of the 3 or 4 base colors that are used to generate the freeform gradient in the RGB24 format
-        std::vector<int64_t> colors;
+        std::vector<std::int64_t> colors = std::vector<std::int64_t>();
     };
     void to_json(json& j, const BackgroundFillFreeformGradient& value);
     void from_json(const json& j, BackgroundFillFreeformGradient& value);

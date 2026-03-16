@@ -25,10 +25,10 @@ namespace TgBot {
 
         virtual ~BackgroundTypeChatTheme() = default;
         // Type of the background, always “chat_theme”
-        std::string type_;
+        std::string type_ = "";
 
         // Name of the chat theme, which is usually an emoji
-        std::string theme_name;
+        std::string theme_name = "";
     };
     void to_json(json& j, const BackgroundTypeChatTheme& value);
     void from_json(const json& j, BackgroundTypeChatTheme& value);

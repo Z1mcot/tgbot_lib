@@ -23,13 +23,13 @@ namespace TgBot {
     struct SetBusinessAccountGiftSettingsRequest {
         typedef std::shared_ptr<SetBusinessAccountGiftSettingsRequest> Ptr;
         // Unique identifier of the business connection
-        std::string business_connection_id;
+        std::string business_connection_id = "";
 
         // Pass True, if a button for sending a gift to the user or by the business account must always be shown in the input field
         bool show_gift_button = false;
 
         // Types of gifts accepted by the business account
-        AcceptedGiftTypes::Ptr accepted_gift_types;
+        AcceptedGiftTypes::Ptr accepted_gift_types = nullptr;
     };
     void to_json(json& j, const SetBusinessAccountGiftSettingsRequest& value);
     void from_json(const json& j, SetBusinessAccountGiftSettingsRequest& value);

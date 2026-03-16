@@ -27,22 +27,22 @@ namespace TgBot {
     struct AnswerInlineQueryRequest {
         typedef std::shared_ptr<AnswerInlineQueryRequest> Ptr;
         // Unique identifier for the answered query
-        std::string inline_query_id;
+        std::string inline_query_id = "";
 
         // A JSON-serialized array of results for the inline query
-        std::vector<InlineQueryResult::Ptr> results;
+        std::vector<InlineQueryResult::Ptr> results = std::vector<InlineQueryResult::Ptr>();
 
         // The maximum amount of time in seconds that the result of the inline query may be cached on the server. Defaults to 300.
-        int64_t cache_time = 0;
+        std::int64_t cache_time = 0;
 
         // Pass True if results may be cached on the server side only for the user that sent the query. By default, results may be returned to any user who sends the same query.
         bool is_personal = false;
 
         // Pass the offset that a client should send in the next query with the same text to receive more results. Pass an empty string if there are no more results or if you don't support pagination. Offset length can't exceed 64 bytes.
-        std::string next_offset;
+        std::string next_offset = "";
 
         // A JSON-serialized object describing a button to be shown above inline query results
-        InlineQueryResultsButton::Ptr button;
+        InlineQueryResultsButton::Ptr button = nullptr;
     };
     void to_json(json& j, const AnswerInlineQueryRequest& value);
     void from_json(const json& j, AnswerInlineQueryRequest& value);

@@ -25,10 +25,10 @@ namespace TgBot {
 
         virtual ~PreparedInlineMessage() = default;
         // Unique identifier of the prepared message
-        std::string id;
+        std::string id = "";
 
         // Expiration date of the prepared message, in Unix time. Expired prepared messages can no longer be used
-        int64_t expiration_date = 0;
+        std::int64_t expiration_date = 0;
     };
     void to_json(json& j, const PreparedInlineMessage& value);
     void from_json(const json& j, PreparedInlineMessage& value);

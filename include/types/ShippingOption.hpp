@@ -27,13 +27,13 @@ namespace TgBot {
 
         virtual ~ShippingOption() = default;
         // Shipping option identifier
-        std::string id;
+        std::string id = "";
 
         // Option title
-        std::string title;
+        std::string title = "";
 
         // List of price portions
-        std::vector<LabeledPrice::Ptr> prices;
+        std::vector<LabeledPrice::Ptr> prices = std::vector<LabeledPrice::Ptr>();
     };
     void to_json(json& j, const ShippingOption& value);
     void from_json(const json& j, ShippingOption& value);

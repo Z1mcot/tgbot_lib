@@ -34,22 +34,22 @@ namespace TgBot {
 
         virtual ~SuccessfulPayment() = default;
         // Three-letter ISO 4217 currency code, or “XTR” for payments in Telegram Stars
-        std::string currency;
+        std::string currency = "";
 
         // Total price in the smallest units of the currency (integer, not float/double). For example, for a price of US$ 1.45 pass amount = 145. See the exp parameter in currencies.json, it shows the number of digits past the decimal point for each currency (2 for the majority of currencies).
-        int64_t total_amount = 0;
+        std::int64_t total_amount = 0;
 
         // Bot-specified invoice payload
-        std::string invoice_payload;
+        std::string invoice_payload = "";
 
         // Telegram payment identifier
-        std::string telegram_payment_charge_id;
+        std::string telegram_payment_charge_id = "";
 
         // Provider payment identifier
-        std::string provider_payment_charge_id;
+        std::string provider_payment_charge_id = "";
 
         // Optional. Expiration date of the subscription, in Unix time; for recurring payments only
-        int64_t subscription_expiration_date = 0;
+        std::int64_t subscription_expiration_date = 0;
 
         // Optional. True, if the payment is a recurring payment for a subscription
         bool is_recurring = false;
@@ -58,10 +58,10 @@ namespace TgBot {
         bool is_first_recurring = false;
 
         // Optional. Identifier of the shipping option chosen by the user
-        std::string shipping_option_id;
+        std::string shipping_option_id = "";
 
         // Optional. Order information provided by the user
-        OrderInfo::Ptr order_info;
+        OrderInfo::Ptr order_info = nullptr;
     };
     void to_json(json& j, const SuccessfulPayment& value);
     void from_json(const json& j, SuccessfulPayment& value);

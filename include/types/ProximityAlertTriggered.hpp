@@ -27,13 +27,13 @@ namespace TgBot {
 
         virtual ~ProximityAlertTriggered() = default;
         // User that triggered the alert
-        User::Ptr traveler;
+        User::Ptr traveler = nullptr;
 
         // User that set the alert
-        User::Ptr watcher;
+        User::Ptr watcher = nullptr;
 
         // The distance between the users
-        int64_t distance = 0;
+        std::int64_t distance = 0;
     };
     void to_json(json& j, const ProximityAlertTriggered& value);
     void from_json(const json& j, ProximityAlertTriggered& value);

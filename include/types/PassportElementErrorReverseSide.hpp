@@ -27,16 +27,16 @@ namespace TgBot {
 
         virtual ~PassportElementErrorReverseSide() = default;
         // Error source, must be reverse_side
-        std::string source;
+        std::string source = "";
 
         // The section of the user's Telegram Passport which has the issue, one of “driver_license”, “identity_card”
-        std::string type_;
+        std::string type_ = "";
 
         // Base64-encoded hash of the file with the reverse side of the document
-        std::string file_hash;
+        std::string file_hash = "";
 
         // Error message
-        std::string message;
+        std::string message = "";
     };
     void to_json(json& j, const PassportElementErrorReverseSide& value);
     void from_json(const json& j, PassportElementErrorReverseSide& value);

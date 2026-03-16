@@ -40,25 +40,25 @@ namespace TgBot {
 
         virtual ~UniqueGift() = default;
         // Identifier of the regular gift from which the gift was upgraded
-        std::string gift_id;
+        std::string gift_id = "";
 
         // Human-readable name of the regular gift from which this unique gift was upgraded
-        std::string base_name;
+        std::string base_name = "";
 
         // Unique name of the gift. This name can be used in https://t.me/nft/... links and story areas
-        std::string name;
+        std::string name = "";
 
         // Unique number of the upgraded gift among gifts upgraded from the same regular gift
-        int64_t number = 0;
+        std::int64_t number = 0;
 
         // Model of the gift
-        UniqueGiftModel::Ptr model;
+        UniqueGiftModel::Ptr model = nullptr;
 
         // Symbol of the gift
-        UniqueGiftSymbol::Ptr symbol;
+        UniqueGiftSymbol::Ptr symbol = nullptr;
 
         // Backdrop of the gift
-        UniqueGiftBackdrop::Ptr backdrop;
+        UniqueGiftBackdrop::Ptr backdrop = nullptr;
 
         // Optional. True, if the original regular gift was exclusively purchaseable by Telegram Premium subscribers
         bool is_premium = false;
@@ -70,10 +70,10 @@ namespace TgBot {
         bool is_from_blockchain = false;
 
         // Optional. The color scheme that can be used by the gift's owner for the chat's name, replies to messages and link previews; for business account gifts and gifts that are currently on sale only
-        UniqueGiftColors::Ptr colors;
+        UniqueGiftColors::Ptr colors = nullptr;
 
         // Optional. Information about the chat that published the gift
-        Chat::Ptr publisher_chat;
+        Chat::Ptr publisher_chat = nullptr;
     };
     void to_json(json& j, const UniqueGift& value);
     void from_json(const json& j, UniqueGift& value);

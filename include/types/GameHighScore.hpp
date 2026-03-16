@@ -27,13 +27,13 @@ namespace TgBot {
 
         virtual ~GameHighScore() = default;
         // Position in high score table for the game
-        int64_t position = 0;
+        std::int64_t position = 0;
 
         // User
-        User::Ptr user;
+        User::Ptr user = nullptr;
 
         // Score
-        int64_t score = 0;
+        std::int64_t score = 0;
     };
     void to_json(json& j, const GameHighScore& value);
     void from_json(const json& j, GameHighScore& value);

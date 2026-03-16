@@ -37,28 +37,28 @@ namespace TgBot {
     struct SendVideoNoteRequest {
         typedef std::shared_ptr<SendVideoNoteRequest> Ptr;
         // Unique identifier for the target chat or username of the target channel (in the format @channelusername)
-        int64_t chat_id = 0;
+        std::int64_t chat_id = 0;
 
         // Video note to send. Pass a file_id as String to send a video note that exists on the Telegram servers (recommended) or upload a new video using multipart/form-data. More information on Sending Files ». Sending video notes by a URL is currently unsupported
-        std::string video_note;
+        std::string video_note = "";
 
         // Unique identifier of the business connection on behalf of which the message will be sent
-        std::string business_connection_id;
+        std::string business_connection_id = "";
 
         // Unique identifier for the target message thread (topic) of a forum; for forum supergroups and private chats of bots with forum topic mode enabled only
-        int64_t message_thread_id = 0;
+        std::int64_t message_thread_id = 0;
 
         // Identifier of the direct messages topic to which the message will be sent; required if the message is sent to a direct messages chat
-        int64_t direct_messages_topic_id = 0;
+        std::int64_t direct_messages_topic_id = 0;
 
         // Duration of sent video in seconds
-        int64_t duration = 0;
+        std::int64_t duration = 0;
 
         // Video width and height, i.e. diameter of the video message
-        int64_t length = 0;
+        std::int64_t length = 0;
 
         // Thumbnail of the file sent; can be ignored if thumbnail generation for the file is supported server-side. The thumbnail should be in JPEG format and less than 200 kB in size. A thumbnail's width and height should not exceed 320. Ignored if the file is not uploaded using multipart/form-data. Thumbnails can't be reused and can be only uploaded as a new file, so you can pass “attach://<file_attach_name>” if the thumbnail was uploaded using multipart/form-data under <file_attach_name>. More information on Sending Files »
-        std::string thumbnail;
+        std::string thumbnail = "";
 
         // Sends the message silently. Users will receive a notification with no sound.
         bool disable_notification = false;
@@ -70,16 +70,16 @@ namespace TgBot {
         bool allow_paid_broadcast = false;
 
         // Unique identifier of the message effect to be added to the message; for private chats only
-        std::string message_effect_id;
+        std::string message_effect_id = "";
 
         // A JSON-serialized object containing the parameters of the suggested post to send; for direct messages chats only. If the message is sent as a reply to another suggested post, then that suggested post is automatically declined.
-        SuggestedPostParameters::Ptr suggested_post_parameters;
+        SuggestedPostParameters::Ptr suggested_post_parameters = nullptr;
 
         // Description of the message to reply to
-        ReplyParameters::Ptr reply_parameters;
+        ReplyParameters::Ptr reply_parameters = nullptr;
 
         // Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove a reply keyboard or to force a reply from the user
-        KeyboardOption::Ptr reply_markup;
+        KeyboardOption::Ptr reply_markup = nullptr;
     };
     void to_json(json& j, const SendVideoNoteRequest& value);
     void from_json(const json& j, SendVideoNoteRequest& value);

@@ -21,10 +21,10 @@ namespace TgBot {
     struct SetStickerPositionInSetRequest {
         typedef std::shared_ptr<SetStickerPositionInSetRequest> Ptr;
         // File identifier of the sticker
-        std::string sticker;
+        std::string sticker = "";
 
         // New sticker position in the set, zero-based
-        int64_t position = 0;
+        std::int64_t position = 0;
     };
     void to_json(json& j, const SetStickerPositionInSetRequest& value);
     void from_json(const json& j, SetStickerPositionInSetRequest& value);

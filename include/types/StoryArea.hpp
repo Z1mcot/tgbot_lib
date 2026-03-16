@@ -27,10 +27,10 @@ namespace TgBot {
 
         virtual ~StoryArea() = default;
         // Position of the area
-        StoryAreaPosition::Ptr position;
+        StoryAreaPosition::Ptr position = nullptr;
 
         // Type of the area
-        StoryAreaType::Ptr type_;
+        StoryAreaType::Ptr type_ = nullptr;
     };
     void to_json(json& j, const StoryArea& value);
     void from_json(const json& j, StoryArea& value);

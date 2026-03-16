@@ -41,49 +41,49 @@ namespace TgBot {
 
         virtual ~InlineQueryResultGif() = default;
         // Type of the result, must be gif
-        std::string type_;
+        std::string type_ = "";
 
         // Unique identifier for this result, 1-64 bytes
-        std::string id;
+        std::string id = "";
 
         // A valid URL for the GIF file
-        std::string gif_url;
+        std::string gif_url = "";
 
         // URL of the static (JPEG or GIF) or animated (MPEG4) thumbnail for the result
-        std::string thumbnail_url;
+        std::string thumbnail_url = "";
 
         // Optional. Width of the GIF
-        int64_t gif_width = 0;
+        std::int64_t gif_width = 0;
 
         // Optional. Height of the GIF
-        int64_t gif_height = 0;
+        std::int64_t gif_height = 0;
 
         // Optional. Duration of the GIF in seconds
-        int64_t gif_duration = 0;
+        std::int64_t gif_duration = 0;
 
         // Optional. MIME type of the thumbnail, must be one of “image/jpeg”, “image/gif”, or “video/mp4”. Defaults to “image/jpeg”
-        std::string thumbnail_mime_type;
+        std::string thumbnail_mime_type = "";
 
         // Optional. Title for the result
-        std::string title;
+        std::string title = "";
 
         // Optional. Caption of the GIF file to be sent, 0-1024 characters after entities parsing
-        std::string caption;
+        std::string caption = "";
 
         // Optional. Mode for parsing entities in the caption. See formatting options for more details.
-        std::string parse_mode;
+        std::string parse_mode = "";
 
         // Optional. List of special entities that appear in the caption, which can be specified instead of parse_mode
-        std::vector<MessageEntity::Ptr> caption_entities;
+        std::vector<MessageEntity::Ptr> caption_entities = std::vector<MessageEntity::Ptr>();
 
         // Optional. Pass True, if the caption must be shown above the message media
         bool show_caption_above_media = false;
 
         // Optional. Inline keyboard attached to the message
-        InlineKeyboardMarkup::Ptr reply_markup;
+        InlineKeyboardMarkup::Ptr reply_markup = nullptr;
 
         // Optional. Content of the message to be sent instead of the GIF animation
-        InputMessageContent::Ptr input_message_content;
+        InputMessageContent::Ptr input_message_content = nullptr;
     };
     void to_json(json& j, const InlineQueryResultGif& value);
     void from_json(const json& j, InlineQueryResultGif& value);

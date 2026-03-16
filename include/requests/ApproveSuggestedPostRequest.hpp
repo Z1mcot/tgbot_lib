@@ -22,13 +22,13 @@ namespace TgBot {
     struct ApproveSuggestedPostRequest {
         typedef std::shared_ptr<ApproveSuggestedPostRequest> Ptr;
         // Unique identifier for the target direct messages chat
-        int64_t chat_id = 0;
+        std::int64_t chat_id = 0;
 
         // Identifier of a suggested post message to approve
-        int64_t message_id = 0;
+        std::int64_t message_id = 0;
 
         // Point in time (Unix timestamp) when the post is expected to be published; omit if the date has already been specified when the suggested post was created. If specified, then the date must be not more than 2678400 seconds (30 days) in the future
-        int64_t send_date = 0;
+        std::int64_t send_date = 0;
     };
     void to_json(json& j, const ApproveSuggestedPostRequest& value);
     void from_json(const json& j, ApproveSuggestedPostRequest& value);

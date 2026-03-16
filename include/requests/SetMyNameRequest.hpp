@@ -21,10 +21,10 @@ namespace TgBot {
     struct SetMyNameRequest {
         typedef std::shared_ptr<SetMyNameRequest> Ptr;
         // New bot name; 0-64 characters. Pass an empty string to remove the dedicated name for the given language.
-        std::string name;
+        std::string name = "";
 
         // A two-letter ISO 639-1 language code. If empty, the name will be shown to all users for whose language there is no dedicated name.
-        std::string language_code;
+        std::string language_code = "";
     };
     void to_json(json& j, const SetMyNameRequest& value);
     void from_json(const json& j, SetMyNameRequest& value);

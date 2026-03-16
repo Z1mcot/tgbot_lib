@@ -34,19 +34,19 @@ namespace TgBot {
 
         virtual ~OwnedGiftUnique() = default;
         // Type of the gift, always “unique”
-        std::string type_;
+        std::string type_ = "";
 
         // Information about the unique gift
-        UniqueGift::Ptr gift;
+        UniqueGift::Ptr gift = nullptr;
 
         // Date the gift was sent in Unix time
-        int64_t send_date = 0;
+        std::int64_t send_date = 0;
 
         // Optional. Unique identifier of the received gift for the bot; for gifts received on behalf of business accounts only
-        std::string owned_gift_id;
+        std::string owned_gift_id = "";
 
         // Optional. Sender of the gift if it is a known user
-        User::Ptr sender_user;
+        User::Ptr sender_user = nullptr;
 
         // Optional. True, if the gift is displayed on the account's profile page; for gifts received on behalf of business accounts only
         bool is_saved = false;
@@ -55,10 +55,10 @@ namespace TgBot {
         bool can_be_transferred = false;
 
         // Optional. Number of Telegram Stars that must be paid to transfer the gift; omitted if the bot cannot transfer the gift
-        int64_t transfer_star_count = 0;
+        std::int64_t transfer_star_count = 0;
 
         // Optional. Point in time (Unix timestamp) when the gift can be transferred. If it is in the past, then the gift can be transferred now
-        int64_t next_transfer_date = 0;
+        std::int64_t next_transfer_date = 0;
     };
     void to_json(json& j, const OwnedGiftUnique& value);
     void from_json(const json& j, OwnedGiftUnique& value);

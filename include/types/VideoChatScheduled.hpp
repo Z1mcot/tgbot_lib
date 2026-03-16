@@ -24,7 +24,7 @@ namespace TgBot {
 
         virtual ~VideoChatScheduled() = default;
         // Point in time (Unix timestamp) when the video chat is supposed to be started by a chat administrator
-        int64_t start_date = 0;
+        std::int64_t start_date = 0;
     };
     void to_json(json& j, const VideoChatScheduled& value);
     void from_json(const json& j, VideoChatScheduled& value);

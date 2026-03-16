@@ -29,16 +29,16 @@ namespace TgBot {
 
         virtual ~ChatBoostRemoved() = default;
         // Chat which was boosted
-        Chat::Ptr chat;
+        Chat::Ptr chat = nullptr;
 
         // Unique identifier of the boost
-        std::string boost_id;
+        std::string boost_id = "";
 
         // Point in time (Unix timestamp) when the boost was removed
-        int64_t remove_date = 0;
+        std::int64_t remove_date = 0;
 
         // Source of the removed boost
-        ChatBoostSource::Ptr source;
+        ChatBoostSource::Ptr source = nullptr;
     };
     void to_json(json& j, const ChatBoostRemoved& value);
     void from_json(const json& j, ChatBoostRemoved& value);

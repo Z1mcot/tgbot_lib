@@ -25,19 +25,19 @@ namespace TgBot {
     struct EditMessageReplyMarkupRequest {
         typedef std::shared_ptr<EditMessageReplyMarkupRequest> Ptr;
         // Unique identifier of the business connection on behalf of which the message to be edited was sent
-        std::string business_connection_id;
+        std::string business_connection_id = "";
 
         // Required if inline_message_id is not specified. Unique identifier for the target chat or username of the target channel (in the format @channelusername)
-        int64_t chat_id = 0;
+        std::int64_t chat_id = 0;
 
         // Required if inline_message_id is not specified. Identifier of the message to edit
-        int64_t message_id = 0;
+        std::int64_t message_id = 0;
 
         // Required if chat_id and message_id are not specified. Identifier of the inline message
-        std::string inline_message_id;
+        std::string inline_message_id = "";
 
         // A JSON-serialized object for an inline keyboard.
-        InlineKeyboardMarkup::Ptr reply_markup;
+        InlineKeyboardMarkup::Ptr reply_markup = nullptr;
     };
     void to_json(json& j, const EditMessageReplyMarkupRequest& value);
     void from_json(const json& j, EditMessageReplyMarkupRequest& value);

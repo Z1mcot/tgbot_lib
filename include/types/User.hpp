@@ -38,22 +38,22 @@ namespace TgBot {
 
         virtual ~User() = default;
         // Unique identifier for this user or bot. This number may have more than 32 significant bits and some programming languages may have difficulty/silent defects in interpreting it. But it has at most 52 significant bits, so a 64-bit integer or double-precision float type are safe for storing this identifier.
-        int64_t id = 0;
+        std::int64_t id = 0;
 
         // True, if this user is a bot
         bool is_bot = false;
 
         // User's or bot's first name
-        std::string first_name;
+        std::string first_name = "";
 
         // Optional. User's or bot's last name
-        std::string last_name;
+        std::string last_name = "";
 
         // Optional. User's or bot's username
-        std::string username;
+        std::string username = "";
 
         // Optional. IETF language tag of the user's language
-        std::string language_code;
+        std::string language_code = "";
 
         // Optional. True, if this user is a Telegram Premium user
         bool is_premium = false;

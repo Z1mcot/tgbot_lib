@@ -32,31 +32,31 @@ namespace TgBot {
 
         virtual ~WebhookInfo() = default;
         // Webhook URL, may be empty if webhook is not set up
-        std::string url;
+        std::string url = "";
 
         // True, if a custom certificate was provided for webhook certificate checks
         bool has_custom_certificate = false;
 
         // Number of updates awaiting delivery
-        int64_t pending_update_count = 0;
+        std::int64_t pending_update_count = 0;
 
         // Optional. Currently used webhook IP address
-        std::string ip_address;
+        std::string ip_address = "";
 
         // Optional. Unix time for the most recent error that happened when trying to deliver an update via webhook
-        int64_t last_error_date = 0;
+        std::int64_t last_error_date = 0;
 
         // Optional. Error message in human-readable format for the most recent error that happened when trying to deliver an update via webhook
-        std::string last_error_message;
+        std::string last_error_message = "";
 
         // Optional. Unix time of the most recent error that happened when trying to synchronize available updates with Telegram datacenters
-        int64_t last_synchronization_error_date = 0;
+        std::int64_t last_synchronization_error_date = 0;
 
         // Optional. The maximum allowed number of simultaneous HTTPS connections to the webhook for update delivery
-        int64_t max_connections = 0;
+        std::int64_t max_connections = 0;
 
         // Optional. A list of update types the bot is subscribed to. Defaults to all update types except chat_member
-        std::vector<std::string> allowed_updates;
+        std::vector<std::string> allowed_updates = std::vector<std::string>();
     };
     void to_json(json& j, const WebhookInfo& value);
     void from_json(const json& j, WebhookInfo& value);

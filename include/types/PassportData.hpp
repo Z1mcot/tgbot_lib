@@ -27,10 +27,10 @@ namespace TgBot {
 
         virtual ~PassportData() = default;
         // Array with information about documents and other Telegram Passport elements that was shared with the bot
-        std::vector<EncryptedPassportElement::Ptr> data;
+        std::vector<EncryptedPassportElement::Ptr> data = std::vector<EncryptedPassportElement::Ptr>();
 
         // Encrypted credentials required to decrypt the data
-        EncryptedCredentials::Ptr credentials;
+        EncryptedCredentials::Ptr credentials = nullptr;
     };
     void to_json(json& j, const PassportData& value);
     void from_json(const json& j, PassportData& value);

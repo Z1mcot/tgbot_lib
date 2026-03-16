@@ -21,10 +21,10 @@ namespace TgBot {
     struct GetStarTransactionsRequest {
         typedef std::shared_ptr<GetStarTransactionsRequest> Ptr;
         // Number of transactions to skip in the response
-        int64_t offset = 0;
+        std::int64_t offset = 0;
 
         // The maximum number of transactions to be retrieved. Values between 1-100 are accepted. Defaults to 100.
-        int64_t limit = 0;
+        std::int64_t limit = 0;
     };
     void to_json(json& j, const GetStarTransactionsRequest& value);
     void from_json(const json& j, GetStarTransactionsRequest& value);

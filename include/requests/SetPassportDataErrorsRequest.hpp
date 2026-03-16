@@ -22,10 +22,10 @@ namespace TgBot {
     struct SetPassportDataErrorsRequest {
         typedef std::shared_ptr<SetPassportDataErrorsRequest> Ptr;
         // User identifier
-        int64_t user_id = 0;
+        std::int64_t user_id = 0;
 
         // A JSON-serialized array describing the errors
-        std::vector<PassportElementError::Ptr> errors;
+        std::vector<PassportElementError::Ptr> errors = std::vector<PassportElementError::Ptr>();
     };
     void to_json(json& j, const SetPassportDataErrorsRequest& value);
     void from_json(const json& j, SetPassportDataErrorsRequest& value);

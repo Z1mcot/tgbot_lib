@@ -21,10 +21,10 @@ namespace TgBot {
     struct SetChatTitleRequest {
         typedef std::shared_ptr<SetChatTitleRequest> Ptr;
         // Unique identifier for the target chat or username of the target channel (in the format @channelusername)
-        int64_t chat_id = 0;
+        std::int64_t chat_id = 0;
 
         // New chat title, 1-128 characters
-        std::string title;
+        std::string title = "";
     };
     void to_json(json& j, const SetChatTitleRequest& value);
     void from_json(const json& j, SetChatTitleRequest& value);

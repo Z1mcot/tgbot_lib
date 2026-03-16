@@ -29,16 +29,16 @@ namespace TgBot {
 
         virtual ~SuggestedPostPaid() = default;
         // Currency in which the payment was made. Currently, one of “XTR” for Telegram Stars or “TON” for toncoins
-        std::string currency;
+        std::string currency = "";
 
         // Optional. Message containing the suggested post. Note that the Message object in this field will not contain the reply_to_message field even if it itself is a reply.
-        Message::Ptr suggested_post_message;
+        Message::Ptr suggested_post_message = nullptr;
 
         // Optional. The amount of the currency that was received by the channel in nanotoncoins; for payments in toncoins only
-        int64_t amount = 0;
+        std::int64_t amount = 0;
 
         // Optional. The amount of Telegram Stars that was received by the channel; for payments in Telegram Stars only
-        StarAmount::Ptr star_amount;
+        StarAmount::Ptr star_amount = nullptr;
     };
     void to_json(json& j, const SuggestedPostPaid& value);
     void from_json(const json& j, SuggestedPostPaid& value);

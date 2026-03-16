@@ -26,13 +26,13 @@ namespace TgBot {
 
         virtual ~EncryptedCredentials() = default;
         // Base64-encoded encrypted JSON-serialized data with unique user's payload, data hashes and secrets required for EncryptedPassportElement decryption and authentication
-        std::string data;
+        std::string data = "";
 
         // Base64-encoded data hash for data authentication
-        std::string hash;
+        std::string hash = "";
 
         // Base64-encoded secret, encrypted with the bot's public RSA key, required for data decryption
-        std::string secret;
+        std::string secret = "";
     };
     void to_json(json& j, const EncryptedCredentials& value);
     void from_json(const json& j, EncryptedCredentials& value);

@@ -27,16 +27,16 @@ namespace TgBot {
 
         virtual ~StoryAreaTypeWeather() = default;
         // Type of the area, always “weather”
-        std::string type_;
+        std::string type_ = "";
 
         // Temperature, in degree Celsius
         double temperature = 0.0;
 
         // Emoji representing the weather
-        std::string emoji;
+        std::string emoji = "";
 
         // A color of the area background in the ARGB format
-        int64_t background_color = 0;
+        std::int64_t background_color = 0;
     };
     void to_json(json& j, const StoryAreaTypeWeather& value);
     void from_json(const json& j, StoryAreaTypeWeather& value);

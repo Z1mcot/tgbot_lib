@@ -17,35 +17,17 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
 
 find_package(OpenSSL REQUIRED)
+if(OpenSSL_FOUND)
+    message("Found OpenSSL!")
+    add_compile_definitions(CPPHTTPLIB_OPENSSL_SUPPORT)
+else()
+    message("Couldn't find OpenSSL!")
+endif()
 
-find_package(libcoro)
-#if(NOT TARGET coro::coro)
-#    include(FetchContent)
-#    FetchContent_Declare(
-#        libcoro
-#        GIT_REPOSITORY https://github.com/jbaldwin/libcoro.git
-#        GIT_TAG v0.16.0 # Or a specific release version
-#    )
-#    FetchContent_MakeAvailable(libcoro)
-#endif()
-
+find_package(PkgConfig REQUIRED)
+pkg_check_modules(test REQUIRED IMPORTED_TARGET libcoro)
 find_package(httplib)
-#if(NOT TARGET httplib::httplib)
-#    include(FetchContent)
-#    FetchContent_Declare(
-#            http
-#            GIT_REPOSITORY https://github.com/yhirose/cpp-httplib
-#            GIT_TAG v0.38.0 # Or a specific release version
-#    )
-#    FetchContent_MakeAvailable(http)
-#endif()
-
 find_package(nlohmann_json)
-#if(NOT TARGET nlohmann_json::nlohmann_json)
-#    include(FetchContent)
-#    FetchContent_Declare(json URL https://github.com/nlohmann/json/releases/download/v3.12.0/json.tar.xz)
-#    FetchContent_MakeAvailable(json)
-#endif()
 
 # Collect all source files
 set(TELEGRAM_MODELS_HEADERS
@@ -992,7 +974,7 @@ target_link_libraries(tgbot-lib
         nlohmann_json::nlohmann_json
         OpenSSL::SSL
         OpenSSL::Crypto
-        libcoro
+        PkgConfig::test
         httplib::httplib
 )
 # Install rules (optional)

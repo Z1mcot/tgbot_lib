@@ -24,7 +24,7 @@ namespace TgBot {
 
         virtual ~BotCommandScopeAllPrivateChats() = default;
         // Scope type, must be all_private_chats
-        std::string type_;
+        std::string type_ = "";
     };
     void to_json(json& j, const BotCommandScopeAllPrivateChats& value);
     void from_json(const json& j, BotCommandScopeAllPrivateChats& value);

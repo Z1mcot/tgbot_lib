@@ -22,10 +22,10 @@ namespace TgBot {
     struct SetChatPhotoRequest {
         typedef std::shared_ptr<SetChatPhotoRequest> Ptr;
         // Unique identifier for the target chat or username of the target channel (in the format @channelusername)
-        int64_t chat_id = 0;
+        std::int64_t chat_id = 0;
 
         // New chat photo, uploaded using multipart/form-data
-        InputFile::Ptr photo;
+        InputFile::Ptr photo = nullptr;
     };
     void to_json(json& j, const SetChatPhotoRequest& value);
     void from_json(const json& j, SetChatPhotoRequest& value);

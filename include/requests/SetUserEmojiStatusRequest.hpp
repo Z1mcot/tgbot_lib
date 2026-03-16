@@ -22,13 +22,13 @@ namespace TgBot {
     struct SetUserEmojiStatusRequest {
         typedef std::shared_ptr<SetUserEmojiStatusRequest> Ptr;
         // Unique identifier of the target user
-        int64_t user_id = 0;
+        std::int64_t user_id = 0;
 
         // Custom emoji identifier of the emoji status to set. Pass an empty string to remove the status.
-        std::string emoji_status_custom_emoji_id;
+        std::string emoji_status_custom_emoji_id = "";
 
         // Expiration date of the emoji status, if any
-        int64_t emoji_status_expiration_date = 0;
+        std::int64_t emoji_status_expiration_date = 0;
     };
     void to_json(json& j, const SetUserEmojiStatusRequest& value);
     void from_json(const json& j, SetUserEmojiStatusRequest& value);

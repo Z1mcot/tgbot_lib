@@ -22,13 +22,13 @@ namespace TgBot {
     struct ReadBusinessMessageRequest {
         typedef std::shared_ptr<ReadBusinessMessageRequest> Ptr;
         // Unique identifier of the business connection on behalf of which to read the message
-        std::string business_connection_id;
+        std::string business_connection_id = "";
 
         // Unique identifier of the chat in which the message was received. The chat must have been active in the last 24 hours.
-        int64_t chat_id = 0;
+        std::int64_t chat_id = 0;
 
         // Unique identifier of the message to mark as read
-        int64_t message_id = 0;
+        std::int64_t message_id = 0;
     };
     void to_json(json& j, const ReadBusinessMessageRequest& value);
     void from_json(const json& j, ReadBusinessMessageRequest& value);

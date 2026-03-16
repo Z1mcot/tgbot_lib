@@ -29,16 +29,16 @@ namespace TgBot {
 
         virtual ~InputTextMessageContent() = default;
         // Text of the message to be sent, 1-4096 characters
-        std::string message_text;
+        std::string message_text = "";
 
         // Optional. Mode for parsing entities in the message text. See formatting options for more details.
-        std::string parse_mode;
+        std::string parse_mode = "";
 
         // Optional. List of special entities that appear in message text, which can be specified instead of parse_mode
-        std::vector<MessageEntity::Ptr> entities;
+        std::vector<MessageEntity::Ptr> entities = std::vector<MessageEntity::Ptr>();
 
         // Optional. Link preview generation options for the message
-        LinkPreviewOptions::Ptr link_preview_options;
+        LinkPreviewOptions::Ptr link_preview_options = nullptr;
     };
     void to_json(json& j, const InputTextMessageContent& value);
     void from_json(const json& j, InputTextMessageContent& value);

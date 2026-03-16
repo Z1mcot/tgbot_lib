@@ -27,13 +27,13 @@ namespace TgBot {
 
         virtual ~UniqueGiftSymbol() = default;
         // Name of the symbol
-        std::string name;
+        std::string name = "";
 
         // The sticker that represents the unique gift
-        Sticker::Ptr sticker;
+        Sticker::Ptr sticker = nullptr;
 
         // The number of unique gifts that receive this model for every 1000 gifts upgraded
-        int64_t rarity_per_mille = 0;
+        std::int64_t rarity_per_mille = 0;
     };
     void to_json(json& j, const UniqueGiftSymbol& value);
     void from_json(const json& j, UniqueGiftSymbol& value);

@@ -25,10 +25,10 @@ namespace TgBot {
 
         virtual ~ReactionTypeCustomEmoji() = default;
         // Type of the reaction, always “custom_emoji”
-        std::string type_;
+        std::string type_ = "";
 
         // Custom emoji identifier
-        std::string custom_emoji_id;
+        std::string custom_emoji_id = "";
     };
     void to_json(json& j, const ReactionTypeCustomEmoji& value);
     void from_json(const json& j, ReactionTypeCustomEmoji& value);

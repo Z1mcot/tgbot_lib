@@ -29,16 +29,16 @@ namespace TgBot {
 
         virtual ~MessageReactionCountUpdated() = default;
         // The chat containing the message
-        Chat::Ptr chat;
+        Chat::Ptr chat = nullptr;
 
         // Unique message identifier inside the chat
-        int64_t message_id = 0;
+        std::int64_t message_id = 0;
 
         // Date of the change in Unix time
-        int64_t date = 0;
+        std::int64_t date = 0;
 
         // List of reactions that are present on the message
-        std::vector<ReactionCount::Ptr> reactions;
+        std::vector<ReactionCount::Ptr> reactions = std::vector<ReactionCount::Ptr>();
     };
     void to_json(json& j, const MessageReactionCountUpdated& value);
     void from_json(const json& j, MessageReactionCountUpdated& value);

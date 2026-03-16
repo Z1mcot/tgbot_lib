@@ -28,19 +28,19 @@ namespace TgBot {
 
         virtual ~PassportElementErrorDataField() = default;
         // Error source, must be data
-        std::string source;
+        std::string source = "";
 
         // The section of the user's Telegram Passport which has the error, one of “personal_details”, “passport”, “driver_license”, “identity_card”, “internal_passport”, “address”
-        std::string type_;
+        std::string type_ = "";
 
         // Name of the data field which has the error
-        std::string field_name;
+        std::string field_name = "";
 
         // Base64-encoded data hash
-        std::string data_hash;
+        std::string data_hash = "";
 
         // Error message
-        std::string message;
+        std::string message = "";
     };
     void to_json(json& j, const PassportElementErrorDataField& value);
     void from_json(const json& j, PassportElementErrorDataField& value);

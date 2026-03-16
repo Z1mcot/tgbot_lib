@@ -23,16 +23,16 @@ namespace TgBot {
     struct UpgradeGiftRequest {
         typedef std::shared_ptr<UpgradeGiftRequest> Ptr;
         // Unique identifier of the business connection
-        std::string business_connection_id;
+        std::string business_connection_id = "";
 
         // Unique identifier of the regular gift that should be upgraded to a unique one
-        std::string owned_gift_id;
+        std::string owned_gift_id = "";
 
         // Pass True to keep the original gift text, sender and receiver in the upgraded gift
         bool keep_original_details = false;
 
         // The amount of Telegram Stars that will be paid for the upgrade from the business account balance. If gift.prepaid_upgrade_star_count > 0, then pass 0, otherwise, the can_transfer_stars business bot right is required and gift.upgrade_star_count must be passed.
-        int64_t star_count = 0;
+        std::int64_t star_count = 0;
     };
     void to_json(json& j, const UpgradeGiftRequest& value);
     void from_json(const json& j, UpgradeGiftRequest& value);

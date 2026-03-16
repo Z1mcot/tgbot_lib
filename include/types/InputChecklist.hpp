@@ -31,16 +31,16 @@ namespace TgBot {
 
         virtual ~InputChecklist() = default;
         // Title of the checklist; 1-255 characters after entities parsing
-        std::string title;
+        std::string title = "";
 
         // List of 1-30 tasks in the checklist
-        std::vector<InputChecklistTask::Ptr> tasks;
+        std::vector<InputChecklistTask::Ptr> tasks = std::vector<InputChecklistTask::Ptr>();
 
         // Optional. Mode for parsing entities in the title. See formatting options for more details.
-        std::string parse_mode;
+        std::string parse_mode = "";
 
         // Optional. List of special entities that appear in the title, which can be specified instead of parse_mode. Currently, only bold, italic, underline, strikethrough, spoiler, and custom_emoji entities are allowed.
-        std::vector<MessageEntity::Ptr> title_entities;
+        std::vector<MessageEntity::Ptr> title_entities = std::vector<MessageEntity::Ptr>();
 
         // Optional. Pass True if other users can add tasks to the checklist
         bool others_can_add_tasks = false;

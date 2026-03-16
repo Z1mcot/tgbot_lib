@@ -26,10 +26,10 @@ namespace TgBot {
 
         virtual ~BusinessLocation() = default;
         // Address of the business
-        std::string address;
+        std::string address = "";
 
         // Optional. Location of the business
-        Location::Ptr location;
+        Location::Ptr location = nullptr;
     };
     void to_json(json& j, const BusinessLocation& value);
     void from_json(const json& j, BusinessLocation& value);

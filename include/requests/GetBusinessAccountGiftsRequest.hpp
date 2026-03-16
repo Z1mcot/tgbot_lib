@@ -30,7 +30,7 @@ namespace TgBot {
     struct GetBusinessAccountGiftsRequest {
         typedef std::shared_ptr<GetBusinessAccountGiftsRequest> Ptr;
         // Unique identifier of the business connection
-        std::string business_connection_id;
+        std::string business_connection_id = "";
 
         // Pass True to exclude gifts that aren't saved to the account's profile page
         bool exclude_unsaved = false;
@@ -57,10 +57,10 @@ namespace TgBot {
         bool sort_by_price = false;
 
         // Offset of the first entry to return as received from the previous request; use empty string to get the first chunk of results
-        std::string offset;
+        std::string offset = "";
 
         // The maximum number of gifts to be returned; 1-100. Defaults to 100
-        int64_t limit = 0;
+        std::int64_t limit = 0;
     };
     void to_json(json& j, const GetBusinessAccountGiftsRequest& value);
     void from_json(const json& j, GetBusinessAccountGiftsRequest& value);

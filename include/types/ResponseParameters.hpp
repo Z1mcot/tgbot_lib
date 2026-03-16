@@ -25,10 +25,10 @@ namespace TgBot {
 
         virtual ~ResponseParameters() = default;
         // Optional. The group has been migrated to a supergroup with the specified identifier. This number may have more than 32 significant bits and some programming languages may have difficulty/silent defects in interpreting it. But it has at most 52 significant bits, so a signed 64-bit integer or double-precision float type are safe for storing this identifier.
-        int64_t migrate_to_chat_id = 0;
+        std::int64_t migrate_to_chat_id = 0;
 
         // Optional. In case of exceeding flood control, the number of seconds left to wait before the request can be repeated
-        int64_t retry_after = 0;
+        std::int64_t retry_after = 0;
     };
     void to_json(json& j, const ResponseParameters& value);
     void from_json(const json& j, ResponseParameters& value);

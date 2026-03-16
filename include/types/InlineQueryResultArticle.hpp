@@ -35,34 +35,34 @@ namespace TgBot {
 
         virtual ~InlineQueryResultArticle() = default;
         // Type of the result, must be article
-        std::string type_;
+        std::string type_ = "";
 
         // Unique identifier for this result, 1-64 Bytes
-        std::string id;
+        std::string id = "";
 
         // Title of the result
-        std::string title;
+        std::string title = "";
 
         // Content of the message to be sent
-        InputMessageContent::Ptr input_message_content;
+        InputMessageContent::Ptr input_message_content = nullptr;
 
         // Optional. Inline keyboard attached to the message
-        InlineKeyboardMarkup::Ptr reply_markup;
+        InlineKeyboardMarkup::Ptr reply_markup = nullptr;
 
         // Optional. URL of the result
-        std::string url;
+        std::string url = "";
 
         // Optional. Short description of the result
-        std::string description;
+        std::string description = "";
 
         // Optional. Url of the thumbnail for the result
-        std::string thumbnail_url;
+        std::string thumbnail_url = "";
 
         // Optional. Thumbnail width
-        int64_t thumbnail_width = 0;
+        std::int64_t thumbnail_width = 0;
 
         // Optional. Thumbnail height
-        int64_t thumbnail_height = 0;
+        std::int64_t thumbnail_height = 0;
     };
     void to_json(json& j, const InlineQueryResultArticle& value);
     void from_json(const json& j, InlineQueryResultArticle& value);

@@ -25,10 +25,10 @@ namespace TgBot {
 
         virtual ~StoryAreaTypeUniqueGift() = default;
         // Type of the area, always “unique_gift”
-        std::string type_;
+        std::string type_ = "";
 
         // Unique name of the gift
-        std::string name;
+        std::string name = "";
     };
     void to_json(json& j, const StoryAreaTypeUniqueGift& value);
     void from_json(const json& j, StoryAreaTypeUniqueGift& value);

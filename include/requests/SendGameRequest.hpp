@@ -31,16 +31,16 @@ namespace TgBot {
     struct SendGameRequest {
         typedef std::shared_ptr<SendGameRequest> Ptr;
         // Unique identifier for the target chat. Games can't be sent to channel direct messages chats and channel chats.
-        int64_t chat_id = 0;
+        std::int64_t chat_id = 0;
 
         // Short name of the game, serves as the unique identifier for the game. Set up your games via @BotFather.
-        std::string game_short_name;
+        std::string game_short_name = "";
 
         // Unique identifier of the business connection on behalf of which the message will be sent
-        std::string business_connection_id;
+        std::string business_connection_id = "";
 
         // Unique identifier for the target message thread (topic) of a forum; for forum supergroups and private chats of bots with forum topic mode enabled only
-        int64_t message_thread_id = 0;
+        std::int64_t message_thread_id = 0;
 
         // Sends the message silently. Users will receive a notification with no sound.
         bool disable_notification = false;
@@ -52,13 +52,13 @@ namespace TgBot {
         bool allow_paid_broadcast = false;
 
         // Unique identifier of the message effect to be added to the message; for private chats only
-        std::string message_effect_id;
+        std::string message_effect_id = "";
 
         // Description of the message to reply to
-        ReplyParameters::Ptr reply_parameters;
+        ReplyParameters::Ptr reply_parameters = nullptr;
 
         // A JSON-serialized object for an inline keyboard. If empty, one 'Play game_title' button will be shown. If not empty, the first button must launch the game.
-        InlineKeyboardMarkup::Ptr reply_markup;
+        InlineKeyboardMarkup::Ptr reply_markup = nullptr;
     };
     void to_json(json& j, const SendGameRequest& value);
     void from_json(const json& j, SendGameRequest& value);

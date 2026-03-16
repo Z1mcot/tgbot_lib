@@ -30,19 +30,19 @@ namespace TgBot {
 
         virtual ~AffiliateInfo() = default;
         // The number of Telegram Stars received by the affiliate for each 1000 Telegram Stars received by the bot from referred users
-        int64_t commission_per_mille = 0;
+        std::int64_t commission_per_mille = 0;
 
         // Integer amount of Telegram Stars received by the affiliate from the transaction, rounded to 0; can be negative for refunds
-        int64_t amount = 0;
+        std::int64_t amount = 0;
 
         // Optional. The bot or the user that received an affiliate commission if it was received by a bot or a user
-        User::Ptr affiliate_user;
+        User::Ptr affiliate_user = nullptr;
 
         // Optional. The chat that received an affiliate commission if it was received by a chat
-        Chat::Ptr affiliate_chat;
+        Chat::Ptr affiliate_chat = nullptr;
 
         // Optional. The number of 1/1000000000 shares of Telegram Stars received by the affiliate; from -999999999 to 999999999; can be negative for refunds
-        int64_t nanostar_amount = 0;
+        std::int64_t nanostar_amount = 0;
     };
     void to_json(json& j, const AffiliateInfo& value);
     void from_json(const json& j, AffiliateInfo& value);

@@ -30,22 +30,22 @@ namespace TgBot {
 
         virtual ~StarTransaction() = default;
         // Unique identifier of the transaction. Coincides with the identifier of the original transaction for refund transactions. Coincides with SuccessfulPayment.telegram_payment_charge_id for successful incoming payments from users.
-        std::string id;
+        std::string id = "";
 
         // Integer amount of Telegram Stars transferred by the transaction
-        int64_t amount = 0;
+        std::int64_t amount = 0;
 
         // Date the transaction was created in Unix time
-        int64_t date = 0;
+        std::int64_t date = 0;
 
         // Optional. The number of 1/1000000000 shares of Telegram Stars transferred by the transaction; from 0 to 999999999
-        int64_t nanostar_amount = 0;
+        std::int64_t nanostar_amount = 0;
 
         // Optional. Source of an incoming transaction (e.g., a user purchasing goods or services, Fragment refunding a failed withdrawal). Only for incoming transactions
-        TransactionPartner::Ptr source;
+        TransactionPartner::Ptr source = nullptr;
 
         // Optional. Receiver of an outgoing transaction (e.g., a user for a purchase refund, Fragment for a withdrawal). Only for outgoing transactions
-        TransactionPartner::Ptr receiver;
+        TransactionPartner::Ptr receiver = nullptr;
     };
     void to_json(json& j, const StarTransaction& value);
     void from_json(const json& j, StarTransaction& value);

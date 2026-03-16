@@ -24,7 +24,7 @@ namespace TgBot {
 
         virtual ~TransactionPartnerTelegramAds() = default;
         // Type of the transaction partner, always “telegram_ads”
-        std::string type_;
+        std::string type_ = "";
     };
     void to_json(json& j, const TransactionPartnerTelegramAds& value);
     void from_json(const json& j, TransactionPartnerTelegramAds& value);

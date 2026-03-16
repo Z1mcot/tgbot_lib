@@ -28,7 +28,7 @@ namespace TgBot {
         bool are_direct_messages_enabled = false;
 
         // Optional. The new number of Telegram Stars that must be paid by users for each direct message sent to the channel. Does not apply to users who have been exempted by administrators. Defaults to 0.
-        int64_t direct_message_star_count = 0;
+        std::int64_t direct_message_star_count = 0;
     };
     void to_json(json& j, const DirectMessagePriceChanged& value);
     void from_json(const json& j, DirectMessagePriceChanged& value);

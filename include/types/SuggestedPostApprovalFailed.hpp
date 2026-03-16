@@ -27,10 +27,10 @@ namespace TgBot {
 
         virtual ~SuggestedPostApprovalFailed() = default;
         // Expected price of the post
-        SuggestedPostPrice::Ptr price;
+        SuggestedPostPrice::Ptr price = nullptr;
 
         // Optional. Message containing the suggested post whose approval has failed. Note that the Message object in this field will not contain the reply_to_message field even if it itself is a reply.
-        Message::Ptr suggested_post_message;
+        Message::Ptr suggested_post_message = nullptr;
     };
     void to_json(json& j, const SuggestedPostApprovalFailed& value);
     void from_json(const json& j, SuggestedPostApprovalFailed& value);

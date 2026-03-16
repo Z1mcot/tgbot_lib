@@ -40,31 +40,31 @@ namespace TgBot {
     struct CopyMessageRequest {
         typedef std::shared_ptr<CopyMessageRequest> Ptr;
         // Unique identifier for the target chat or username of the target channel (in the format @channelusername)
-        int64_t chat_id = 0;
+        std::int64_t chat_id = 0;
 
         // Unique identifier for the chat where the original message was sent (or channel username in the format @channelusername)
-        int64_t from_chat_id = 0;
+        std::int64_t from_chat_id = 0;
 
         // Message identifier in the chat specified in from_chat_id
-        int64_t message_id = 0;
+        std::int64_t message_id = 0;
 
         // Unique identifier for the target message thread (topic) of a forum; for forum supergroups and private chats of bots with forum topic mode enabled only
-        int64_t message_thread_id = 0;
+        std::int64_t message_thread_id = 0;
 
         // Identifier of the direct messages topic to which the message will be sent; required if the message is sent to a direct messages chat
-        int64_t direct_messages_topic_id = 0;
+        std::int64_t direct_messages_topic_id = 0;
 
         // New start timestamp for the copied video in the message
-        int64_t video_start_timestamp = 0;
+        std::int64_t video_start_timestamp = 0;
 
         // New caption for media, 0-1024 characters after entities parsing. If not specified, the original caption is kept
-        std::string caption;
+        std::string caption = "";
 
         // Mode for parsing entities in the new caption. See formatting options for more details.
-        std::string parse_mode;
+        std::string parse_mode = "";
 
         // A JSON-serialized list of special entities that appear in the new caption, which can be specified instead of parse_mode
-        std::vector<MessageEntity::Ptr> caption_entities;
+        std::vector<MessageEntity::Ptr> caption_entities = std::vector<MessageEntity::Ptr>();
 
         // Pass True, if the caption must be shown above the message media. Ignored if a new caption isn't specified.
         bool show_caption_above_media = false;
@@ -79,16 +79,16 @@ namespace TgBot {
         bool allow_paid_broadcast = false;
 
         // Unique identifier of the message effect to be added to the message; only available when copying to private chats
-        std::string message_effect_id;
+        std::string message_effect_id = "";
 
         // A JSON-serialized object containing the parameters of the suggested post to send; for direct messages chats only. If the message is sent as a reply to another suggested post, then that suggested post is automatically declined.
-        SuggestedPostParameters::Ptr suggested_post_parameters;
+        SuggestedPostParameters::Ptr suggested_post_parameters = nullptr;
 
         // Description of the message to reply to
-        ReplyParameters::Ptr reply_parameters;
+        ReplyParameters::Ptr reply_parameters = nullptr;
 
         // Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove a reply keyboard or to force a reply from the user
-        KeyboardOption::Ptr reply_markup;
+        KeyboardOption::Ptr reply_markup = nullptr;
     };
     void to_json(json& j, const CopyMessageRequest& value);
     void from_json(const json& j, CopyMessageRequest& value);

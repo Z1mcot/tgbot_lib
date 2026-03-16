@@ -29,7 +29,7 @@ namespace TgBot {
         bool from_request = false;
 
         // Optional. Name of the Web App, if the access was granted when the Web App was launched from a link
-        std::string web_app_name;
+        std::string web_app_name = "";
 
         // Optional. True, if the access was granted when the bot was added to the attachment or side menu
         bool from_attachment_menu = false;

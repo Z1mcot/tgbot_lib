@@ -26,10 +26,10 @@ namespace TgBot {
 
         virtual ~DirectMessagesTopic() = default;
         // Unique identifier of the topic. This number may have more than 32 significant bits and some programming languages may have difficulty/silent defects in interpreting it. But it has at most 52 significant bits, so a 64-bit integer or double-precision float type are safe for storing this identifier.
-        int64_t topic_id = 0;
+        std::int64_t topic_id = 0;
 
         // Optional. Information about the user that created the topic. Currently, it is always present
-        User::Ptr user;
+        User::Ptr user = nullptr;
     };
     void to_json(json& j, const DirectMessagesTopic& value);
     void from_json(const json& j, DirectMessagesTopic& value);

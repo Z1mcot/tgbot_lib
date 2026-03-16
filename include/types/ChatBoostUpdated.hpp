@@ -27,10 +27,10 @@ namespace TgBot {
 
         virtual ~ChatBoostUpdated() = default;
         // Chat which was boosted
-        Chat::Ptr chat;
+        Chat::Ptr chat = nullptr;
 
         // Information about the chat boost
-        ChatBoost::Ptr boost;
+        ChatBoost::Ptr boost = nullptr;
     };
     void to_json(json& j, const ChatBoostUpdated& value);
     void from_json(const json& j, ChatBoostUpdated& value);

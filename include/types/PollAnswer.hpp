@@ -29,16 +29,16 @@ namespace TgBot {
 
         virtual ~PollAnswer() = default;
         // Unique poll identifier
-        std::string poll_id;
+        std::string poll_id = "";
 
         // 0-based identifiers of chosen answer options. May be empty if the vote was retracted.
-        std::vector<int64_t> option_ids;
+        std::vector<std::int64_t> option_ids = std::vector<std::int64_t>();
 
         // Optional. The chat that changed the answer to the poll, if the voter is anonymous
-        Chat::Ptr voter_chat;
+        Chat::Ptr voter_chat = nullptr;
 
         // Optional. The user that changed the answer to the poll, if the voter isn't anonymous
-        User::Ptr user;
+        User::Ptr user = nullptr;
     };
     void to_json(json& j, const PollAnswer& value);
     void from_json(const json& j, PollAnswer& value);

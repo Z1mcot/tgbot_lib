@@ -39,16 +39,16 @@ namespace TgBot {
 
         virtual ~Gift() = default;
         // Unique identifier of the gift
-        std::string id;
+        std::string id = "";
 
         // The sticker that represents the gift
-        Sticker::Ptr sticker;
+        Sticker::Ptr sticker = nullptr;
 
         // The number of Telegram Stars that must be paid to send the sticker
-        int64_t star_count = 0;
+        std::int64_t star_count = 0;
 
         // Optional. The number of Telegram Stars that must be paid to upgrade the gift to a unique one
-        int64_t upgrade_star_count = 0;
+        std::int64_t upgrade_star_count = 0;
 
         // Optional. True, if the gift can only be purchased by Telegram Premium subscribers
         bool is_premium = false;
@@ -57,25 +57,25 @@ namespace TgBot {
         bool has_colors = false;
 
         // Optional. The total number of gifts of this type that can be sent by all users; for limited gifts only
-        int64_t total_count = 0;
+        std::int64_t total_count = 0;
 
         // Optional. The number of remaining gifts of this type that can be sent by all users; for limited gifts only
-        int64_t remaining_count = 0;
+        std::int64_t remaining_count = 0;
 
         // Optional. The total number of gifts of this type that can be sent by the bot; for limited gifts only
-        int64_t personal_total_count = 0;
+        std::int64_t personal_total_count = 0;
 
         // Optional. The number of remaining gifts of this type that can be sent by the bot; for limited gifts only
-        int64_t personal_remaining_count = 0;
+        std::int64_t personal_remaining_count = 0;
 
         // Optional. Background of the gift
-        GiftBackground::Ptr background;
+        GiftBackground::Ptr background = nullptr;
 
         // Optional. The total number of different unique gifts that can be obtained by upgrading the gift
-        int64_t unique_gift_variant_count = 0;
+        std::int64_t unique_gift_variant_count = 0;
 
         // Optional. Information about the chat that published the gift
-        Chat::Ptr publisher_chat;
+        Chat::Ptr publisher_chat = nullptr;
     };
     void to_json(json& j, const Gift& value);
     void from_json(const json& j, Gift& value);

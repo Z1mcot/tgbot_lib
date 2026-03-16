@@ -28,16 +28,16 @@ namespace TgBot {
 
         virtual ~UniqueGiftModel() = default;
         // Name of the model
-        std::string name;
+        std::string name = "";
 
         // The sticker that represents the unique gift
-        Sticker::Ptr sticker;
+        Sticker::Ptr sticker = nullptr;
 
         // The number of unique gifts that receive this model for every 1000 gift upgrades. Always 0 for crafted gifts.
-        int64_t rarity_per_mille = 0;
+        std::int64_t rarity_per_mille = 0;
 
         // Optional. Rarity of the model if it is a crafted model. Currently, can be “uncommon”, “rare”, “epic”, or “legendary”.
-        std::string rarity;
+        std::string rarity = "";
     };
     void to_json(json& j, const UniqueGiftModel& value);
     void from_json(const json& j, UniqueGiftModel& value);

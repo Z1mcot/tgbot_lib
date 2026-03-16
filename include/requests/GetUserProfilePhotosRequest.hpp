@@ -22,13 +22,13 @@ namespace TgBot {
     struct GetUserProfilePhotosRequest {
         typedef std::shared_ptr<GetUserProfilePhotosRequest> Ptr;
         // Unique identifier of the target user
-        int64_t user_id = 0;
+        std::int64_t user_id = 0;
 
         // Sequential number of the first photo to be returned. By default, all photos are returned.
-        int64_t offset = 0;
+        std::int64_t offset = 0;
 
         // Limits the number of photos to be retrieved. Values between 1-100 are accepted. Defaults to 100.
-        int64_t limit = 0;
+        std::int64_t limit = 0;
     };
     void to_json(json& j, const GetUserProfilePhotosRequest& value);
     void from_json(const json& j, GetUserProfilePhotosRequest& value);

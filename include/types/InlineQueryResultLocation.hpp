@@ -39,10 +39,10 @@ namespace TgBot {
 
         virtual ~InlineQueryResultLocation() = default;
         // Type of the result, must be location
-        std::string type_;
+        std::string type_ = "";
 
         // Unique identifier for this result, 1-64 Bytes
-        std::string id;
+        std::string id = "";
 
         // Location latitude in degrees
         double latitude = 0.0;
@@ -51,34 +51,34 @@ namespace TgBot {
         double longitude = 0.0;
 
         // Location title
-        std::string title;
+        std::string title = "";
 
         // Optional. The radius of uncertainty for the location, measured in meters; 0-1500
         double horizontal_accuracy = 0.0;
 
         // Optional. Period in seconds during which the location can be updated, should be between 60 and 86400, or 0x7FFFFFFF for live locations that can be edited indefinitely.
-        int64_t live_period = 0;
+        std::int64_t live_period = 0;
 
         // Optional. For live locations, a direction in which the user is moving, in degrees. Must be between 1 and 360 if specified.
-        int64_t heading = 0;
+        std::int64_t heading = 0;
 
         // Optional. For live locations, a maximum distance for proximity alerts about approaching another chat member, in meters. Must be between 1 and 100000 if specified.
-        int64_t proximity_alert_radius = 0;
+        std::int64_t proximity_alert_radius = 0;
 
         // Optional. Inline keyboard attached to the message
-        InlineKeyboardMarkup::Ptr reply_markup;
+        InlineKeyboardMarkup::Ptr reply_markup = nullptr;
 
         // Optional. Content of the message to be sent instead of the location
-        InputMessageContent::Ptr input_message_content;
+        InputMessageContent::Ptr input_message_content = nullptr;
 
         // Optional. Url of the thumbnail for the result
-        std::string thumbnail_url;
+        std::string thumbnail_url = "";
 
         // Optional. Thumbnail width
-        int64_t thumbnail_width = 0;
+        std::int64_t thumbnail_width = 0;
 
         // Optional. Thumbnail height
-        int64_t thumbnail_height = 0;
+        std::int64_t thumbnail_height = 0;
     };
     void to_json(json& j, const InlineQueryResultLocation& value);
     void from_json(const json& j, InlineQueryResultLocation& value);

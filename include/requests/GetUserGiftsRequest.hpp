@@ -28,7 +28,7 @@ namespace TgBot {
     struct GetUserGiftsRequest {
         typedef std::shared_ptr<GetUserGiftsRequest> Ptr;
         // Unique identifier of the user
-        int64_t user_id = 0;
+        std::int64_t user_id = 0;
 
         // Pass True to exclude gifts that can be purchased an unlimited number of times
         bool exclude_unlimited = false;
@@ -49,10 +49,10 @@ namespace TgBot {
         bool sort_by_price = false;
 
         // Offset of the first entry to return as received from the previous request; use an empty string to get the first chunk of results
-        std::string offset;
+        std::string offset = "";
 
         // The maximum number of gifts to be returned; 1-100. Defaults to 100
-        int64_t limit = 0;
+        std::int64_t limit = 0;
     };
     void to_json(json& j, const GetUserGiftsRequest& value);
     void from_json(const json& j, GetUserGiftsRequest& value);

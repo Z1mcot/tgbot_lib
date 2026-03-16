@@ -35,22 +35,22 @@ namespace TgBot {
     struct SendStickerRequest {
         typedef std::shared_ptr<SendStickerRequest> Ptr;
         // Unique identifier for the target chat or username of the target channel (in the format @channelusername)
-        int64_t chat_id = 0;
+        std::int64_t chat_id = 0;
 
         // Sticker to send. Pass a file_id as String to send a file that exists on the Telegram servers (recommended), pass an HTTP URL as a String for Telegram to get a .WEBP sticker from the Internet, or upload a new .WEBP, .TGS, or .WEBM sticker using multipart/form-data. More information on Sending Files ». Video and animated stickers can't be sent via an HTTP URL.
-        std::string sticker;
+        std::string sticker = "";
 
         // Unique identifier of the business connection on behalf of which the message will be sent
-        std::string business_connection_id;
+        std::string business_connection_id = "";
 
         // Unique identifier for the target message thread (topic) of a forum; for forum supergroups and private chats of bots with forum topic mode enabled only
-        int64_t message_thread_id = 0;
+        std::int64_t message_thread_id = 0;
 
         // Identifier of the direct messages topic to which the message will be sent; required if the message is sent to a direct messages chat
-        int64_t direct_messages_topic_id = 0;
+        std::int64_t direct_messages_topic_id = 0;
 
         // Emoji associated with the sticker; only for just uploaded stickers
-        std::string emoji;
+        std::string emoji = "";
 
         // Sends the message silently. Users will receive a notification with no sound.
         bool disable_notification = false;
@@ -62,16 +62,16 @@ namespace TgBot {
         bool allow_paid_broadcast = false;
 
         // Unique identifier of the message effect to be added to the message; for private chats only
-        std::string message_effect_id;
+        std::string message_effect_id = "";
 
         // A JSON-serialized object containing the parameters of the suggested post to send; for direct messages chats only. If the message is sent as a reply to another suggested post, then that suggested post is automatically declined.
-        SuggestedPostParameters::Ptr suggested_post_parameters;
+        SuggestedPostParameters::Ptr suggested_post_parameters = nullptr;
 
         // Description of the message to reply to
-        ReplyParameters::Ptr reply_parameters;
+        ReplyParameters::Ptr reply_parameters = nullptr;
 
         // Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove a reply keyboard or to force a reply from the user
-        KeyboardOption::Ptr reply_markup;
+        KeyboardOption::Ptr reply_markup = nullptr;
     };
     void to_json(json& j, const SendStickerRequest& value);
     void from_json(const json& j, SendStickerRequest& value);

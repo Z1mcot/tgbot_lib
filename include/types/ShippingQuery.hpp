@@ -29,16 +29,16 @@ namespace TgBot {
 
         virtual ~ShippingQuery() = default;
         // Unique query identifier
-        std::string id;
+        std::string id = "";
 
         // User who sent the query
-        User::Ptr from;
+        User::Ptr from = nullptr;
 
         // Bot-specified invoice payload
-        std::string invoice_payload;
+        std::string invoice_payload = "";
 
         // User specified shipping address
-        ShippingAddress::Ptr shipping_address;
+        ShippingAddress::Ptr shipping_address = nullptr;
     };
     void to_json(json& j, const ShippingQuery& value);
     void from_json(const json& j, ShippingQuery& value);

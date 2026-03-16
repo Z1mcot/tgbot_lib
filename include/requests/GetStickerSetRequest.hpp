@@ -20,7 +20,7 @@ namespace TgBot {
     struct GetStickerSetRequest {
         typedef std::shared_ptr<GetStickerSetRequest> Ptr;
         // Name of the sticker set
-        std::string name;
+        std::string name = "";
     };
     void to_json(json& j, const GetStickerSetRequest& value);
     void from_json(const json& j, GetStickerSetRequest& value);

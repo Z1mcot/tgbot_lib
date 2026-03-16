@@ -27,13 +27,13 @@ namespace TgBot {
 
         virtual ~UniqueGiftBackdrop() = default;
         // Name of the backdrop
-        std::string name;
+        std::string name = "";
 
         // Colors of the backdrop
-        UniqueGiftBackdropColors::Ptr colors;
+        UniqueGiftBackdropColors::Ptr colors = nullptr;
 
         // The number of unique gifts that receive this backdrop for every 1000 gifts upgraded
-        int64_t rarity_per_mille = 0;
+        std::int64_t rarity_per_mille = 0;
     };
     void to_json(json& j, const UniqueGiftBackdrop& value);
     void from_json(const json& j, UniqueGiftBackdrop& value);

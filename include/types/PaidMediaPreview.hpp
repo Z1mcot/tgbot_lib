@@ -27,16 +27,16 @@ namespace TgBot {
 
         virtual ~PaidMediaPreview() = default;
         // Type of the paid media, always “preview”
-        std::string type_;
+        std::string type_ = "";
 
         // Optional. Media width as defined by the sender
-        int64_t width = 0;
+        std::int64_t width = 0;
 
         // Optional. Media height as defined by the sender
-        int64_t height = 0;
+        std::int64_t height = 0;
 
         // Optional. Duration of the media in seconds as defined by the sender
-        int64_t duration = 0;
+        std::int64_t duration = 0;
     };
     void to_json(json& j, const PaidMediaPreview& value);
     void from_json(const json& j, PaidMediaPreview& value);

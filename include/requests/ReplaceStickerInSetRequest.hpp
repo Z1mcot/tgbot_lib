@@ -24,16 +24,16 @@ namespace TgBot {
     struct ReplaceStickerInSetRequest {
         typedef std::shared_ptr<ReplaceStickerInSetRequest> Ptr;
         // User identifier of the sticker set owner
-        int64_t user_id = 0;
+        std::int64_t user_id = 0;
 
         // Sticker set name
-        std::string name;
+        std::string name = "";
 
         // File identifier of the replaced sticker
-        std::string old_sticker;
+        std::string old_sticker = "";
 
         // A JSON-serialized object with information about the added sticker. If exactly the same sticker had already been added to the set, then the set remains unchanged.
-        InputSticker::Ptr sticker;
+        InputSticker::Ptr sticker = nullptr;
     };
     void to_json(json& j, const ReplaceStickerInSetRequest& value);
     void from_json(const json& j, ReplaceStickerInSetRequest& value);

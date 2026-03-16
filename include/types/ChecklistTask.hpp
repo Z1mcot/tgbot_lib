@@ -32,22 +32,22 @@ namespace TgBot {
 
         virtual ~ChecklistTask() = default;
         // Unique identifier of the task
-        int64_t id = 0;
+        std::int64_t id = 0;
 
         // Text of the task
-        std::string text;
+        std::string text = "";
 
         // Optional. Special entities that appear in the task text
-        std::vector<MessageEntity::Ptr> text_entities;
+        std::vector<MessageEntity::Ptr> text_entities = std::vector<MessageEntity::Ptr>();
 
         // Optional. User that completed the task; omitted if the task wasn't completed by a user
-        User::Ptr completed_by_user;
+        User::Ptr completed_by_user = nullptr;
 
         // Optional. Chat that completed the task; omitted if the task wasn't completed by a chat
-        Chat::Ptr completed_by_chat;
+        Chat::Ptr completed_by_chat = nullptr;
 
         // Optional. Point in time (Unix timestamp) when the task was completed; 0 if the task wasn't completed
-        int64_t completion_date = 0;
+        std::int64_t completion_date = 0;
     };
     void to_json(json& j, const ChecklistTask& value);
     void from_json(const json& j, ChecklistTask& value);

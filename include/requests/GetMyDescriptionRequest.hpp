@@ -20,7 +20,7 @@ namespace TgBot {
     struct GetMyDescriptionRequest {
         typedef std::shared_ptr<GetMyDescriptionRequest> Ptr;
         // A two-letter ISO 639-1 language code or an empty string
-        std::string language_code;
+        std::string language_code = "";
     };
     void to_json(json& j, const GetMyDescriptionRequest& value);
     void from_json(const json& j, GetMyDescriptionRequest& value);

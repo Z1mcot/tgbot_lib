@@ -35,7 +35,7 @@ namespace TgBot {
 
         virtual ~KeyboardButtonRequestChat() = default;
         // Signed 32-bit identifier of the request, which will be received back in the ChatShared object. Must be unique within the message
-        int64_t request_id = 0;
+        std::int64_t request_id = 0;
 
         // Pass True to request a channel chat, pass False to request a group or a supergroup chat.
         bool chat_is_channel = false;
@@ -50,10 +50,10 @@ namespace TgBot {
         bool chat_is_created = false;
 
         // Optional. A JSON-serialized object listing the required administrator rights of the user in the chat. The rights must be a superset of bot_administrator_rights. If not specified, no additional restrictions are applied.
-        ChatAdministratorRights::Ptr user_administrator_rights;
+        ChatAdministratorRights::Ptr user_administrator_rights = nullptr;
 
         // Optional. A JSON-serialized object listing the required administrator rights of the bot in the chat. The rights must be a subset of user_administrator_rights. If not specified, no additional restrictions are applied.
-        ChatAdministratorRights::Ptr bot_administrator_rights;
+        ChatAdministratorRights::Ptr bot_administrator_rights = nullptr;
 
         // Optional. Pass True to request a chat with the bot as a member. Otherwise, no additional restrictions are applied.
         bool bot_is_member = false;

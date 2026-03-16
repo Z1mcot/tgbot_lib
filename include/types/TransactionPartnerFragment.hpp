@@ -26,10 +26,10 @@ namespace TgBot {
 
         virtual ~TransactionPartnerFragment() = default;
         // Type of the transaction partner, always “fragment”
-        std::string type_;
+        std::string type_ = "";
 
         // Optional. State of the transaction if the transaction is outgoing
-        RevenueWithdrawalState::Ptr withdrawal_state;
+        RevenueWithdrawalState::Ptr withdrawal_state = nullptr;
     };
     void to_json(json& j, const TransactionPartnerFragment& value);
     void from_json(const json& j, TransactionPartnerFragment& value);

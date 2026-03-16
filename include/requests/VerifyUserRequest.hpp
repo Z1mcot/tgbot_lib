@@ -21,10 +21,10 @@ namespace TgBot {
     struct VerifyUserRequest {
         typedef std::shared_ptr<VerifyUserRequest> Ptr;
         // Unique identifier of the target user
-        int64_t user_id = 0;
+        std::int64_t user_id = 0;
 
         // Custom description for the verification; 0-70 characters. Must be empty if the organization isn't allowed to provide a custom verification description.
-        std::string custom_description;
+        std::string custom_description = "";
     };
     void to_json(json& j, const VerifyUserRequest& value);
     void from_json(const json& j, VerifyUserRequest& value);

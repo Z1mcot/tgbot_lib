@@ -26,10 +26,10 @@ namespace TgBot {
 
         virtual ~ChatMemberLeft() = default;
         // The member's status in the chat, always “left”
-        std::string status;
+        std::string status = "";
 
         // Information about the user
-        User::Ptr user;
+        User::Ptr user = nullptr;
     };
     void to_json(json& j, const ChatMemberLeft& value);
     void from_json(const json& j, ChatMemberLeft& value);

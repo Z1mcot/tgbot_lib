@@ -22,13 +22,13 @@ namespace TgBot {
     struct DeclineSuggestedPostRequest {
         typedef std::shared_ptr<DeclineSuggestedPostRequest> Ptr;
         // Unique identifier for the target direct messages chat
-        int64_t chat_id = 0;
+        std::int64_t chat_id = 0;
 
         // Identifier of a suggested post message to decline
-        int64_t message_id = 0;
+        std::int64_t message_id = 0;
 
         // Comment for the creator of the suggested post; 0-128 characters
-        std::string comment;
+        std::string comment = "";
     };
     void to_json(json& j, const DeclineSuggestedPostRequest& value);
     void from_json(const json& j, DeclineSuggestedPostRequest& value);

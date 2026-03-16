@@ -26,13 +26,13 @@ namespace TgBot {
 
         virtual ~RevenueWithdrawalStateSucceeded() = default;
         // Type of the state, always “succeeded”
-        std::string type_;
+        std::string type_ = "";
 
         // Date the withdrawal was completed in Unix time
-        int64_t date = 0;
+        std::int64_t date = 0;
 
         // An HTTPS URL that can be used to see transaction details
-        std::string url;
+        std::string url = "";
     };
     void to_json(json& j, const RevenueWithdrawalStateSucceeded& value);
     void from_json(const json& j, RevenueWithdrawalStateSucceeded& value);

@@ -38,13 +38,13 @@ namespace TgBot {
         double horizontal_accuracy = 0.0;
 
         // Optional. Period in seconds during which the location can be updated, should be between 60 and 86400, or 0x7FFFFFFF for live locations that can be edited indefinitely.
-        int64_t live_period = 0;
+        std::int64_t live_period = 0;
 
         // Optional. For live locations, a direction in which the user is moving, in degrees. Must be between 1 and 360 if specified.
-        int64_t heading = 0;
+        std::int64_t heading = 0;
 
         // Optional. For live locations, a maximum distance for proximity alerts about approaching another chat member, in meters. Must be between 1 and 100000 if specified.
-        int64_t proximity_alert_radius = 0;
+        std::int64_t proximity_alert_radius = 0;
     };
     void to_json(json& j, const InputLocationMessageContent& value);
     void from_json(const json& j, InputLocationMessageContent& value);

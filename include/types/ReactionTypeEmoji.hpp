@@ -25,10 +25,10 @@ namespace TgBot {
 
         virtual ~ReactionTypeEmoji() = default;
         // Type of the reaction, always “emoji”
-        std::string type_;
+        std::string type_ = "";
 
         // Reaction emoji. Currently, it can be one of "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""
-        std::string emoji;
+        std::string emoji = "";
     };
     void to_json(json& j, const ReactionTypeEmoji& value);
     void from_json(const json& j, ReactionTypeEmoji& value);

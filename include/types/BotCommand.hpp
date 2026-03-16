@@ -25,10 +25,10 @@ namespace TgBot {
 
         virtual ~BotCommand() = default;
         // Text of the command; 1-32 characters. Can contain only lowercase English letters, digits and underscores.
-        std::string command;
+        std::string command = "";
 
         // Description of the command; 1-256 characters.
-        std::string description;
+        std::string description = "";
     };
     void to_json(json& j, const BotCommand& value);
     void from_json(const json& j, BotCommand& value);

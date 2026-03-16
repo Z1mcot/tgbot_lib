@@ -37,31 +37,31 @@ namespace TgBot {
 
         virtual ~GiveawayWinners() = default;
         // The chat that created the giveaway
-        Chat::Ptr chat;
+        Chat::Ptr chat = nullptr;
 
         // Identifier of the message with the giveaway in the chat
-        int64_t giveaway_message_id = 0;
+        std::int64_t giveaway_message_id = 0;
 
         // Point in time (Unix timestamp) when winners of the giveaway were selected
-        int64_t winners_selection_date = 0;
+        std::int64_t winners_selection_date = 0;
 
         // Total number of winners in the giveaway
-        int64_t winner_count = 0;
+        std::int64_t winner_count = 0;
 
         // List of up to 100 winners of the giveaway
-        std::vector<User::Ptr> winners;
+        std::vector<User::Ptr> winners = std::vector<User::Ptr>();
 
         // Optional. The number of other chats the user had to join in order to be eligible for the giveaway
-        int64_t additional_chat_count = 0;
+        std::int64_t additional_chat_count = 0;
 
         // Optional. The number of Telegram Stars that were split between giveaway winners; for Telegram Star giveaways only
-        int64_t prize_star_count = 0;
+        std::int64_t prize_star_count = 0;
 
         // Optional. The number of months the Telegram Premium subscription won from the giveaway will be active for; for Telegram Premium giveaways only
-        int64_t premium_subscription_month_count = 0;
+        std::int64_t premium_subscription_month_count = 0;
 
         // Optional. Number of undistributed prizes
-        int64_t unclaimed_prize_count = 0;
+        std::int64_t unclaimed_prize_count = 0;
 
         // Optional. True, if only users who had joined the chats after the giveaway started were eligible to win
         bool only_new_members = false;
@@ -70,7 +70,7 @@ namespace TgBot {
         bool was_refunded = false;
 
         // Optional. Description of additional giveaway prize
-        std::string prize_description;
+        std::string prize_description = "";
     };
     void to_json(json& j, const GiveawayWinners& value);
     void from_json(const json& j, GiveawayWinners& value);

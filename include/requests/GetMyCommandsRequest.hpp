@@ -22,10 +22,10 @@ namespace TgBot {
     struct GetMyCommandsRequest {
         typedef std::shared_ptr<GetMyCommandsRequest> Ptr;
         // A JSON-serialized object, describing scope of users. Defaults to BotCommandScopeDefault.
-        BotCommandScope::Ptr scope;
+        BotCommandScope::Ptr scope = nullptr;
 
         // A two-letter ISO 639-1 language code or an empty string
-        std::string language_code;
+        std::string language_code = "";
     };
     void to_json(json& j, const GetMyCommandsRequest& value);
     void from_json(const json& j, GetMyCommandsRequest& value);

@@ -23,16 +23,16 @@ namespace TgBot {
     struct TransferGiftRequest {
         typedef std::shared_ptr<TransferGiftRequest> Ptr;
         // Unique identifier of the business connection
-        std::string business_connection_id;
+        std::string business_connection_id = "";
 
         // Unique identifier of the regular gift that should be transferred
-        std::string owned_gift_id;
+        std::string owned_gift_id = "";
 
         // Unique identifier of the chat which will own the gift. The chat must be active in the last 24 hours.
-        int64_t new_owner_chat_id = 0;
+        std::int64_t new_owner_chat_id = 0;
 
         // The amount of Telegram Stars that will be paid for the transfer from the business account balance. If positive, then the can_transfer_stars business bot right is required.
-        int64_t star_count = 0;
+        std::int64_t star_count = 0;
     };
     void to_json(json& j, const TransferGiftRequest& value);
     void from_json(const json& j, TransferGiftRequest& value);

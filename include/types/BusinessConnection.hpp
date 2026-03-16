@@ -31,22 +31,22 @@ namespace TgBot {
 
         virtual ~BusinessConnection() = default;
         // Unique identifier of the business connection
-        std::string id;
+        std::string id = "";
 
         // Business account user that created the business connection
-        User::Ptr user;
+        User::Ptr user = nullptr;
 
         // Identifier of a private chat with the user who created the business connection. This number may have more than 32 significant bits and some programming languages may have difficulty/silent defects in interpreting it. But it has at most 52 significant bits, so a 64-bit integer or double-precision float type are safe for storing this identifier.
-        int64_t user_chat_id = 0;
+        std::int64_t user_chat_id = 0;
 
         // Date the connection was established in Unix time
-        int64_t date = 0;
+        std::int64_t date = 0;
 
         // True, if the connection is active
         bool is_enabled = false;
 
         // Optional. Rights of the business bot
-        BusinessBotRights::Ptr rights;
+        BusinessBotRights::Ptr rights = nullptr;
     };
     void to_json(json& j, const BusinessConnection& value);
     void from_json(const json& j, BusinessConnection& value);

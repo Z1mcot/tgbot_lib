@@ -29,22 +29,22 @@ namespace TgBot {
 
         virtual ~ShippingAddress() = default;
         // Two-letter ISO 3166-1 alpha-2 country code
-        std::string country_code;
+        std::string country_code = "";
 
         // State, if applicable
-        std::string state;
+        std::string state = "";
 
         // City
-        std::string city;
+        std::string city = "";
 
         // First line for the address
-        std::string street_line1;
+        std::string street_line1 = "";
 
         // Second line for the address
-        std::string street_line2;
+        std::string street_line2 = "";
 
         // Address post code
-        std::string post_code;
+        std::string post_code = "";
     };
     void to_json(json& j, const ShippingAddress& value);
     void from_json(const json& j, ShippingAddress& value);

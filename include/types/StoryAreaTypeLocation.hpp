@@ -28,7 +28,7 @@ namespace TgBot {
 
         virtual ~StoryAreaTypeLocation() = default;
         // Type of the area, always “location”
-        std::string type_;
+        std::string type_ = "";
 
         // Location latitude in degrees
         double latitude = 0.0;
@@ -37,7 +37,7 @@ namespace TgBot {
         double longitude = 0.0;
 
         // Optional. Address of the location
-        LocationAddress::Ptr address;
+        LocationAddress::Ptr address = nullptr;
     };
     void to_json(json& j, const StoryAreaTypeLocation& value);
     void from_json(const json& j, StoryAreaTypeLocation& value);

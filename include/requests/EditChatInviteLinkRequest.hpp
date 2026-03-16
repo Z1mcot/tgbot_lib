@@ -25,19 +25,19 @@ namespace TgBot {
     struct EditChatInviteLinkRequest {
         typedef std::shared_ptr<EditChatInviteLinkRequest> Ptr;
         // Unique identifier for the target chat or username of the target channel (in the format @channelusername)
-        int64_t chat_id = 0;
+        std::int64_t chat_id = 0;
 
         // The invite link to edit
-        std::string invite_link;
+        std::string invite_link = "";
 
         // Invite link name; 0-32 characters
-        std::string name;
+        std::string name = "";
 
         // Point in time (Unix timestamp) when the link will expire
-        int64_t expire_date = 0;
+        std::int64_t expire_date = 0;
 
         // The maximum number of users that can be members of the chat simultaneously after joining the chat via this invite link; 1-99999
-        int64_t member_limit = 0;
+        std::int64_t member_limit = 0;
 
         // True, if users joining the chat via the link need to be approved by chat administrators. If True, member_limit can't be specified
         bool creates_join_request = false;

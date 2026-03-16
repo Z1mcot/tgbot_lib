@@ -20,7 +20,7 @@ namespace TgBot {
     struct UnhideGeneralForumTopicRequest {
         typedef std::shared_ptr<UnhideGeneralForumTopicRequest> Ptr;
         // Unique identifier for the target chat or username of the target supergroup (in the format @supergroupusername)
-        int64_t chat_id = 0;
+        std::int64_t chat_id = 0;
     };
     void to_json(json& j, const UnhideGeneralForumTopicRequest& value);
     void from_json(const json& j, UnhideGeneralForumTopicRequest& value);

@@ -26,13 +26,13 @@ namespace TgBot {
 
         virtual ~MessageOriginHiddenUser() = default;
         // Type of the message origin, always “hidden_user”
-        std::string type_;
+        std::string type_ = "";
 
         // Date the message was sent originally in Unix time
-        int64_t date = 0;
+        std::int64_t date = 0;
 
         // Name of the user that sent the message originally
-        std::string sender_user_name;
+        std::string sender_user_name = "";
     };
     void to_json(json& j, const MessageOriginHiddenUser& value);
     void from_json(const json& j, MessageOriginHiddenUser& value);

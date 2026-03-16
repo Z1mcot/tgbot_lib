@@ -28,16 +28,16 @@ namespace TgBot {
 
         virtual ~MessageOriginChat() = default;
         // Type of the message origin, always “chat”
-        std::string type_;
+        std::string type_ = "";
 
         // Date the message was sent originally in Unix time
-        int64_t date = 0;
+        std::int64_t date = 0;
 
         // Chat that sent the message originally
-        Chat::Ptr sender_chat;
+        Chat::Ptr sender_chat = nullptr;
 
         // Optional. For messages originally sent by an anonymous chat administrator, original message author signature
-        std::string author_signature;
+        std::string author_signature = "";
     };
     void to_json(json& j, const MessageOriginChat& value);
     void from_json(const json& j, MessageOriginChat& value);

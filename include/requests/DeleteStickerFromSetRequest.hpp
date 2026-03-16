@@ -20,7 +20,7 @@ namespace TgBot {
     struct DeleteStickerFromSetRequest {
         typedef std::shared_ptr<DeleteStickerFromSetRequest> Ptr;
         // File identifier of the sticker
-        std::string sticker;
+        std::string sticker = "";
     };
     void to_json(json& j, const DeleteStickerFromSetRequest& value);
     void from_json(const json& j, DeleteStickerFromSetRequest& value);

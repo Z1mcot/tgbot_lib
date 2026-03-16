@@ -26,10 +26,10 @@ namespace TgBot {
 
         virtual ~ReactionCount() = default;
         // Type of the reaction
-        ReactionType::Ptr type_;
+        ReactionType::Ptr type_ = nullptr;
 
         // Number of times the reaction was added
-        int64_t total_count = 0;
+        std::int64_t total_count = 0;
     };
     void to_json(json& j, const ReactionCount& value);
     void from_json(const json& j, ReactionCount& value);

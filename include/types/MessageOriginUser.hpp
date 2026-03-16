@@ -27,13 +27,13 @@ namespace TgBot {
 
         virtual ~MessageOriginUser() = default;
         // Type of the message origin, always “user”
-        std::string type_;
+        std::string type_ = "";
 
         // Date the message was sent originally in Unix time
-        int64_t date = 0;
+        std::int64_t date = 0;
 
         // User that sent the message originally
-        User::Ptr sender_user;
+        User::Ptr sender_user = nullptr;
     };
     void to_json(json& j, const MessageOriginUser& value);
     void from_json(const json& j, MessageOriginUser& value);

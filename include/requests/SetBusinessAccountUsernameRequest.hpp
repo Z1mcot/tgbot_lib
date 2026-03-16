@@ -21,10 +21,10 @@ namespace TgBot {
     struct SetBusinessAccountUsernameRequest {
         typedef std::shared_ptr<SetBusinessAccountUsernameRequest> Ptr;
         // Unique identifier of the business connection
-        std::string business_connection_id;
+        std::string business_connection_id = "";
 
         // The new value of the username for the business account; 0-32 characters
-        std::string username;
+        std::string username = "";
     };
     void to_json(json& j, const SetBusinessAccountUsernameRequest& value);
     void from_json(const json& j, SetBusinessAccountUsernameRequest& value);

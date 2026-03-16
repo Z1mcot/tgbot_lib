@@ -24,7 +24,7 @@ namespace TgBot {
 
         virtual ~BotShortDescription() = default;
         // The bot's short description
-        std::string short_description;
+        std::string short_description = "";
     };
     void to_json(json& j, const BotShortDescription& value);
     void from_json(const json& j, BotShortDescription& value);

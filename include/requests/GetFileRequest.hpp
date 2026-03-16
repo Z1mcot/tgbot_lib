@@ -20,7 +20,7 @@ namespace TgBot {
     struct GetFileRequest {
         typedef std::shared_ptr<GetFileRequest> Ptr;
         // File identifier to get information about
-        std::string file_id;
+        std::string file_id = "";
     };
     void to_json(json& j, const GetFileRequest& value);
     void from_json(const json& j, GetFileRequest& value);

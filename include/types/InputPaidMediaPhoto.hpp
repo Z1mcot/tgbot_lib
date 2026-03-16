@@ -25,10 +25,10 @@ namespace TgBot {
 
         virtual ~InputPaidMediaPhoto() = default;
         // Type of the media, must be photo
-        std::string type_;
+        std::string type_ = "";
 
         // File to send. Pass a file_id to send a file that exists on the Telegram servers (recommended), pass an HTTP URL for Telegram to get a file from the Internet, or pass “attach://<file_attach_name>” to upload a new one using multipart/form-data under <file_attach_name> name. More information on Sending Files »
-        std::string media;
+        std::string media = "";
     };
     void to_json(json& j, const InputPaidMediaPhoto& value);
     void from_json(const json& j, InputPaidMediaPhoto& value);

@@ -26,10 +26,10 @@ namespace TgBot {
 
         virtual ~ChatBoostSourcePremium() = default;
         // Source of the boost, always “premium”
-        std::string source;
+        std::string source = "";
 
         // User that boosted the chat
-        User::Ptr user;
+        User::Ptr user = nullptr;
     };
     void to_json(json& j, const ChatBoostSourcePremium& value);
     void from_json(const json& j, ChatBoostSourcePremium& value);

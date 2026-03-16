@@ -30,13 +30,13 @@ namespace TgBot {
 
         virtual ~Checklist() = default;
         // Title of the checklist
-        std::string title;
+        std::string title = "";
 
         // List of tasks in the checklist
-        std::vector<ChecklistTask::Ptr> tasks;
+        std::vector<ChecklistTask::Ptr> tasks = std::vector<ChecklistTask::Ptr>();
 
         // Optional. Special entities that appear in the checklist title
-        std::vector<MessageEntity::Ptr> title_entities;
+        std::vector<MessageEntity::Ptr> title_entities = std::vector<MessageEntity::Ptr>();
 
         // Optional. True, if users other than the creator of the list can add tasks to the list
         bool others_can_add_tasks = false;

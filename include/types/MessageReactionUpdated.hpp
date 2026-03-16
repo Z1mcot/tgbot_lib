@@ -33,25 +33,25 @@ namespace TgBot {
 
         virtual ~MessageReactionUpdated() = default;
         // The chat containing the message the user reacted to
-        Chat::Ptr chat;
+        Chat::Ptr chat = nullptr;
 
         // Unique identifier of the message inside the chat
-        int64_t message_id = 0;
+        std::int64_t message_id = 0;
 
         // Date of the change in Unix time
-        int64_t date = 0;
+        std::int64_t date = 0;
 
         // Previous list of reaction types that were set by the user
-        std::vector<ReactionType::Ptr> old_reaction;
+        std::vector<ReactionType::Ptr> old_reaction = std::vector<ReactionType::Ptr>();
 
         // New list of reaction types that have been set by the user
-        std::vector<ReactionType::Ptr> new_reaction;
+        std::vector<ReactionType::Ptr> new_reaction = std::vector<ReactionType::Ptr>();
 
         // Optional. The user that changed the reaction, if the user isn't anonymous
-        User::Ptr user;
+        User::Ptr user = nullptr;
 
         // Optional. The chat on behalf of which the reaction was changed, if the user is anonymous
-        Chat::Ptr actor_chat;
+        Chat::Ptr actor_chat = nullptr;
     };
     void to_json(json& j, const MessageReactionUpdated& value);
     void from_json(const json& j, MessageReactionUpdated& value);

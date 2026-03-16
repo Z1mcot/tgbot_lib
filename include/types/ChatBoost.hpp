@@ -28,16 +28,16 @@ namespace TgBot {
 
         virtual ~ChatBoost() = default;
         // Unique identifier of the boost
-        std::string boost_id;
+        std::string boost_id = "";
 
         // Point in time (Unix timestamp) when the chat was boosted
-        int64_t add_date = 0;
+        std::int64_t add_date = 0;
 
         // Point in time (Unix timestamp) when the boost will automatically expire, unless the booster's Telegram Premium subscription is prolonged
-        int64_t expiration_date = 0;
+        std::int64_t expiration_date = 0;
 
         // Source of the added boost
-        ChatBoostSource::Ptr source;
+        ChatBoostSource::Ptr source = nullptr;
     };
     void to_json(json& j, const ChatBoost& value);
     void from_json(const json& j, ChatBoost& value);

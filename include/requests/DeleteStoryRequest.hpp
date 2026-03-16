@@ -21,10 +21,10 @@ namespace TgBot {
     struct DeleteStoryRequest {
         typedef std::shared_ptr<DeleteStoryRequest> Ptr;
         // Unique identifier of the business connection
-        std::string business_connection_id;
+        std::string business_connection_id = "";
 
         // Unique identifier of the story to delete
-        int64_t story_id = 0;
+        std::int64_t story_id = 0;
     };
     void to_json(json& j, const DeleteStoryRequest& value);
     void from_json(const json& j, DeleteStoryRequest& value);

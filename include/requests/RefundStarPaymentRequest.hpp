@@ -21,10 +21,10 @@ namespace TgBot {
     struct RefundStarPaymentRequest {
         typedef std::shared_ptr<RefundStarPaymentRequest> Ptr;
         // Identifier of the user whose payment will be refunded
-        int64_t user_id = 0;
+        std::int64_t user_id = 0;
 
         // Telegram payment identifier
-        std::string telegram_payment_charge_id;
+        std::string telegram_payment_charge_id = "";
     };
     void to_json(json& j, const RefundStarPaymentRequest& value);
     void from_json(const json& j, RefundStarPaymentRequest& value);

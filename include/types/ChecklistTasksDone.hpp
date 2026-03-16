@@ -27,13 +27,13 @@ namespace TgBot {
 
         virtual ~ChecklistTasksDone() = default;
         // Optional. Message containing the checklist whose tasks were marked as done or not done. Note that the Message object in this field will not contain the reply_to_message field even if it itself is a reply.
-        Message::Ptr checklist_message;
+        Message::Ptr checklist_message = nullptr;
 
         // Optional. Identifiers of the tasks that were marked as done
-        std::vector<int64_t> marked_as_done_task_ids;
+        std::vector<std::int64_t> marked_as_done_task_ids = std::vector<std::int64_t>();
 
         // Optional. Identifiers of the tasks that were marked as not done
-        std::vector<int64_t> marked_as_not_done_task_ids;
+        std::vector<std::int64_t> marked_as_not_done_task_ids = std::vector<std::int64_t>();
     };
     void to_json(json& j, const ChecklistTasksDone& value);
     void from_json(const json& j, ChecklistTasksDone& value);

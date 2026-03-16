@@ -22,10 +22,10 @@ namespace TgBot {
     struct EditUserStarSubscriptionRequest {
         typedef std::shared_ptr<EditUserStarSubscriptionRequest> Ptr;
         // Identifier of the user whose subscription will be edited
-        int64_t user_id = 0;
+        std::int64_t user_id = 0;
 
         // Telegram payment identifier for the subscription
-        std::string telegram_payment_charge_id;
+        std::string telegram_payment_charge_id = "";
 
         // Pass True to cancel extension of the user subscription; the subscription must be active up to the end of the current subscription period. Pass False to allow the user to re-enable a subscription that was previously canceled by the bot.
         bool is_canceled = false;

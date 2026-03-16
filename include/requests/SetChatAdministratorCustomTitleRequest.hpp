@@ -22,13 +22,13 @@ namespace TgBot {
     struct SetChatAdministratorCustomTitleRequest {
         typedef std::shared_ptr<SetChatAdministratorCustomTitleRequest> Ptr;
         // Unique identifier for the target chat or username of the target supergroup (in the format @supergroupusername)
-        int64_t chat_id = 0;
+        std::int64_t chat_id = 0;
 
         // Unique identifier of the target user
-        int64_t user_id = 0;
+        std::int64_t user_id = 0;
 
         // New custom title for the administrator; 0-16 characters, emoji are not allowed
-        std::string custom_title;
+        std::string custom_title = "";
     };
     void to_json(json& j, const SetChatAdministratorCustomTitleRequest& value);
     void from_json(const json& j, SetChatAdministratorCustomTitleRequest& value);

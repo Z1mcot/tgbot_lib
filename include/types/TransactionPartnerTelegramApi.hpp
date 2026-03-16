@@ -25,10 +25,10 @@ namespace TgBot {
 
         virtual ~TransactionPartnerTelegramApi() = default;
         // Type of the transaction partner, always “telegram_api”
-        std::string type_;
+        std::string type_ = "";
 
         // The number of successful requests that exceeded regular limits and were therefore billed
-        int64_t request_count = 0;
+        std::int64_t request_count = 0;
     };
     void to_json(json& j, const TransactionPartnerTelegramApi& value);
     void from_json(const json& j, TransactionPartnerTelegramApi& value);

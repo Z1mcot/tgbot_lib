@@ -25,10 +25,10 @@ namespace TgBot {
 
         virtual ~WebAppData() = default;
         // The data. Be aware that a bad client can send arbitrary data in this field.
-        std::string data;
+        std::string data = "";
 
         // Text of the web_app keyboard button from which the Web App was opened. Be aware that a bad client can send arbitrary data in this field.
-        std::string button_text;
+        std::string button_text = "";
     };
     void to_json(json& j, const WebAppData& value);
     void from_json(const json& j, WebAppData& value);

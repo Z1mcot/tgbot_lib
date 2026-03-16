@@ -24,7 +24,7 @@ namespace TgBot {
 
         virtual ~BotName() = default;
         // The bot's name
-        std::string name;
+        std::string name = "";
     };
     void to_json(json& j, const BotName& value);
     void from_json(const json& j, BotName& value);

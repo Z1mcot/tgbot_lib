@@ -28,16 +28,16 @@ namespace TgBot {
 
         virtual ~ChatMemberOwner() = default;
         // The member's status in the chat, always “creator”
-        std::string status;
+        std::string status = "";
 
         // Information about the user
-        User::Ptr user;
+        User::Ptr user = nullptr;
 
         // True, if the user's presence in the chat is hidden
         bool is_anonymous = false;
 
         // Optional. Custom title for this user
-        std::string custom_title;
+        std::string custom_title = "";
     };
     void to_json(json& j, const ChatMemberOwner& value);
     void from_json(const json& j, ChatMemberOwner& value);

@@ -21,10 +21,10 @@ namespace TgBot {
     struct TransferBusinessAccountStarsRequest {
         typedef std::shared_ptr<TransferBusinessAccountStarsRequest> Ptr;
         // Unique identifier of the business connection
-        std::string business_connection_id;
+        std::string business_connection_id = "";
 
         // Number of Telegram Stars to transfer; 1-10000
-        int64_t star_count = 0;
+        std::int64_t star_count = 0;
     };
     void to_json(json& j, const TransferBusinessAccountStarsRequest& value);
     void from_json(const json& j, TransferBusinessAccountStarsRequest& value);

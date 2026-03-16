@@ -31,16 +31,16 @@ namespace TgBot {
 
         virtual ~BackgroundTypePattern() = default;
         // Type of the background, always “pattern”
-        std::string type_;
+        std::string type_ = "";
 
         // Document with the pattern
-        Document::Ptr document;
+        Document::Ptr document = nullptr;
 
         // The background fill that is combined with the pattern
-        BackgroundFill::Ptr fill;
+        BackgroundFill::Ptr fill = nullptr;
 
         // Intensity of the pattern when it is shown above the filled background; 0-100
-        int64_t intensity = 0;
+        std::int64_t intensity = 0;
 
         // Optional. True, if the background fill must be applied only to the pattern itself. All other pixels are black in this case. For dark themes only
         bool is_inverted = false;

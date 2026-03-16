@@ -21,7 +21,7 @@ namespace TgBot {
     struct SetMyProfilePhotoRequest {
         typedef std::shared_ptr<SetMyProfilePhotoRequest> Ptr;
         // The new profile photo to set
-        InputProfilePhoto::Ptr photo;
+        InputProfilePhoto::Ptr photo = nullptr;
     };
     void to_json(json& j, const SetMyProfilePhotoRequest& value);
     void from_json(const json& j, SetMyProfilePhotoRequest& value);

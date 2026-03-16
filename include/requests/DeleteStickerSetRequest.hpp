@@ -20,7 +20,7 @@ namespace TgBot {
     struct DeleteStickerSetRequest {
         typedef std::shared_ptr<DeleteStickerSetRequest> Ptr;
         // Sticker set name
-        std::string name;
+        std::string name = "";
     };
     void to_json(json& j, const DeleteStickerSetRequest& value);
     void from_json(const json& j, DeleteStickerSetRequest& value);

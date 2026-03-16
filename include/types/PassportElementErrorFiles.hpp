@@ -27,16 +27,16 @@ namespace TgBot {
 
         virtual ~PassportElementErrorFiles() = default;
         // Error source, must be files
-        std::string source;
+        std::string source = "";
 
         // The section of the user's Telegram Passport which has the issue, one of “utility_bill”, “bank_statement”, “rental_agreement”, “passport_registration”, “temporary_registration”
-        std::string type_;
+        std::string type_ = "";
 
         // List of base64-encoded file hashes
-        std::vector<std::string> file_hashes;
+        std::vector<std::string> file_hashes = std::vector<std::string>();
 
         // Error message
-        std::string message;
+        std::string message = "";
     };
     void to_json(json& j, const PassportElementErrorFiles& value);
     void from_json(const json& j, PassportElementErrorFiles& value);

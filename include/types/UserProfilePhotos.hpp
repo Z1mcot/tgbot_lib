@@ -26,10 +26,10 @@ namespace TgBot {
 
         virtual ~UserProfilePhotos() = default;
         // Total number of profile pictures the target user has
-        int64_t total_count = 0;
+        std::int64_t total_count = 0;
 
         // Requested profile pictures (in up to 4 sizes each)
-        std::vector<std::vector<PhotoSize::Ptr>> photos;
+        std::vector<std::vector<PhotoSize::Ptr>> photos = std::vector<std::vector<PhotoSize::Ptr>>();
     };
     void to_json(json& j, const UserProfilePhotos& value);
     void from_json(const json& j, UserProfilePhotos& value);

@@ -20,7 +20,7 @@ namespace TgBot {
     struct GetBusinessAccountStarBalanceRequest {
         typedef std::shared_ptr<GetBusinessAccountStarBalanceRequest> Ptr;
         // Unique identifier of the business connection
-        std::string business_connection_id;
+        std::string business_connection_id = "";
     };
     void to_json(json& j, const GetBusinessAccountStarBalanceRequest& value);
     void from_json(const json& j, GetBusinessAccountStarBalanceRequest& value);

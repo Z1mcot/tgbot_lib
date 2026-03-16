@@ -24,16 +24,16 @@ namespace TgBot {
     struct GetGameHighScoresRequest {
         typedef std::shared_ptr<GetGameHighScoresRequest> Ptr;
         // Target user id
-        int64_t user_id = 0;
+        std::int64_t user_id = 0;
 
         // Required if inline_message_id is not specified. Unique identifier for the target chat
-        int64_t chat_id = 0;
+        std::int64_t chat_id = 0;
 
         // Required if inline_message_id is not specified. Identifier of the sent message
-        int64_t message_id = 0;
+        std::int64_t message_id = 0;
 
         // Required if chat_id and message_id are not specified. Identifier of the inline message
-        std::string inline_message_id;
+        std::string inline_message_id = "";
     };
     void to_json(json& j, const GetGameHighScoresRequest& value);
     void from_json(const json& j, GetGameHighScoresRequest& value);

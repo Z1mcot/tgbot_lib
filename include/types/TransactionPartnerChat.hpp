@@ -28,13 +28,13 @@ namespace TgBot {
 
         virtual ~TransactionPartnerChat() = default;
         // Type of the transaction partner, always “chat”
-        std::string type_;
+        std::string type_ = "";
 
         // Information about the chat
-        Chat::Ptr chat;
+        Chat::Ptr chat = nullptr;
 
         // Optional. The gift sent to the chat by the bot
-        Gift::Ptr gift;
+        Gift::Ptr gift = nullptr;
     };
     void to_json(json& j, const TransactionPartnerChat& value);
     void from_json(const json& j, TransactionPartnerChat& value);

@@ -26,10 +26,10 @@ namespace TgBot {
     struct SetGameScoreRequest {
         typedef std::shared_ptr<SetGameScoreRequest> Ptr;
         // User identifier
-        int64_t user_id = 0;
+        std::int64_t user_id = 0;
 
         // New score, must be non-negative
-        int64_t score = 0;
+        std::int64_t score = 0;
 
         // Pass True if the high score is allowed to decrease. This can be useful when fixing mistakes or banning cheaters
         bool force = false;
@@ -38,13 +38,13 @@ namespace TgBot {
         bool disable_edit_message = false;
 
         // Required if inline_message_id is not specified. Unique identifier for the target chat
-        int64_t chat_id = 0;
+        std::int64_t chat_id = 0;
 
         // Required if inline_message_id is not specified. Identifier of the sent message
-        int64_t message_id = 0;
+        std::int64_t message_id = 0;
 
         // Required if chat_id and message_id are not specified. Identifier of the inline message
-        std::string inline_message_id;
+        std::string inline_message_id = "";
     };
     void to_json(json& j, const SetGameScoreRequest& value);
     void from_json(const json& j, SetGameScoreRequest& value);

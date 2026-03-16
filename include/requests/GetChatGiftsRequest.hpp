@@ -30,7 +30,7 @@ namespace TgBot {
     struct GetChatGiftsRequest {
         typedef std::shared_ptr<GetChatGiftsRequest> Ptr;
         // Unique identifier for the target chat or username of the target channel (in the format @channelusername)
-        int64_t chat_id = 0;
+        std::int64_t chat_id = 0;
 
         // Pass True to exclude gifts that aren't saved to the chat's profile page. Always True, unless the bot has the can_post_messages administrator right in the channel.
         bool exclude_unsaved = false;
@@ -57,10 +57,10 @@ namespace TgBot {
         bool sort_by_price = false;
 
         // Offset of the first entry to return as received from the previous request; use an empty string to get the first chunk of results
-        std::string offset;
+        std::string offset = "";
 
         // The maximum number of gifts to be returned; 1-100. Defaults to 100
-        int64_t limit = 0;
+        std::int64_t limit = 0;
     };
     void to_json(json& j, const GetChatGiftsRequest& value);
     void from_json(const json& j, GetChatGiftsRequest& value);

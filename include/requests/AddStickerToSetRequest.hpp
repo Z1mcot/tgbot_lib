@@ -23,13 +23,13 @@ namespace TgBot {
     struct AddStickerToSetRequest {
         typedef std::shared_ptr<AddStickerToSetRequest> Ptr;
         // User identifier of sticker set owner
-        int64_t user_id = 0;
+        std::int64_t user_id = 0;
 
         // Sticker set name
-        std::string name;
+        std::string name = "";
 
         // A JSON-serialized object with information about the added sticker. If exactly the same sticker had already been added to the set, then the set isn't changed.
-        InputSticker::Ptr sticker;
+        InputSticker::Ptr sticker = nullptr;
     };
     void to_json(json& j, const AddStickerToSetRequest& value);
     void from_json(const json& j, AddStickerToSetRequest& value);

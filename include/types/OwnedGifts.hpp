@@ -27,13 +27,13 @@ namespace TgBot {
 
         virtual ~OwnedGifts() = default;
         // The total number of gifts owned by the user or the chat
-        int64_t total_count = 0;
+        std::int64_t total_count = 0;
 
         // The list of gifts
-        std::vector<OwnedGift::Ptr> gifts;
+        std::vector<OwnedGift::Ptr> gifts = std::vector<OwnedGift::Ptr>();
 
         // Optional. Offset for the next request. If empty, then there are no more results
-        std::string next_offset;
+        std::string next_offset = "";
     };
     void to_json(json& j, const OwnedGifts& value);
     void from_json(const json& j, OwnedGifts& value);

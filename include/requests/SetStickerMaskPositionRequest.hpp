@@ -22,10 +22,10 @@ namespace TgBot {
     struct SetStickerMaskPositionRequest {
         typedef std::shared_ptr<SetStickerMaskPositionRequest> Ptr;
         // File identifier of the sticker
-        std::string sticker;
+        std::string sticker = "";
 
         // A JSON-serialized object with the position where the mask should be placed on faces. Omit the parameter to remove the mask position.
-        MaskPosition::Ptr mask_position;
+        MaskPosition::Ptr mask_position = nullptr;
     };
     void to_json(json& j, const SetStickerMaskPositionRequest& value);
     void from_json(const json& j, SetStickerMaskPositionRequest& value);

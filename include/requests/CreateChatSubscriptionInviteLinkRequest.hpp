@@ -23,16 +23,16 @@ namespace TgBot {
     struct CreateChatSubscriptionInviteLinkRequest {
         typedef std::shared_ptr<CreateChatSubscriptionInviteLinkRequest> Ptr;
         // Unique identifier for the target channel chat or username of the target channel (in the format @channelusername)
-        int64_t chat_id = 0;
+        std::int64_t chat_id = 0;
 
         // The number of seconds the subscription will be active for before the next payment. Currently, it must always be 2592000 (30 days).
-        int64_t subscription_period = 0;
+        std::int64_t subscription_period = 0;
 
         // The amount of Telegram Stars a user must pay initially and after each subsequent subscription period to be a member of the chat; 1-10000
-        int64_t subscription_price = 0;
+        std::int64_t subscription_price = 0;
 
         // Invite link name; 0-32 characters
-        std::string name;
+        std::string name = "";
     };
     void to_json(json& j, const CreateChatSubscriptionInviteLinkRequest& value);
     void from_json(const json& j, CreateChatSubscriptionInviteLinkRequest& value);

@@ -28,16 +28,16 @@ namespace TgBot {
 
         virtual ~File() = default;
         // Identifier for this file, which can be used to download or reuse the file
-        std::string file_id;
+        std::string file_id = "";
 
         // Unique identifier for this file, which is supposed to be the same over time and for different bots. Can't be used to download or reuse the file.
-        std::string file_unique_id;
+        std::string file_unique_id = "";
 
         // Optional. File size in bytes. It can be bigger than 2^31 and some programming languages may have difficulty/silent defects in interpreting it. But it has at most 52 significant bits, so a signed 64-bit integer or double-precision float type are safe for storing this value.
-        int64_t file_size = 0;
+        std::int64_t file_size = 0;
 
         // Optional. File path. Use https://api.telegram.org/file/bot<token>/<file_path> to get the file.
-        std::string file_path;
+        std::string file_path = "";
     };
     void to_json(json& j, const File& value);
     void from_json(const json& j, File& value);

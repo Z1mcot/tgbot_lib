@@ -33,31 +33,31 @@ namespace TgBot {
 
         virtual ~Audio() = default;
         // Identifier for this file, which can be used to download or reuse the file
-        std::string file_id;
+        std::string file_id = "";
 
         // Unique identifier for this file, which is supposed to be the same over time and for different bots. Can't be used to download or reuse the file.
-        std::string file_unique_id;
+        std::string file_unique_id = "";
 
         // Duration of the audio in seconds as defined by the sender
-        int64_t duration = 0;
+        std::int64_t duration = 0;
 
         // Optional. Performer of the audio as defined by the sender or by audio tags
-        std::string performer;
+        std::string performer = "";
 
         // Optional. Title of the audio as defined by the sender or by audio tags
-        std::string title;
+        std::string title = "";
 
         // Optional. Original filename as defined by the sender
-        std::string file_name;
+        std::string file_name = "";
 
         // Optional. MIME type of the file as defined by the sender
-        std::string mime_type;
+        std::string mime_type = "";
 
         // Optional. File size in bytes. It can be bigger than 2^31 and some programming languages may have difficulty/silent defects in interpreting it. But it has at most 52 significant bits, so a signed 64-bit integer or double-precision float type are safe for storing this value.
-        int64_t file_size = 0;
+        std::int64_t file_size = 0;
 
         // Optional. Thumbnail of the album cover to which the music file belongs
-        PhotoSize::Ptr thumbnail;
+        PhotoSize::Ptr thumbnail = nullptr;
     };
     void to_json(json& j, const Audio& value);
     void from_json(const json& j, Audio& value);

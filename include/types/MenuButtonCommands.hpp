@@ -24,7 +24,7 @@ namespace TgBot {
 
         virtual ~MenuButtonCommands() = default;
         // Type of the button, must be commands
-        std::string type_;
+        std::string type_ = "";
     };
     void to_json(json& j, const MenuButtonCommands& value);
     void from_json(const json& j, MenuButtonCommands& value);

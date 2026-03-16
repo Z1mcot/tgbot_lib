@@ -35,16 +35,16 @@ namespace TgBot {
 
         virtual ~GiftInfo() = default;
         // Information about the gift
-        Gift::Ptr gift;
+        Gift::Ptr gift = nullptr;
 
         // Optional. Unique identifier of the received gift for the bot; only present for gifts received on behalf of business accounts
-        std::string owned_gift_id;
+        std::string owned_gift_id = "";
 
         // Optional. Number of Telegram Stars that can be claimed by the receiver by converting the gift; omitted if conversion to Telegram Stars is impossible
-        int64_t convert_star_count = 0;
+        std::int64_t convert_star_count = 0;
 
         // Optional. Number of Telegram Stars that were prepaid for the ability to upgrade the gift
-        int64_t prepaid_upgrade_star_count = 0;
+        std::int64_t prepaid_upgrade_star_count = 0;
 
         // Optional. True, if the gift's upgrade was purchased after the gift was sent
         bool is_upgrade_separate = false;
@@ -53,16 +53,16 @@ namespace TgBot {
         bool can_be_upgraded = false;
 
         // Optional. Text of the message that was added to the gift
-        std::string text;
+        std::string text = "";
 
         // Optional. Special entities that appear in the text
-        std::vector<MessageEntity::Ptr> entities;
+        std::vector<MessageEntity::Ptr> entities = std::vector<MessageEntity::Ptr>();
 
         // Optional. True, if the sender and gift text are shown only to the gift receiver; otherwise, everyone will be able to see them
         bool is_private = false;
 
         // Optional. Unique number reserved for this gift when upgraded. See the number field in UniqueGift
-        int64_t unique_gift_number = 0;
+        std::int64_t unique_gift_number = 0;
     };
     void to_json(json& j, const GiftInfo& value);
     void from_json(const json& j, GiftInfo& value);

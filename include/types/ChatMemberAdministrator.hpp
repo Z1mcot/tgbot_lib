@@ -45,10 +45,10 @@ namespace TgBot {
 
         virtual ~ChatMemberAdministrator() = default;
         // The member's status in the chat, always “administrator”
-        std::string status;
+        std::string status = "";
 
         // Information about the user
-        User::Ptr user;
+        User::Ptr user = nullptr;
 
         // True, if the bot is allowed to edit administrator privileges of that user
         bool can_be_edited = false;
@@ -105,7 +105,7 @@ namespace TgBot {
         bool can_manage_tags = false;
 
         // Optional. Custom title for this user
-        std::string custom_title;
+        std::string custom_title = "";
     };
     void to_json(json& j, const ChatMemberAdministrator& value);
     void from_json(const json& j, ChatMemberAdministrator& value);

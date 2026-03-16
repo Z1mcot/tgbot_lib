@@ -24,7 +24,7 @@ namespace TgBot {
 
         virtual ~BotCommandScopeAllGroupChats() = default;
         // Scope type, must be all_group_chats
-        std::string type_;
+        std::string type_ = "";
     };
     void to_json(json& j, const BotCommandScopeAllGroupChats& value);
     void from_json(const json& j, BotCommandScopeAllGroupChats& value);

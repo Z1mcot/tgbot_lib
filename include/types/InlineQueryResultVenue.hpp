@@ -40,10 +40,10 @@ namespace TgBot {
 
         virtual ~InlineQueryResultVenue() = default;
         // Type of the result, must be venue
-        std::string type_;
+        std::string type_ = "";
 
         // Unique identifier for this result, 1-64 Bytes
-        std::string id;
+        std::string id = "";
 
         // Latitude of the venue location in degrees
         double latitude = 0.0;
@@ -52,37 +52,37 @@ namespace TgBot {
         double longitude = 0.0;
 
         // Title of the venue
-        std::string title;
+        std::string title = "";
 
         // Address of the venue
-        std::string address;
+        std::string address = "";
 
         // Optional. Foursquare identifier of the venue if known
-        std::string foursquare_id;
+        std::string foursquare_id = "";
 
         // Optional. Foursquare type of the venue, if known. (For example, “arts_entertainment/default”, “arts_entertainment/aquarium” or “food/icecream”.)
-        std::string foursquare_type;
+        std::string foursquare_type = "";
 
         // Optional. Google Places identifier of the venue
-        std::string google_place_id;
+        std::string google_place_id = "";
 
         // Optional. Google Places type of the venue. (See supported types.)
-        std::string google_place_type;
+        std::string google_place_type = "";
 
         // Optional. Inline keyboard attached to the message
-        InlineKeyboardMarkup::Ptr reply_markup;
+        InlineKeyboardMarkup::Ptr reply_markup = nullptr;
 
         // Optional. Content of the message to be sent instead of the venue
-        InputMessageContent::Ptr input_message_content;
+        InputMessageContent::Ptr input_message_content = nullptr;
 
         // Optional. Url of the thumbnail for the result
-        std::string thumbnail_url;
+        std::string thumbnail_url = "";
 
         // Optional. Thumbnail width
-        int64_t thumbnail_width = 0;
+        std::int64_t thumbnail_width = 0;
 
         // Optional. Thumbnail height
-        int64_t thumbnail_height = 0;
+        std::int64_t thumbnail_height = 0;
     };
     void to_json(json& j, const InlineQueryResultVenue& value);
     void from_json(const json& j, InlineQueryResultVenue& value);

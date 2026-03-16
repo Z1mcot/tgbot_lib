@@ -27,7 +27,7 @@ namespace TgBot {
 
     // Getting updates
 
-    coro::task<TelegramResponse<std::vector<Update::Ptr>>> Api::getUpdates(int64_t offset, int64_t limit, int64_t timeout, const std::vector<std::string>& allowed_updates) const {
+    coro::task<TelegramResponse<std::vector<Update::Ptr>>> Api::getUpdates(std::int64_t offset, std::int64_t limit, std::int64_t timeout, const std::vector<std::string>& allowed_updates) const {
         TgBot::GetUpdatesRequest request{};
         request.offset = offset;
         request.limit = limit;
@@ -41,7 +41,7 @@ namespace TgBot {
         co_return parseResponse<std::vector<Update::Ptr>>(response);
     }
 
-    coro::task<TelegramResponse<bool>> Api::setWebhook(const std::string& url, const InputFile::Ptr& certificate, const std::string& ip_address, int64_t max_connections, const std::vector<std::string>& allowed_updates, bool drop_pending_updates, const std::string& secret_token) const {
+    coro::task<TelegramResponse<bool>> Api::setWebhook(const std::string& url, InputFile::Ptr certificate, const std::string& ip_address, std::int64_t max_connections, const std::vector<std::string>& allowed_updates, bool drop_pending_updates, const std::string& secret_token) const {
         TgBot::SetWebhookRequest request{};
         request.url = url;
         request.certificate = certificate;
@@ -97,7 +97,7 @@ namespace TgBot {
         co_return parseResponse<bool>(response);
     }
 
-    coro::task<TelegramResponse<Message::Ptr>> Api::sendMessage(int64_t chat_id, const std::string& text, const std::string& business_connection_id, int64_t message_thread_id, int64_t direct_messages_topic_id, const std::string& parse_mode, const std::vector<MessageEntity::Ptr>& entities, const LinkPreviewOptions::Ptr& link_preview_options, bool disable_notification, bool protect_content, bool allow_paid_broadcast, const std::string& message_effect_id, const SuggestedPostParameters::Ptr& suggested_post_parameters, const ReplyParameters::Ptr& reply_parameters, const KeyboardOption::Ptr& reply_markup) const {
+    coro::task<TelegramResponse<Message::Ptr>> Api::sendMessage(std::int64_t chat_id, const std::string& text, const std::string& business_connection_id, std::int64_t message_thread_id, std::int64_t direct_messages_topic_id, const std::string& parse_mode, const std::vector<MessageEntity::Ptr>& entities, LinkPreviewOptions::Ptr link_preview_options, bool disable_notification, bool protect_content, bool allow_paid_broadcast, const std::string& message_effect_id, SuggestedPostParameters::Ptr suggested_post_parameters, ReplyParameters::Ptr reply_parameters, KeyboardOption::Ptr reply_markup) const {
         TgBot::SendMessageRequest request{};
         request.chat_id = chat_id;
         request.text = text;
@@ -122,7 +122,7 @@ namespace TgBot {
         co_return parseResponse<Message::Ptr>(response);
     }
 
-    coro::task<TelegramResponse<Message::Ptr>> Api::forwardMessage(int64_t chat_id, int64_t from_chat_id, int64_t message_id, int64_t message_thread_id, int64_t direct_messages_topic_id, int64_t video_start_timestamp, bool disable_notification, bool protect_content, const std::string& message_effect_id, const SuggestedPostParameters::Ptr& suggested_post_parameters) const {
+    coro::task<TelegramResponse<Message::Ptr>> Api::forwardMessage(std::int64_t chat_id, std::int64_t from_chat_id, std::int64_t message_id, std::int64_t message_thread_id, std::int64_t direct_messages_topic_id, std::int64_t video_start_timestamp, bool disable_notification, bool protect_content, const std::string& message_effect_id, SuggestedPostParameters::Ptr suggested_post_parameters) const {
         TgBot::ForwardMessageRequest request{};
         request.chat_id = chat_id;
         request.from_chat_id = from_chat_id;
@@ -142,7 +142,7 @@ namespace TgBot {
         co_return parseResponse<Message::Ptr>(response);
     }
 
-    coro::task<TelegramResponse<std::vector<MessageId::Ptr>>> Api::forwardMessages(int64_t chat_id, int64_t from_chat_id, const std::vector<int64_t>& message_ids, int64_t message_thread_id, int64_t direct_messages_topic_id, bool disable_notification, bool protect_content) const {
+    coro::task<TelegramResponse<std::vector<MessageId::Ptr>>> Api::forwardMessages(std::int64_t chat_id, std::int64_t from_chat_id, const std::vector<std::int64_t>& message_ids, std::int64_t message_thread_id, std::int64_t direct_messages_topic_id, bool disable_notification, bool protect_content) const {
         TgBot::ForwardMessagesRequest request{};
         request.chat_id = chat_id;
         request.from_chat_id = from_chat_id;
@@ -159,7 +159,7 @@ namespace TgBot {
         co_return parseResponse<std::vector<MessageId::Ptr>>(response);
     }
 
-    coro::task<TelegramResponse<MessageId::Ptr>> Api::copyMessage(int64_t chat_id, int64_t from_chat_id, int64_t message_id, int64_t message_thread_id, int64_t direct_messages_topic_id, int64_t video_start_timestamp, const std::string& caption, const std::string& parse_mode, const std::vector<MessageEntity::Ptr>& caption_entities, bool show_caption_above_media, bool disable_notification, bool protect_content, bool allow_paid_broadcast, const std::string& message_effect_id, const SuggestedPostParameters::Ptr& suggested_post_parameters, const ReplyParameters::Ptr& reply_parameters, const KeyboardOption::Ptr& reply_markup) const {
+    coro::task<TelegramResponse<MessageId::Ptr>> Api::copyMessage(std::int64_t chat_id, std::int64_t from_chat_id, std::int64_t message_id, std::int64_t message_thread_id, std::int64_t direct_messages_topic_id, std::int64_t video_start_timestamp, const std::string& caption, const std::string& parse_mode, const std::vector<MessageEntity::Ptr>& caption_entities, bool show_caption_above_media, bool disable_notification, bool protect_content, bool allow_paid_broadcast, const std::string& message_effect_id, SuggestedPostParameters::Ptr suggested_post_parameters, ReplyParameters::Ptr reply_parameters, KeyboardOption::Ptr reply_markup) const {
         TgBot::CopyMessageRequest request{};
         request.chat_id = chat_id;
         request.from_chat_id = from_chat_id;
@@ -186,7 +186,7 @@ namespace TgBot {
         co_return parseResponse<MessageId::Ptr>(response);
     }
 
-    coro::task<TelegramResponse<std::vector<MessageId::Ptr>>> Api::copyMessages(int64_t chat_id, int64_t from_chat_id, const std::vector<int64_t>& message_ids, int64_t message_thread_id, int64_t direct_messages_topic_id, bool disable_notification, bool protect_content, bool remove_caption) const {
+    coro::task<TelegramResponse<std::vector<MessageId::Ptr>>> Api::copyMessages(std::int64_t chat_id, std::int64_t from_chat_id, const std::vector<std::int64_t>& message_ids, std::int64_t message_thread_id, std::int64_t direct_messages_topic_id, bool disable_notification, bool protect_content, bool remove_caption) const {
         TgBot::CopyMessagesRequest request{};
         request.chat_id = chat_id;
         request.from_chat_id = from_chat_id;
@@ -204,7 +204,7 @@ namespace TgBot {
         co_return parseResponse<std::vector<MessageId::Ptr>>(response);
     }
 
-    coro::task<TelegramResponse<Message::Ptr>> Api::sendPhoto(int64_t chat_id, const std::string& photo, const std::string& business_connection_id, int64_t message_thread_id, int64_t direct_messages_topic_id, const std::string& caption, const std::string& parse_mode, const std::vector<MessageEntity::Ptr>& caption_entities, bool show_caption_above_media, bool has_spoiler, bool disable_notification, bool protect_content, bool allow_paid_broadcast, const std::string& message_effect_id, const SuggestedPostParameters::Ptr& suggested_post_parameters, const ReplyParameters::Ptr& reply_parameters, const KeyboardOption::Ptr& reply_markup) const {
+    coro::task<TelegramResponse<Message::Ptr>> Api::sendPhoto(std::int64_t chat_id, const std::string& photo, const std::string& business_connection_id, std::int64_t message_thread_id, std::int64_t direct_messages_topic_id, const std::string& caption, const std::string& parse_mode, const std::vector<MessageEntity::Ptr>& caption_entities, bool show_caption_above_media, bool has_spoiler, bool disable_notification, bool protect_content, bool allow_paid_broadcast, const std::string& message_effect_id, SuggestedPostParameters::Ptr suggested_post_parameters, ReplyParameters::Ptr reply_parameters, KeyboardOption::Ptr reply_markup) const {
         TgBot::SendPhotoRequest request{};
         request.chat_id = chat_id;
         request.photo = photo;
@@ -231,7 +231,7 @@ namespace TgBot {
         co_return parseResponse<Message::Ptr>(response);
     }
 
-    coro::task<TelegramResponse<Message::Ptr>> Api::sendAudio(int64_t chat_id, const std::string& audio, const std::string& business_connection_id, int64_t message_thread_id, int64_t direct_messages_topic_id, const std::string& caption, const std::string& parse_mode, const std::vector<MessageEntity::Ptr>& caption_entities, int64_t duration, const std::string& performer, const std::string& title, const std::string& thumbnail, bool disable_notification, bool protect_content, bool allow_paid_broadcast, const std::string& message_effect_id, const SuggestedPostParameters::Ptr& suggested_post_parameters, const ReplyParameters::Ptr& reply_parameters, const KeyboardOption::Ptr& reply_markup) const {
+    coro::task<TelegramResponse<Message::Ptr>> Api::sendAudio(std::int64_t chat_id, const std::string& audio, const std::string& business_connection_id, std::int64_t message_thread_id, std::int64_t direct_messages_topic_id, const std::string& caption, const std::string& parse_mode, const std::vector<MessageEntity::Ptr>& caption_entities, std::int64_t duration, const std::string& performer, const std::string& title, const std::string& thumbnail, bool disable_notification, bool protect_content, bool allow_paid_broadcast, const std::string& message_effect_id, SuggestedPostParameters::Ptr suggested_post_parameters, ReplyParameters::Ptr reply_parameters, KeyboardOption::Ptr reply_markup) const {
         TgBot::SendAudioRequest request{};
         request.chat_id = chat_id;
         request.audio = audio;
@@ -260,7 +260,7 @@ namespace TgBot {
         co_return parseResponse<Message::Ptr>(response);
     }
 
-    coro::task<TelegramResponse<Message::Ptr>> Api::sendDocument(int64_t chat_id, const std::string& document, const std::string& business_connection_id, int64_t message_thread_id, int64_t direct_messages_topic_id, const std::string& thumbnail, const std::string& caption, const std::string& parse_mode, const std::vector<MessageEntity::Ptr>& caption_entities, bool disable_content_type_detection, bool disable_notification, bool protect_content, bool allow_paid_broadcast, const std::string& message_effect_id, const SuggestedPostParameters::Ptr& suggested_post_parameters, const ReplyParameters::Ptr& reply_parameters, const KeyboardOption::Ptr& reply_markup) const {
+    coro::task<TelegramResponse<Message::Ptr>> Api::sendDocument(std::int64_t chat_id, const std::string& document, const std::string& business_connection_id, std::int64_t message_thread_id, std::int64_t direct_messages_topic_id, const std::string& thumbnail, const std::string& caption, const std::string& parse_mode, const std::vector<MessageEntity::Ptr>& caption_entities, bool disable_content_type_detection, bool disable_notification, bool protect_content, bool allow_paid_broadcast, const std::string& message_effect_id, SuggestedPostParameters::Ptr suggested_post_parameters, ReplyParameters::Ptr reply_parameters, KeyboardOption::Ptr reply_markup) const {
         TgBot::SendDocumentRequest request{};
         request.chat_id = chat_id;
         request.document = document;
@@ -287,7 +287,7 @@ namespace TgBot {
         co_return parseResponse<Message::Ptr>(response);
     }
 
-    coro::task<TelegramResponse<Message::Ptr>> Api::sendVideo(int64_t chat_id, const std::string& video, const std::string& business_connection_id, int64_t message_thread_id, int64_t direct_messages_topic_id, int64_t duration, int64_t width, int64_t height, const std::string& thumbnail, const std::string& cover, int64_t start_timestamp, const std::string& caption, const std::string& parse_mode, const std::vector<MessageEntity::Ptr>& caption_entities, bool show_caption_above_media, bool has_spoiler, bool supports_streaming, bool disable_notification, bool protect_content, bool allow_paid_broadcast, const std::string& message_effect_id, const SuggestedPostParameters::Ptr& suggested_post_parameters, const ReplyParameters::Ptr& reply_parameters, const KeyboardOption::Ptr& reply_markup) const {
+    coro::task<TelegramResponse<Message::Ptr>> Api::sendVideo(std::int64_t chat_id, const std::string& video, const std::string& business_connection_id, std::int64_t message_thread_id, std::int64_t direct_messages_topic_id, std::int64_t duration, std::int64_t width, std::int64_t height, const std::string& thumbnail, const std::string& cover, std::int64_t start_timestamp, const std::string& caption, const std::string& parse_mode, const std::vector<MessageEntity::Ptr>& caption_entities, bool show_caption_above_media, bool has_spoiler, bool supports_streaming, bool disable_notification, bool protect_content, bool allow_paid_broadcast, const std::string& message_effect_id, SuggestedPostParameters::Ptr suggested_post_parameters, ReplyParameters::Ptr reply_parameters, KeyboardOption::Ptr reply_markup) const {
         TgBot::SendVideoRequest request{};
         request.chat_id = chat_id;
         request.video = video;
@@ -321,7 +321,7 @@ namespace TgBot {
         co_return parseResponse<Message::Ptr>(response);
     }
 
-    coro::task<TelegramResponse<Message::Ptr>> Api::sendAnimation(int64_t chat_id, const std::string& animation, const std::string& business_connection_id, int64_t message_thread_id, int64_t direct_messages_topic_id, int64_t duration, int64_t width, int64_t height, const std::string& thumbnail, const std::string& caption, const std::string& parse_mode, const std::vector<MessageEntity::Ptr>& caption_entities, bool show_caption_above_media, bool has_spoiler, bool disable_notification, bool protect_content, bool allow_paid_broadcast, const std::string& message_effect_id, const SuggestedPostParameters::Ptr& suggested_post_parameters, const ReplyParameters::Ptr& reply_parameters, const KeyboardOption::Ptr& reply_markup) const {
+    coro::task<TelegramResponse<Message::Ptr>> Api::sendAnimation(std::int64_t chat_id, const std::string& animation, const std::string& business_connection_id, std::int64_t message_thread_id, std::int64_t direct_messages_topic_id, std::int64_t duration, std::int64_t width, std::int64_t height, const std::string& thumbnail, const std::string& caption, const std::string& parse_mode, const std::vector<MessageEntity::Ptr>& caption_entities, bool show_caption_above_media, bool has_spoiler, bool disable_notification, bool protect_content, bool allow_paid_broadcast, const std::string& message_effect_id, SuggestedPostParameters::Ptr suggested_post_parameters, ReplyParameters::Ptr reply_parameters, KeyboardOption::Ptr reply_markup) const {
         TgBot::SendAnimationRequest request{};
         request.chat_id = chat_id;
         request.animation = animation;
@@ -352,7 +352,7 @@ namespace TgBot {
         co_return parseResponse<Message::Ptr>(response);
     }
 
-    coro::task<TelegramResponse<Message::Ptr>> Api::sendVoice(int64_t chat_id, const std::string& voice, const std::string& business_connection_id, int64_t message_thread_id, int64_t direct_messages_topic_id, const std::string& caption, const std::string& parse_mode, const std::vector<MessageEntity::Ptr>& caption_entities, int64_t duration, bool disable_notification, bool protect_content, bool allow_paid_broadcast, const std::string& message_effect_id, const SuggestedPostParameters::Ptr& suggested_post_parameters, const ReplyParameters::Ptr& reply_parameters, const KeyboardOption::Ptr& reply_markup) const {
+    coro::task<TelegramResponse<Message::Ptr>> Api::sendVoice(std::int64_t chat_id, const std::string& voice, const std::string& business_connection_id, std::int64_t message_thread_id, std::int64_t direct_messages_topic_id, const std::string& caption, const std::string& parse_mode, const std::vector<MessageEntity::Ptr>& caption_entities, std::int64_t duration, bool disable_notification, bool protect_content, bool allow_paid_broadcast, const std::string& message_effect_id, SuggestedPostParameters::Ptr suggested_post_parameters, ReplyParameters::Ptr reply_parameters, KeyboardOption::Ptr reply_markup) const {
         TgBot::SendVoiceRequest request{};
         request.chat_id = chat_id;
         request.voice = voice;
@@ -378,7 +378,7 @@ namespace TgBot {
         co_return parseResponse<Message::Ptr>(response);
     }
 
-    coro::task<TelegramResponse<Message::Ptr>> Api::sendVideoNote(int64_t chat_id, const std::string& video_note, const std::string& business_connection_id, int64_t message_thread_id, int64_t direct_messages_topic_id, int64_t duration, int64_t length, const std::string& thumbnail, bool disable_notification, bool protect_content, bool allow_paid_broadcast, const std::string& message_effect_id, const SuggestedPostParameters::Ptr& suggested_post_parameters, const ReplyParameters::Ptr& reply_parameters, const KeyboardOption::Ptr& reply_markup) const {
+    coro::task<TelegramResponse<Message::Ptr>> Api::sendVideoNote(std::int64_t chat_id, const std::string& video_note, const std::string& business_connection_id, std::int64_t message_thread_id, std::int64_t direct_messages_topic_id, std::int64_t duration, std::int64_t length, const std::string& thumbnail, bool disable_notification, bool protect_content, bool allow_paid_broadcast, const std::string& message_effect_id, SuggestedPostParameters::Ptr suggested_post_parameters, ReplyParameters::Ptr reply_parameters, KeyboardOption::Ptr reply_markup) const {
         TgBot::SendVideoNoteRequest request{};
         request.chat_id = chat_id;
         request.video_note = video_note;
@@ -403,7 +403,7 @@ namespace TgBot {
         co_return parseResponse<Message::Ptr>(response);
     }
 
-    coro::task<TelegramResponse<Message::Ptr>> Api::sendPaidMedia(int64_t chat_id, int64_t star_count, const std::vector<InputPaidMedia::Ptr>& media, const std::string& business_connection_id, int64_t message_thread_id, int64_t direct_messages_topic_id, const std::string& payload, const std::string& caption, const std::string& parse_mode, const std::vector<MessageEntity::Ptr>& caption_entities, bool show_caption_above_media, bool disable_notification, bool protect_content, bool allow_paid_broadcast, const SuggestedPostParameters::Ptr& suggested_post_parameters, const ReplyParameters::Ptr& reply_parameters, const KeyboardOption::Ptr& reply_markup) const {
+    coro::task<TelegramResponse<Message::Ptr>> Api::sendPaidMedia(std::int64_t chat_id, std::int64_t star_count, const std::vector<InputPaidMedia::Ptr>& media, const std::string& business_connection_id, std::int64_t message_thread_id, std::int64_t direct_messages_topic_id, const std::string& payload, const std::string& caption, const std::string& parse_mode, const std::vector<MessageEntity::Ptr>& caption_entities, bool show_caption_above_media, bool disable_notification, bool protect_content, bool allow_paid_broadcast, SuggestedPostParameters::Ptr suggested_post_parameters, ReplyParameters::Ptr reply_parameters, KeyboardOption::Ptr reply_markup) const {
         TgBot::SendPaidMediaRequest request{};
         request.chat_id = chat_id;
         request.star_count = star_count;
@@ -430,7 +430,7 @@ namespace TgBot {
         co_return parseResponse<Message::Ptr>(response);
     }
 
-    coro::task<TelegramResponse<std::vector<Message::Ptr>>> Api::sendMediaGroup(int64_t chat_id, const std::vector<InputMedia::Ptr>& media, const std::string& business_connection_id, int64_t message_thread_id, int64_t direct_messages_topic_id, bool disable_notification, bool protect_content, bool allow_paid_broadcast, const std::string& message_effect_id, const ReplyParameters::Ptr& reply_parameters) const {
+    coro::task<TelegramResponse<std::vector<Message::Ptr>>> Api::sendMediaGroup(std::int64_t chat_id, const std::vector<InputMedia::Ptr>& media, const std::string& business_connection_id, std::int64_t message_thread_id, std::int64_t direct_messages_topic_id, bool disable_notification, bool protect_content, bool allow_paid_broadcast, const std::string& message_effect_id, ReplyParameters::Ptr reply_parameters) const {
         TgBot::SendMediaGroupRequest request{};
         request.chat_id = chat_id;
         request.media = media;
@@ -450,7 +450,7 @@ namespace TgBot {
         co_return parseResponse<std::vector<Message::Ptr>>(response);
     }
 
-    coro::task<TelegramResponse<Message::Ptr>> Api::sendLocation(int64_t chat_id, double latitude, double longitude, const std::string& business_connection_id, int64_t message_thread_id, int64_t direct_messages_topic_id, double horizontal_accuracy, int64_t live_period, int64_t heading, int64_t proximity_alert_radius, bool disable_notification, bool protect_content, bool allow_paid_broadcast, const std::string& message_effect_id, const SuggestedPostParameters::Ptr& suggested_post_parameters, const ReplyParameters::Ptr& reply_parameters, const KeyboardOption::Ptr& reply_markup) const {
+    coro::task<TelegramResponse<Message::Ptr>> Api::sendLocation(std::int64_t chat_id, double latitude, double longitude, const std::string& business_connection_id, std::int64_t message_thread_id, std::int64_t direct_messages_topic_id, double horizontal_accuracy, std::int64_t live_period, std::int64_t heading, std::int64_t proximity_alert_radius, bool disable_notification, bool protect_content, bool allow_paid_broadcast, const std::string& message_effect_id, SuggestedPostParameters::Ptr suggested_post_parameters, ReplyParameters::Ptr reply_parameters, KeyboardOption::Ptr reply_markup) const {
         TgBot::SendLocationRequest request{};
         request.chat_id = chat_id;
         request.latitude = latitude;
@@ -477,7 +477,7 @@ namespace TgBot {
         co_return parseResponse<Message::Ptr>(response);
     }
 
-    coro::task<TelegramResponse<Message::Ptr>> Api::sendVenue(int64_t chat_id, double latitude, double longitude, const std::string& title, const std::string& address, const std::string& business_connection_id, int64_t message_thread_id, int64_t direct_messages_topic_id, const std::string& foursquare_id, const std::string& foursquare_type, const std::string& google_place_id, const std::string& google_place_type, bool disable_notification, bool protect_content, bool allow_paid_broadcast, const std::string& message_effect_id, const SuggestedPostParameters::Ptr& suggested_post_parameters, const ReplyParameters::Ptr& reply_parameters, const KeyboardOption::Ptr& reply_markup) const {
+    coro::task<TelegramResponse<Message::Ptr>> Api::sendVenue(std::int64_t chat_id, double latitude, double longitude, const std::string& title, const std::string& address, const std::string& business_connection_id, std::int64_t message_thread_id, std::int64_t direct_messages_topic_id, const std::string& foursquare_id, const std::string& foursquare_type, const std::string& google_place_id, const std::string& google_place_type, bool disable_notification, bool protect_content, bool allow_paid_broadcast, const std::string& message_effect_id, SuggestedPostParameters::Ptr suggested_post_parameters, ReplyParameters::Ptr reply_parameters, KeyboardOption::Ptr reply_markup) const {
         TgBot::SendVenueRequest request{};
         request.chat_id = chat_id;
         request.latitude = latitude;
@@ -506,7 +506,7 @@ namespace TgBot {
         co_return parseResponse<Message::Ptr>(response);
     }
 
-    coro::task<TelegramResponse<Message::Ptr>> Api::sendContact(int64_t chat_id, const std::string& phone_number, const std::string& first_name, const std::string& business_connection_id, int64_t message_thread_id, int64_t direct_messages_topic_id, const std::string& last_name, const std::string& vcard, bool disable_notification, bool protect_content, bool allow_paid_broadcast, const std::string& message_effect_id, const SuggestedPostParameters::Ptr& suggested_post_parameters, const ReplyParameters::Ptr& reply_parameters, const KeyboardOption::Ptr& reply_markup) const {
+    coro::task<TelegramResponse<Message::Ptr>> Api::sendContact(std::int64_t chat_id, const std::string& phone_number, const std::string& first_name, const std::string& business_connection_id, std::int64_t message_thread_id, std::int64_t direct_messages_topic_id, const std::string& last_name, const std::string& vcard, bool disable_notification, bool protect_content, bool allow_paid_broadcast, const std::string& message_effect_id, SuggestedPostParameters::Ptr suggested_post_parameters, ReplyParameters::Ptr reply_parameters, KeyboardOption::Ptr reply_markup) const {
         TgBot::SendContactRequest request{};
         request.chat_id = chat_id;
         request.phone_number = phone_number;
@@ -531,7 +531,7 @@ namespace TgBot {
         co_return parseResponse<Message::Ptr>(response);
     }
 
-    coro::task<TelegramResponse<Message::Ptr>> Api::sendPoll(int64_t chat_id, const std::string& question, const std::vector<InputPollOption::Ptr>& options, const std::string& business_connection_id, int64_t message_thread_id, const std::string& question_parse_mode, const std::vector<MessageEntity::Ptr>& question_entities, bool is_anonymous, const std::string& type_, bool allows_multiple_answers, int64_t correct_option_id, const std::string& explanation, const std::string& explanation_parse_mode, const std::vector<MessageEntity::Ptr>& explanation_entities, int64_t open_period, int64_t close_date, bool is_closed, bool disable_notification, bool protect_content, bool allow_paid_broadcast, const std::string& message_effect_id, const ReplyParameters::Ptr& reply_parameters, const KeyboardOption::Ptr& reply_markup) const {
+    coro::task<TelegramResponse<Message::Ptr>> Api::sendPoll(std::int64_t chat_id, const std::string& question, const std::vector<InputPollOption::Ptr>& options, const std::string& business_connection_id, std::int64_t message_thread_id, const std::string& question_parse_mode, const std::vector<MessageEntity::Ptr>& question_entities, bool is_anonymous, const std::string& type_, bool allows_multiple_answers, std::int64_t correct_option_id, const std::string& explanation, const std::string& explanation_parse_mode, const std::vector<MessageEntity::Ptr>& explanation_entities, std::int64_t open_period, std::int64_t close_date, bool is_closed, bool disable_notification, bool protect_content, bool allow_paid_broadcast, const std::string& message_effect_id, ReplyParameters::Ptr reply_parameters, KeyboardOption::Ptr reply_markup) const {
         TgBot::SendPollRequest request{};
         request.chat_id = chat_id;
         request.question = question;
@@ -564,7 +564,7 @@ namespace TgBot {
         co_return parseResponse<Message::Ptr>(response);
     }
 
-    coro::task<TelegramResponse<Message::Ptr>> Api::sendChecklist(const std::string& business_connection_id, int64_t chat_id, const InputChecklist::Ptr& checklist, bool disable_notification, bool protect_content, const std::string& message_effect_id, const ReplyParameters::Ptr& reply_parameters, const InlineKeyboardMarkup::Ptr& reply_markup) const {
+    coro::task<TelegramResponse<Message::Ptr>> Api::sendChecklist(const std::string& business_connection_id, std::int64_t chat_id, InputChecklist::Ptr checklist, bool disable_notification, bool protect_content, const std::string& message_effect_id, ReplyParameters::Ptr reply_parameters, InlineKeyboardMarkup::Ptr reply_markup) const {
         TgBot::SendChecklistRequest request{};
         request.business_connection_id = business_connection_id;
         request.chat_id = chat_id;
@@ -582,7 +582,7 @@ namespace TgBot {
         co_return parseResponse<Message::Ptr>(response);
     }
 
-    coro::task<TelegramResponse<Message::Ptr>> Api::sendDice(int64_t chat_id, const std::string& business_connection_id, int64_t message_thread_id, int64_t direct_messages_topic_id, const std::string& emoji, bool disable_notification, bool protect_content, bool allow_paid_broadcast, const std::string& message_effect_id, const SuggestedPostParameters::Ptr& suggested_post_parameters, const ReplyParameters::Ptr& reply_parameters, const KeyboardOption::Ptr& reply_markup) const {
+    coro::task<TelegramResponse<Message::Ptr>> Api::sendDice(std::int64_t chat_id, const std::string& business_connection_id, std::int64_t message_thread_id, std::int64_t direct_messages_topic_id, const std::string& emoji, bool disable_notification, bool protect_content, bool allow_paid_broadcast, const std::string& message_effect_id, SuggestedPostParameters::Ptr suggested_post_parameters, ReplyParameters::Ptr reply_parameters, KeyboardOption::Ptr reply_markup) const {
         TgBot::SendDiceRequest request{};
         request.chat_id = chat_id;
         request.business_connection_id = business_connection_id;
@@ -604,7 +604,7 @@ namespace TgBot {
         co_return parseResponse<Message::Ptr>(response);
     }
 
-    coro::task<TelegramResponse<bool>> Api::sendMessageDraft(int64_t chat_id, int64_t draft_id, const std::string& text, int64_t message_thread_id, const std::string& parse_mode, const std::vector<MessageEntity::Ptr>& entities) const {
+    coro::task<TelegramResponse<bool>> Api::sendMessageDraft(std::int64_t chat_id, std::int64_t draft_id, const std::string& text, std::int64_t message_thread_id, const std::string& parse_mode, const std::vector<MessageEntity::Ptr>& entities) const {
         TgBot::SendMessageDraftRequest request{};
         request.chat_id = chat_id;
         request.draft_id = draft_id;
@@ -620,7 +620,7 @@ namespace TgBot {
         co_return parseResponse<bool>(response);
     }
 
-    coro::task<TelegramResponse<bool>> Api::sendChatAction(int64_t chat_id, const std::string& action, const std::string& business_connection_id, int64_t message_thread_id) const {
+    coro::task<TelegramResponse<bool>> Api::sendChatAction(std::int64_t chat_id, const std::string& action, const std::string& business_connection_id, std::int64_t message_thread_id) const {
         TgBot::SendChatActionRequest request{};
         request.chat_id = chat_id;
         request.action = action;
@@ -634,7 +634,7 @@ namespace TgBot {
         co_return parseResponse<bool>(response);
     }
 
-    coro::task<TelegramResponse<bool>> Api::setMessageReaction(int64_t chat_id, int64_t message_id, const std::vector<ReactionType::Ptr>& reaction, bool is_big) const {
+    coro::task<TelegramResponse<bool>> Api::setMessageReaction(std::int64_t chat_id, std::int64_t message_id, const std::vector<ReactionType::Ptr>& reaction, bool is_big) const {
         TgBot::SetMessageReactionRequest request{};
         request.chat_id = chat_id;
         request.message_id = message_id;
@@ -648,7 +648,7 @@ namespace TgBot {
         co_return parseResponse<bool>(response);
     }
 
-    coro::task<TelegramResponse<UserProfilePhotos::Ptr>> Api::getUserProfilePhotos(int64_t user_id, int64_t offset, int64_t limit) const {
+    coro::task<TelegramResponse<UserProfilePhotos::Ptr>> Api::getUserProfilePhotos(std::int64_t user_id, std::int64_t offset, std::int64_t limit) const {
         TgBot::GetUserProfilePhotosRequest request{};
         request.user_id = user_id;
         request.offset = offset;
@@ -661,7 +661,7 @@ namespace TgBot {
         co_return parseResponse<UserProfilePhotos::Ptr>(response);
     }
 
-    coro::task<TelegramResponse<UserProfileAudios::Ptr>> Api::getUserProfileAudios(int64_t user_id, int64_t offset, int64_t limit) const {
+    coro::task<TelegramResponse<UserProfileAudios::Ptr>> Api::getUserProfileAudios(std::int64_t user_id, std::int64_t offset, std::int64_t limit) const {
         TgBot::GetUserProfileAudiosRequest request{};
         request.user_id = user_id;
         request.offset = offset;
@@ -674,7 +674,7 @@ namespace TgBot {
         co_return parseResponse<UserProfileAudios::Ptr>(response);
     }
 
-    coro::task<TelegramResponse<bool>> Api::setUserEmojiStatus(int64_t user_id, const std::string& emoji_status_custom_emoji_id, int64_t emoji_status_expiration_date) const {
+    coro::task<TelegramResponse<bool>> Api::setUserEmojiStatus(std::int64_t user_id, const std::string& emoji_status_custom_emoji_id, std::int64_t emoji_status_expiration_date) const {
         TgBot::SetUserEmojiStatusRequest request{};
         request.user_id = user_id;
         request.emoji_status_custom_emoji_id = emoji_status_custom_emoji_id;
@@ -698,7 +698,7 @@ namespace TgBot {
         co_return parseResponse<File::Ptr>(response);
     }
 
-    coro::task<TelegramResponse<bool>> Api::banChatMember(int64_t chat_id, int64_t user_id, int64_t until_date, bool revoke_messages) const {
+    coro::task<TelegramResponse<bool>> Api::banChatMember(std::int64_t chat_id, std::int64_t user_id, std::int64_t until_date, bool revoke_messages) const {
         TgBot::BanChatMemberRequest request{};
         request.chat_id = chat_id;
         request.user_id = user_id;
@@ -712,7 +712,7 @@ namespace TgBot {
         co_return parseResponse<bool>(response);
     }
 
-    coro::task<TelegramResponse<bool>> Api::unbanChatMember(int64_t chat_id, int64_t user_id, bool only_if_banned) const {
+    coro::task<TelegramResponse<bool>> Api::unbanChatMember(std::int64_t chat_id, std::int64_t user_id, bool only_if_banned) const {
         TgBot::UnbanChatMemberRequest request{};
         request.chat_id = chat_id;
         request.user_id = user_id;
@@ -725,7 +725,7 @@ namespace TgBot {
         co_return parseResponse<bool>(response);
     }
 
-    coro::task<TelegramResponse<bool>> Api::restrictChatMember(int64_t chat_id, int64_t user_id, const ChatPermissions::Ptr& permissions, bool use_independent_chat_permissions, int64_t until_date) const {
+    coro::task<TelegramResponse<bool>> Api::restrictChatMember(std::int64_t chat_id, std::int64_t user_id, ChatPermissions::Ptr permissions, bool use_independent_chat_permissions, std::int64_t until_date) const {
         TgBot::RestrictChatMemberRequest request{};
         request.chat_id = chat_id;
         request.user_id = user_id;
@@ -740,7 +740,7 @@ namespace TgBot {
         co_return parseResponse<bool>(response);
     }
 
-    coro::task<TelegramResponse<bool>> Api::promoteChatMember(int64_t chat_id, int64_t user_id, bool is_anonymous, bool can_manage_chat, bool can_delete_messages, bool can_manage_video_chats, bool can_restrict_members, bool can_promote_members, bool can_change_info, bool can_invite_users, bool can_post_stories, bool can_edit_stories, bool can_delete_stories, bool can_post_messages, bool can_edit_messages, bool can_pin_messages, bool can_manage_topics, bool can_manage_direct_messages, bool can_manage_tags) const {
+    coro::task<TelegramResponse<bool>> Api::promoteChatMember(std::int64_t chat_id, std::int64_t user_id, bool is_anonymous, bool can_manage_chat, bool can_delete_messages, bool can_manage_video_chats, bool can_restrict_members, bool can_promote_members, bool can_change_info, bool can_invite_users, bool can_post_stories, bool can_edit_stories, bool can_delete_stories, bool can_post_messages, bool can_edit_messages, bool can_pin_messages, bool can_manage_topics, bool can_manage_direct_messages, bool can_manage_tags) const {
         TgBot::PromoteChatMemberRequest request{};
         request.chat_id = chat_id;
         request.user_id = user_id;
@@ -769,7 +769,7 @@ namespace TgBot {
         co_return parseResponse<bool>(response);
     }
 
-    coro::task<TelegramResponse<bool>> Api::setChatAdministratorCustomTitle(int64_t chat_id, int64_t user_id, const std::string& custom_title) const {
+    coro::task<TelegramResponse<bool>> Api::setChatAdministratorCustomTitle(std::int64_t chat_id, std::int64_t user_id, const std::string& custom_title) const {
         TgBot::SetChatAdministratorCustomTitleRequest request{};
         request.chat_id = chat_id;
         request.user_id = user_id;
@@ -782,7 +782,7 @@ namespace TgBot {
         co_return parseResponse<bool>(response);
     }
 
-    coro::task<TelegramResponse<bool>> Api::setChatMemberTag(int64_t chat_id, int64_t user_id, const std::string& tag) const {
+    coro::task<TelegramResponse<bool>> Api::setChatMemberTag(std::int64_t chat_id, std::int64_t user_id, const std::string& tag) const {
         TgBot::SetChatMemberTagRequest request{};
         request.chat_id = chat_id;
         request.user_id = user_id;
@@ -795,7 +795,7 @@ namespace TgBot {
         co_return parseResponse<bool>(response);
     }
 
-    coro::task<TelegramResponse<bool>> Api::banChatSenderChat(int64_t chat_id, int64_t sender_chat_id) const {
+    coro::task<TelegramResponse<bool>> Api::banChatSenderChat(std::int64_t chat_id, std::int64_t sender_chat_id) const {
         TgBot::BanChatSenderChatRequest request{};
         request.chat_id = chat_id;
         request.sender_chat_id = sender_chat_id;
@@ -807,7 +807,7 @@ namespace TgBot {
         co_return parseResponse<bool>(response);
     }
 
-    coro::task<TelegramResponse<bool>> Api::unbanChatSenderChat(int64_t chat_id, int64_t sender_chat_id) const {
+    coro::task<TelegramResponse<bool>> Api::unbanChatSenderChat(std::int64_t chat_id, std::int64_t sender_chat_id) const {
         TgBot::UnbanChatSenderChatRequest request{};
         request.chat_id = chat_id;
         request.sender_chat_id = sender_chat_id;
@@ -819,7 +819,7 @@ namespace TgBot {
         co_return parseResponse<bool>(response);
     }
 
-    coro::task<TelegramResponse<bool>> Api::setChatPermissions(int64_t chat_id, const ChatPermissions::Ptr& permissions, bool use_independent_chat_permissions) const {
+    coro::task<TelegramResponse<bool>> Api::setChatPermissions(std::int64_t chat_id, ChatPermissions::Ptr permissions, bool use_independent_chat_permissions) const {
         TgBot::SetChatPermissionsRequest request{};
         request.chat_id = chat_id;
         request.permissions = permissions;
@@ -832,7 +832,7 @@ namespace TgBot {
         co_return parseResponse<bool>(response);
     }
 
-    coro::task<TelegramResponse<std::string>> Api::exportChatInviteLink(int64_t chat_id) const {
+    coro::task<TelegramResponse<std::string>> Api::exportChatInviteLink(std::int64_t chat_id) const {
         TgBot::ExportChatInviteLinkRequest request{};
         request.chat_id = chat_id;
         json j = request;
@@ -843,7 +843,7 @@ namespace TgBot {
         co_return parseResponse<std::string>(response);
     }
 
-    coro::task<TelegramResponse<ChatInviteLink::Ptr>> Api::createChatInviteLink(int64_t chat_id, const std::string& name, int64_t expire_date, int64_t member_limit, bool creates_join_request) const {
+    coro::task<TelegramResponse<ChatInviteLink::Ptr>> Api::createChatInviteLink(std::int64_t chat_id, const std::string& name, std::int64_t expire_date, std::int64_t member_limit, bool creates_join_request) const {
         TgBot::CreateChatInviteLinkRequest request{};
         request.chat_id = chat_id;
         request.name = name;
@@ -858,7 +858,7 @@ namespace TgBot {
         co_return parseResponse<ChatInviteLink::Ptr>(response);
     }
 
-    coro::task<TelegramResponse<ChatInviteLink::Ptr>> Api::editChatInviteLink(int64_t chat_id, const std::string& invite_link, const std::string& name, int64_t expire_date, int64_t member_limit, bool creates_join_request) const {
+    coro::task<TelegramResponse<ChatInviteLink::Ptr>> Api::editChatInviteLink(std::int64_t chat_id, const std::string& invite_link, const std::string& name, std::int64_t expire_date, std::int64_t member_limit, bool creates_join_request) const {
         TgBot::EditChatInviteLinkRequest request{};
         request.chat_id = chat_id;
         request.invite_link = invite_link;
@@ -874,7 +874,7 @@ namespace TgBot {
         co_return parseResponse<ChatInviteLink::Ptr>(response);
     }
 
-    coro::task<TelegramResponse<ChatInviteLink::Ptr>> Api::createChatSubscriptionInviteLink(int64_t chat_id, int64_t subscription_period, int64_t subscription_price, const std::string& name) const {
+    coro::task<TelegramResponse<ChatInviteLink::Ptr>> Api::createChatSubscriptionInviteLink(std::int64_t chat_id, std::int64_t subscription_period, std::int64_t subscription_price, const std::string& name) const {
         TgBot::CreateChatSubscriptionInviteLinkRequest request{};
         request.chat_id = chat_id;
         request.subscription_period = subscription_period;
@@ -888,7 +888,7 @@ namespace TgBot {
         co_return parseResponse<ChatInviteLink::Ptr>(response);
     }
 
-    coro::task<TelegramResponse<ChatInviteLink::Ptr>> Api::editChatSubscriptionInviteLink(int64_t chat_id, const std::string& invite_link, const std::string& name) const {
+    coro::task<TelegramResponse<ChatInviteLink::Ptr>> Api::editChatSubscriptionInviteLink(std::int64_t chat_id, const std::string& invite_link, const std::string& name) const {
         TgBot::EditChatSubscriptionInviteLinkRequest request{};
         request.chat_id = chat_id;
         request.invite_link = invite_link;
@@ -901,7 +901,7 @@ namespace TgBot {
         co_return parseResponse<ChatInviteLink::Ptr>(response);
     }
 
-    coro::task<TelegramResponse<ChatInviteLink::Ptr>> Api::revokeChatInviteLink(int64_t chat_id, const std::string& invite_link) const {
+    coro::task<TelegramResponse<ChatInviteLink::Ptr>> Api::revokeChatInviteLink(std::int64_t chat_id, const std::string& invite_link) const {
         TgBot::RevokeChatInviteLinkRequest request{};
         request.chat_id = chat_id;
         request.invite_link = invite_link;
@@ -913,7 +913,7 @@ namespace TgBot {
         co_return parseResponse<ChatInviteLink::Ptr>(response);
     }
 
-    coro::task<TelegramResponse<bool>> Api::approveChatJoinRequest(int64_t chat_id, int64_t user_id) const {
+    coro::task<TelegramResponse<bool>> Api::approveChatJoinRequest(std::int64_t chat_id, std::int64_t user_id) const {
         TgBot::ApproveChatJoinRequestRequest request{};
         request.chat_id = chat_id;
         request.user_id = user_id;
@@ -925,7 +925,7 @@ namespace TgBot {
         co_return parseResponse<bool>(response);
     }
 
-    coro::task<TelegramResponse<bool>> Api::declineChatJoinRequest(int64_t chat_id, int64_t user_id) const {
+    coro::task<TelegramResponse<bool>> Api::declineChatJoinRequest(std::int64_t chat_id, std::int64_t user_id) const {
         TgBot::DeclineChatJoinRequestRequest request{};
         request.chat_id = chat_id;
         request.user_id = user_id;
@@ -937,7 +937,7 @@ namespace TgBot {
         co_return parseResponse<bool>(response);
     }
 
-    coro::task<TelegramResponse<bool>> Api::setChatPhoto(int64_t chat_id, const InputFile::Ptr& photo) const {
+    coro::task<TelegramResponse<bool>> Api::setChatPhoto(std::int64_t chat_id, InputFile::Ptr photo) const {
         TgBot::SetChatPhotoRequest request{};
         request.chat_id = chat_id;
         request.photo = photo;
@@ -950,7 +950,7 @@ namespace TgBot {
         co_return parseResponse<bool>(response);
     }
 
-    coro::task<TelegramResponse<bool>> Api::deleteChatPhoto(int64_t chat_id) const {
+    coro::task<TelegramResponse<bool>> Api::deleteChatPhoto(std::int64_t chat_id) const {
         TgBot::DeleteChatPhotoRequest request{};
         request.chat_id = chat_id;
         json j = request;
@@ -961,7 +961,7 @@ namespace TgBot {
         co_return parseResponse<bool>(response);
     }
 
-    coro::task<TelegramResponse<bool>> Api::setChatTitle(int64_t chat_id, const std::string& title) const {
+    coro::task<TelegramResponse<bool>> Api::setChatTitle(std::int64_t chat_id, const std::string& title) const {
         TgBot::SetChatTitleRequest request{};
         request.chat_id = chat_id;
         request.title = title;
@@ -973,7 +973,7 @@ namespace TgBot {
         co_return parseResponse<bool>(response);
     }
 
-    coro::task<TelegramResponse<bool>> Api::setChatDescription(int64_t chat_id, const std::string& description) const {
+    coro::task<TelegramResponse<bool>> Api::setChatDescription(std::int64_t chat_id, const std::string& description) const {
         TgBot::SetChatDescriptionRequest request{};
         request.chat_id = chat_id;
         request.description = description;
@@ -985,7 +985,7 @@ namespace TgBot {
         co_return parseResponse<bool>(response);
     }
 
-    coro::task<TelegramResponse<bool>> Api::pinChatMessage(int64_t chat_id, int64_t message_id, const std::string& business_connection_id, bool disable_notification) const {
+    coro::task<TelegramResponse<bool>> Api::pinChatMessage(std::int64_t chat_id, std::int64_t message_id, const std::string& business_connection_id, bool disable_notification) const {
         TgBot::PinChatMessageRequest request{};
         request.chat_id = chat_id;
         request.message_id = message_id;
@@ -999,7 +999,7 @@ namespace TgBot {
         co_return parseResponse<bool>(response);
     }
 
-    coro::task<TelegramResponse<bool>> Api::unpinChatMessage(int64_t chat_id, const std::string& business_connection_id, int64_t message_id) const {
+    coro::task<TelegramResponse<bool>> Api::unpinChatMessage(std::int64_t chat_id, const std::string& business_connection_id, std::int64_t message_id) const {
         TgBot::UnpinChatMessageRequest request{};
         request.chat_id = chat_id;
         request.business_connection_id = business_connection_id;
@@ -1012,7 +1012,7 @@ namespace TgBot {
         co_return parseResponse<bool>(response);
     }
 
-    coro::task<TelegramResponse<bool>> Api::unpinAllChatMessages(int64_t chat_id) const {
+    coro::task<TelegramResponse<bool>> Api::unpinAllChatMessages(std::int64_t chat_id) const {
         TgBot::UnpinAllChatMessagesRequest request{};
         request.chat_id = chat_id;
         json j = request;
@@ -1023,7 +1023,7 @@ namespace TgBot {
         co_return parseResponse<bool>(response);
     }
 
-    coro::task<TelegramResponse<bool>> Api::leaveChat(int64_t chat_id) const {
+    coro::task<TelegramResponse<bool>> Api::leaveChat(std::int64_t chat_id) const {
         TgBot::LeaveChatRequest request{};
         request.chat_id = chat_id;
         json j = request;
@@ -1034,7 +1034,7 @@ namespace TgBot {
         co_return parseResponse<bool>(response);
     }
 
-    coro::task<TelegramResponse<ChatFullInfo::Ptr>> Api::getChat(int64_t chat_id) const {
+    coro::task<TelegramResponse<ChatFullInfo::Ptr>> Api::getChat(std::int64_t chat_id) const {
         TgBot::GetChatRequest request{};
         request.chat_id = chat_id;
         json j = request;
@@ -1045,7 +1045,7 @@ namespace TgBot {
         co_return parseResponse<ChatFullInfo::Ptr>(response);
     }
 
-    coro::task<TelegramResponse<std::vector<ChatMember::Ptr>>> Api::getChatAdministrators(int64_t chat_id) const {
+    coro::task<TelegramResponse<std::vector<ChatMember::Ptr>>> Api::getChatAdministrators(std::int64_t chat_id) const {
         TgBot::GetChatAdministratorsRequest request{};
         request.chat_id = chat_id;
         json j = request;
@@ -1056,7 +1056,7 @@ namespace TgBot {
         co_return parseResponse<std::vector<ChatMember::Ptr>>(response);
     }
 
-    coro::task<TelegramResponse<int64_t>> Api::getChatMemberCount(int64_t chat_id) const {
+    coro::task<TelegramResponse<std::int64_t>> Api::getChatMemberCount(std::int64_t chat_id) const {
         TgBot::GetChatMemberCountRequest request{};
         request.chat_id = chat_id;
         json j = request;
@@ -1064,10 +1064,10 @@ namespace TgBot {
         std::string contentType = "application/json";
         const std::string target = "/bot" + api_key_ + "/getChatMemberCount";
         std::string response = co_await http_client_.makeRequest(HttpVerb::POST, target, body, contentType);
-        co_return parseResponse<int64_t>(response);
+        co_return parseResponse<std::int64_t>(response);
     }
 
-    coro::task<TelegramResponse<ChatMember::Ptr>> Api::getChatMember(int64_t chat_id, int64_t user_id) const {
+    coro::task<TelegramResponse<ChatMember::Ptr>> Api::getChatMember(std::int64_t chat_id, std::int64_t user_id) const {
         TgBot::GetChatMemberRequest request{};
         request.chat_id = chat_id;
         request.user_id = user_id;
@@ -1079,7 +1079,7 @@ namespace TgBot {
         co_return parseResponse<ChatMember::Ptr>(response);
     }
 
-    coro::task<TelegramResponse<bool>> Api::setChatStickerSet(int64_t chat_id, const std::string& sticker_set_name) const {
+    coro::task<TelegramResponse<bool>> Api::setChatStickerSet(std::int64_t chat_id, const std::string& sticker_set_name) const {
         TgBot::SetChatStickerSetRequest request{};
         request.chat_id = chat_id;
         request.sticker_set_name = sticker_set_name;
@@ -1091,7 +1091,7 @@ namespace TgBot {
         co_return parseResponse<bool>(response);
     }
 
-    coro::task<TelegramResponse<bool>> Api::deleteChatStickerSet(int64_t chat_id) const {
+    coro::task<TelegramResponse<bool>> Api::deleteChatStickerSet(std::int64_t chat_id) const {
         TgBot::DeleteChatStickerSetRequest request{};
         request.chat_id = chat_id;
         json j = request;
@@ -1108,7 +1108,7 @@ namespace TgBot {
         co_return parseResponse<std::vector<Sticker::Ptr>>(response);
     }
 
-    coro::task<TelegramResponse<ForumTopic::Ptr>> Api::createForumTopic(int64_t chat_id, const std::string& name, int64_t icon_color, const std::string& icon_custom_emoji_id) const {
+    coro::task<TelegramResponse<ForumTopic::Ptr>> Api::createForumTopic(std::int64_t chat_id, const std::string& name, std::int64_t icon_color, const std::string& icon_custom_emoji_id) const {
         TgBot::CreateForumTopicRequest request{};
         request.chat_id = chat_id;
         request.name = name;
@@ -1122,7 +1122,7 @@ namespace TgBot {
         co_return parseResponse<ForumTopic::Ptr>(response);
     }
 
-    coro::task<TelegramResponse<bool>> Api::editForumTopic(int64_t chat_id, int64_t message_thread_id, const std::string& name, const std::string& icon_custom_emoji_id) const {
+    coro::task<TelegramResponse<bool>> Api::editForumTopic(std::int64_t chat_id, std::int64_t message_thread_id, const std::string& name, const std::string& icon_custom_emoji_id) const {
         TgBot::EditForumTopicRequest request{};
         request.chat_id = chat_id;
         request.message_thread_id = message_thread_id;
@@ -1136,7 +1136,7 @@ namespace TgBot {
         co_return parseResponse<bool>(response);
     }
 
-    coro::task<TelegramResponse<bool>> Api::closeForumTopic(int64_t chat_id, int64_t message_thread_id) const {
+    coro::task<TelegramResponse<bool>> Api::closeForumTopic(std::int64_t chat_id, std::int64_t message_thread_id) const {
         TgBot::CloseForumTopicRequest request{};
         request.chat_id = chat_id;
         request.message_thread_id = message_thread_id;
@@ -1148,7 +1148,7 @@ namespace TgBot {
         co_return parseResponse<bool>(response);
     }
 
-    coro::task<TelegramResponse<bool>> Api::reopenForumTopic(int64_t chat_id, int64_t message_thread_id) const {
+    coro::task<TelegramResponse<bool>> Api::reopenForumTopic(std::int64_t chat_id, std::int64_t message_thread_id) const {
         TgBot::ReopenForumTopicRequest request{};
         request.chat_id = chat_id;
         request.message_thread_id = message_thread_id;
@@ -1160,7 +1160,7 @@ namespace TgBot {
         co_return parseResponse<bool>(response);
     }
 
-    coro::task<TelegramResponse<bool>> Api::deleteForumTopic(int64_t chat_id, int64_t message_thread_id) const {
+    coro::task<TelegramResponse<bool>> Api::deleteForumTopic(std::int64_t chat_id, std::int64_t message_thread_id) const {
         TgBot::DeleteForumTopicRequest request{};
         request.chat_id = chat_id;
         request.message_thread_id = message_thread_id;
@@ -1172,7 +1172,7 @@ namespace TgBot {
         co_return parseResponse<bool>(response);
     }
 
-    coro::task<TelegramResponse<bool>> Api::unpinAllForumTopicMessages(int64_t chat_id, int64_t message_thread_id) const {
+    coro::task<TelegramResponse<bool>> Api::unpinAllForumTopicMessages(std::int64_t chat_id, std::int64_t message_thread_id) const {
         TgBot::UnpinAllForumTopicMessagesRequest request{};
         request.chat_id = chat_id;
         request.message_thread_id = message_thread_id;
@@ -1184,7 +1184,7 @@ namespace TgBot {
         co_return parseResponse<bool>(response);
     }
 
-    coro::task<TelegramResponse<bool>> Api::editGeneralForumTopic(int64_t chat_id, const std::string& name) const {
+    coro::task<TelegramResponse<bool>> Api::editGeneralForumTopic(std::int64_t chat_id, const std::string& name) const {
         TgBot::EditGeneralForumTopicRequest request{};
         request.chat_id = chat_id;
         request.name = name;
@@ -1196,7 +1196,7 @@ namespace TgBot {
         co_return parseResponse<bool>(response);
     }
 
-    coro::task<TelegramResponse<bool>> Api::closeGeneralForumTopic(int64_t chat_id) const {
+    coro::task<TelegramResponse<bool>> Api::closeGeneralForumTopic(std::int64_t chat_id) const {
         TgBot::CloseGeneralForumTopicRequest request{};
         request.chat_id = chat_id;
         json j = request;
@@ -1207,7 +1207,7 @@ namespace TgBot {
         co_return parseResponse<bool>(response);
     }
 
-    coro::task<TelegramResponse<bool>> Api::reopenGeneralForumTopic(int64_t chat_id) const {
+    coro::task<TelegramResponse<bool>> Api::reopenGeneralForumTopic(std::int64_t chat_id) const {
         TgBot::ReopenGeneralForumTopicRequest request{};
         request.chat_id = chat_id;
         json j = request;
@@ -1218,7 +1218,7 @@ namespace TgBot {
         co_return parseResponse<bool>(response);
     }
 
-    coro::task<TelegramResponse<bool>> Api::hideGeneralForumTopic(int64_t chat_id) const {
+    coro::task<TelegramResponse<bool>> Api::hideGeneralForumTopic(std::int64_t chat_id) const {
         TgBot::HideGeneralForumTopicRequest request{};
         request.chat_id = chat_id;
         json j = request;
@@ -1229,7 +1229,7 @@ namespace TgBot {
         co_return parseResponse<bool>(response);
     }
 
-    coro::task<TelegramResponse<bool>> Api::unhideGeneralForumTopic(int64_t chat_id) const {
+    coro::task<TelegramResponse<bool>> Api::unhideGeneralForumTopic(std::int64_t chat_id) const {
         TgBot::UnhideGeneralForumTopicRequest request{};
         request.chat_id = chat_id;
         json j = request;
@@ -1240,7 +1240,7 @@ namespace TgBot {
         co_return parseResponse<bool>(response);
     }
 
-    coro::task<TelegramResponse<bool>> Api::unpinAllGeneralForumTopicMessages(int64_t chat_id) const {
+    coro::task<TelegramResponse<bool>> Api::unpinAllGeneralForumTopicMessages(std::int64_t chat_id) const {
         TgBot::UnpinAllGeneralForumTopicMessagesRequest request{};
         request.chat_id = chat_id;
         json j = request;
@@ -1251,7 +1251,7 @@ namespace TgBot {
         co_return parseResponse<bool>(response);
     }
 
-    coro::task<TelegramResponse<bool>> Api::answerCallbackQuery(const std::string& callback_query_id, const std::string& text, bool show_alert, const std::string& url, int64_t cache_time) const {
+    coro::task<TelegramResponse<bool>> Api::answerCallbackQuery(const std::string& callback_query_id, const std::string& text, bool show_alert, const std::string& url, std::int64_t cache_time) const {
         TgBot::AnswerCallbackQueryRequest request{};
         request.callback_query_id = callback_query_id;
         request.text = text;
@@ -1266,7 +1266,7 @@ namespace TgBot {
         co_return parseResponse<bool>(response);
     }
 
-    coro::task<TelegramResponse<UserChatBoosts::Ptr>> Api::getUserChatBoosts(int64_t chat_id, int64_t user_id) const {
+    coro::task<TelegramResponse<UserChatBoosts::Ptr>> Api::getUserChatBoosts(std::int64_t chat_id, std::int64_t user_id) const {
         TgBot::GetUserChatBoostsRequest request{};
         request.chat_id = chat_id;
         request.user_id = user_id;
@@ -1289,7 +1289,7 @@ namespace TgBot {
         co_return parseResponse<BusinessConnection::Ptr>(response);
     }
 
-    coro::task<TelegramResponse<bool>> Api::setMyCommands(const std::vector<BotCommand::Ptr>& commands, const BotCommandScope::Ptr& scope, const std::string& language_code) const {
+    coro::task<TelegramResponse<bool>> Api::setMyCommands(const std::vector<BotCommand::Ptr>& commands, BotCommandScope::Ptr scope, const std::string& language_code) const {
         TgBot::SetMyCommandsRequest request{};
         request.commands = commands;
         request.scope = scope;
@@ -1302,7 +1302,7 @@ namespace TgBot {
         co_return parseResponse<bool>(response);
     }
 
-    coro::task<TelegramResponse<bool>> Api::deleteMyCommands(const BotCommandScope::Ptr& scope, const std::string& language_code) const {
+    coro::task<TelegramResponse<bool>> Api::deleteMyCommands(BotCommandScope::Ptr scope, const std::string& language_code) const {
         TgBot::DeleteMyCommandsRequest request{};
         request.scope = scope;
         request.language_code = language_code;
@@ -1314,7 +1314,7 @@ namespace TgBot {
         co_return parseResponse<bool>(response);
     }
 
-    coro::task<TelegramResponse<std::vector<BotCommand::Ptr>>> Api::getMyCommands(const BotCommandScope::Ptr& scope, const std::string& language_code) const {
+    coro::task<TelegramResponse<std::vector<BotCommand::Ptr>>> Api::getMyCommands(BotCommandScope::Ptr scope, const std::string& language_code) const {
         TgBot::GetMyCommandsRequest request{};
         request.scope = scope;
         request.language_code = language_code;
@@ -1395,7 +1395,7 @@ namespace TgBot {
         co_return parseResponse<BotShortDescription::Ptr>(response);
     }
 
-    coro::task<TelegramResponse<bool>> Api::setMyProfilePhoto(const InputProfilePhoto::Ptr& photo) const {
+    coro::task<TelegramResponse<bool>> Api::setMyProfilePhoto(InputProfilePhoto::Ptr photo) const {
         TgBot::SetMyProfilePhotoRequest request{};
         request.photo = photo;
         json j = request;
@@ -1406,7 +1406,7 @@ namespace TgBot {
         co_return parseResponse<bool>(response);
     }
 
-    coro::task<TelegramResponse<bool>> Api::setChatMenuButton(int64_t chat_id, const MenuButton::Ptr& menu_button) const {
+    coro::task<TelegramResponse<bool>> Api::setChatMenuButton(std::int64_t chat_id, MenuButton::Ptr menu_button) const {
         TgBot::SetChatMenuButtonRequest request{};
         request.chat_id = chat_id;
         request.menu_button = menu_button;
@@ -1418,7 +1418,7 @@ namespace TgBot {
         co_return parseResponse<bool>(response);
     }
 
-    coro::task<TelegramResponse<MenuButton::Ptr>> Api::getChatMenuButton(int64_t chat_id) const {
+    coro::task<TelegramResponse<MenuButton::Ptr>> Api::getChatMenuButton(std::int64_t chat_id) const {
         TgBot::GetChatMenuButtonRequest request{};
         request.chat_id = chat_id;
         json j = request;
@@ -1429,7 +1429,7 @@ namespace TgBot {
         co_return parseResponse<MenuButton::Ptr>(response);
     }
 
-    coro::task<TelegramResponse<bool>> Api::setMyDefaultAdministratorRights(const ChatAdministratorRights::Ptr& rights, bool for_channels) const {
+    coro::task<TelegramResponse<bool>> Api::setMyDefaultAdministratorRights(ChatAdministratorRights::Ptr rights, bool for_channels) const {
         TgBot::SetMyDefaultAdministratorRightsRequest request{};
         request.rights = rights;
         request.for_channels = for_channels;
@@ -1452,7 +1452,7 @@ namespace TgBot {
         co_return parseResponse<ChatAdministratorRights::Ptr>(response);
     }
 
-    coro::task<TelegramResponse<bool>> Api::sendGift(const std::string& gift_id, int64_t user_id, int64_t chat_id, bool pay_for_upgrade, const std::string& text, const std::string& text_parse_mode, const std::vector<MessageEntity::Ptr>& text_entities) const {
+    coro::task<TelegramResponse<bool>> Api::sendGift(const std::string& gift_id, std::int64_t user_id, std::int64_t chat_id, bool pay_for_upgrade, const std::string& text, const std::string& text_parse_mode, const std::vector<MessageEntity::Ptr>& text_entities) const {
         TgBot::SendGiftRequest request{};
         request.gift_id = gift_id;
         request.user_id = user_id;
@@ -1469,7 +1469,7 @@ namespace TgBot {
         co_return parseResponse<bool>(response);
     }
 
-    coro::task<TelegramResponse<bool>> Api::giftPremiumSubscription(int64_t user_id, int64_t month_count, int64_t star_count, const std::string& text, const std::string& text_parse_mode, const std::vector<MessageEntity::Ptr>& text_entities) const {
+    coro::task<TelegramResponse<bool>> Api::giftPremiumSubscription(std::int64_t user_id, std::int64_t month_count, std::int64_t star_count, const std::string& text, const std::string& text_parse_mode, const std::vector<MessageEntity::Ptr>& text_entities) const {
         TgBot::GiftPremiumSubscriptionRequest request{};
         request.user_id = user_id;
         request.month_count = month_count;
@@ -1485,7 +1485,7 @@ namespace TgBot {
         co_return parseResponse<bool>(response);
     }
 
-    coro::task<TelegramResponse<bool>> Api::verifyUser(int64_t user_id, const std::string& custom_description) const {
+    coro::task<TelegramResponse<bool>> Api::verifyUser(std::int64_t user_id, const std::string& custom_description) const {
         TgBot::VerifyUserRequest request{};
         request.user_id = user_id;
         request.custom_description = custom_description;
@@ -1497,7 +1497,7 @@ namespace TgBot {
         co_return parseResponse<bool>(response);
     }
 
-    coro::task<TelegramResponse<bool>> Api::verifyChat(int64_t chat_id, const std::string& custom_description) const {
+    coro::task<TelegramResponse<bool>> Api::verifyChat(std::int64_t chat_id, const std::string& custom_description) const {
         TgBot::VerifyChatRequest request{};
         request.chat_id = chat_id;
         request.custom_description = custom_description;
@@ -1509,7 +1509,7 @@ namespace TgBot {
         co_return parseResponse<bool>(response);
     }
 
-    coro::task<TelegramResponse<bool>> Api::removeUserVerification(int64_t user_id) const {
+    coro::task<TelegramResponse<bool>> Api::removeUserVerification(std::int64_t user_id) const {
         TgBot::RemoveUserVerificationRequest request{};
         request.user_id = user_id;
         json j = request;
@@ -1520,7 +1520,7 @@ namespace TgBot {
         co_return parseResponse<bool>(response);
     }
 
-    coro::task<TelegramResponse<bool>> Api::removeChatVerification(int64_t chat_id) const {
+    coro::task<TelegramResponse<bool>> Api::removeChatVerification(std::int64_t chat_id) const {
         TgBot::RemoveChatVerificationRequest request{};
         request.chat_id = chat_id;
         json j = request;
@@ -1531,7 +1531,7 @@ namespace TgBot {
         co_return parseResponse<bool>(response);
     }
 
-    coro::task<TelegramResponse<bool>> Api::readBusinessMessage(const std::string& business_connection_id, int64_t chat_id, int64_t message_id) const {
+    coro::task<TelegramResponse<bool>> Api::readBusinessMessage(const std::string& business_connection_id, std::int64_t chat_id, std::int64_t message_id) const {
         TgBot::ReadBusinessMessageRequest request{};
         request.business_connection_id = business_connection_id;
         request.chat_id = chat_id;
@@ -1544,7 +1544,7 @@ namespace TgBot {
         co_return parseResponse<bool>(response);
     }
 
-    coro::task<TelegramResponse<bool>> Api::deleteBusinessMessages(const std::string& business_connection_id, const std::vector<int64_t>& message_ids) const {
+    coro::task<TelegramResponse<bool>> Api::deleteBusinessMessages(const std::string& business_connection_id, const std::vector<std::int64_t>& message_ids) const {
         TgBot::DeleteBusinessMessagesRequest request{};
         request.business_connection_id = business_connection_id;
         request.message_ids = message_ids;
@@ -1593,7 +1593,7 @@ namespace TgBot {
         co_return parseResponse<bool>(response);
     }
 
-    coro::task<TelegramResponse<bool>> Api::setBusinessAccountProfilePhoto(const std::string& business_connection_id, const InputProfilePhoto::Ptr& photo, bool is_public) const {
+    coro::task<TelegramResponse<bool>> Api::setBusinessAccountProfilePhoto(const std::string& business_connection_id, InputProfilePhoto::Ptr photo, bool is_public) const {
         TgBot::SetBusinessAccountProfilePhotoRequest request{};
         request.business_connection_id = business_connection_id;
         request.photo = photo;
@@ -1618,7 +1618,7 @@ namespace TgBot {
         co_return parseResponse<bool>(response);
     }
 
-    coro::task<TelegramResponse<bool>> Api::setBusinessAccountGiftSettings(const std::string& business_connection_id, bool show_gift_button, const AcceptedGiftTypes::Ptr& accepted_gift_types) const {
+    coro::task<TelegramResponse<bool>> Api::setBusinessAccountGiftSettings(const std::string& business_connection_id, bool show_gift_button, AcceptedGiftTypes::Ptr accepted_gift_types) const {
         TgBot::SetBusinessAccountGiftSettingsRequest request{};
         request.business_connection_id = business_connection_id;
         request.show_gift_button = show_gift_button;
@@ -1642,7 +1642,7 @@ namespace TgBot {
         co_return parseResponse<StarAmount::Ptr>(response);
     }
 
-    coro::task<TelegramResponse<bool>> Api::transferBusinessAccountStars(const std::string& business_connection_id, int64_t star_count) const {
+    coro::task<TelegramResponse<bool>> Api::transferBusinessAccountStars(const std::string& business_connection_id, std::int64_t star_count) const {
         TgBot::TransferBusinessAccountStarsRequest request{};
         request.business_connection_id = business_connection_id;
         request.star_count = star_count;
@@ -1654,7 +1654,7 @@ namespace TgBot {
         co_return parseResponse<bool>(response);
     }
 
-    coro::task<TelegramResponse<OwnedGifts::Ptr>> Api::getBusinessAccountGifts(const std::string& business_connection_id, bool exclude_unsaved, bool exclude_saved, bool exclude_unlimited, bool exclude_limited_upgradable, bool exclude_limited_non_upgradable, bool exclude_unique, bool exclude_from_blockchain, bool sort_by_price, const std::string& offset, int64_t limit) const {
+    coro::task<TelegramResponse<OwnedGifts::Ptr>> Api::getBusinessAccountGifts(const std::string& business_connection_id, bool exclude_unsaved, bool exclude_saved, bool exclude_unlimited, bool exclude_limited_upgradable, bool exclude_limited_non_upgradable, bool exclude_unique, bool exclude_from_blockchain, bool sort_by_price, const std::string& offset, std::int64_t limit) const {
         TgBot::GetBusinessAccountGiftsRequest request{};
         request.business_connection_id = business_connection_id;
         request.exclude_unsaved = exclude_unsaved;
@@ -1675,7 +1675,7 @@ namespace TgBot {
         co_return parseResponse<OwnedGifts::Ptr>(response);
     }
 
-    coro::task<TelegramResponse<OwnedGifts::Ptr>> Api::getUserGifts(int64_t user_id, bool exclude_unlimited, bool exclude_limited_upgradable, bool exclude_limited_non_upgradable, bool exclude_from_blockchain, bool exclude_unique, bool sort_by_price, const std::string& offset, int64_t limit) const {
+    coro::task<TelegramResponse<OwnedGifts::Ptr>> Api::getUserGifts(std::int64_t user_id, bool exclude_unlimited, bool exclude_limited_upgradable, bool exclude_limited_non_upgradable, bool exclude_from_blockchain, bool exclude_unique, bool sort_by_price, const std::string& offset, std::int64_t limit) const {
         TgBot::GetUserGiftsRequest request{};
         request.user_id = user_id;
         request.exclude_unlimited = exclude_unlimited;
@@ -1694,7 +1694,7 @@ namespace TgBot {
         co_return parseResponse<OwnedGifts::Ptr>(response);
     }
 
-    coro::task<TelegramResponse<OwnedGifts::Ptr>> Api::getChatGifts(int64_t chat_id, bool exclude_unsaved, bool exclude_saved, bool exclude_unlimited, bool exclude_limited_upgradable, bool exclude_limited_non_upgradable, bool exclude_from_blockchain, bool exclude_unique, bool sort_by_price, const std::string& offset, int64_t limit) const {
+    coro::task<TelegramResponse<OwnedGifts::Ptr>> Api::getChatGifts(std::int64_t chat_id, bool exclude_unsaved, bool exclude_saved, bool exclude_unlimited, bool exclude_limited_upgradable, bool exclude_limited_non_upgradable, bool exclude_from_blockchain, bool exclude_unique, bool sort_by_price, const std::string& offset, std::int64_t limit) const {
         TgBot::GetChatGiftsRequest request{};
         request.chat_id = chat_id;
         request.exclude_unsaved = exclude_unsaved;
@@ -1727,7 +1727,7 @@ namespace TgBot {
         co_return parseResponse<bool>(response);
     }
 
-    coro::task<TelegramResponse<bool>> Api::upgradeGift(const std::string& business_connection_id, const std::string& owned_gift_id, bool keep_original_details, int64_t star_count) const {
+    coro::task<TelegramResponse<bool>> Api::upgradeGift(const std::string& business_connection_id, const std::string& owned_gift_id, bool keep_original_details, std::int64_t star_count) const {
         TgBot::UpgradeGiftRequest request{};
         request.business_connection_id = business_connection_id;
         request.owned_gift_id = owned_gift_id;
@@ -1741,7 +1741,7 @@ namespace TgBot {
         co_return parseResponse<bool>(response);
     }
 
-    coro::task<TelegramResponse<bool>> Api::transferGift(const std::string& business_connection_id, const std::string& owned_gift_id, int64_t new_owner_chat_id, int64_t star_count) const {
+    coro::task<TelegramResponse<bool>> Api::transferGift(const std::string& business_connection_id, const std::string& owned_gift_id, std::int64_t new_owner_chat_id, std::int64_t star_count) const {
         TgBot::TransferGiftRequest request{};
         request.business_connection_id = business_connection_id;
         request.owned_gift_id = owned_gift_id;
@@ -1755,7 +1755,7 @@ namespace TgBot {
         co_return parseResponse<bool>(response);
     }
 
-    coro::task<TelegramResponse<Story::Ptr>> Api::postStory(const std::string& business_connection_id, const InputStoryContent::Ptr& content, int64_t active_period, const std::string& caption, const std::string& parse_mode, const std::vector<MessageEntity::Ptr>& caption_entities, const std::vector<StoryArea::Ptr>& areas, bool post_to_chat_page, bool protect_content) const {
+    coro::task<TelegramResponse<Story::Ptr>> Api::postStory(const std::string& business_connection_id, InputStoryContent::Ptr content, std::int64_t active_period, const std::string& caption, const std::string& parse_mode, const std::vector<MessageEntity::Ptr>& caption_entities, const std::vector<StoryArea::Ptr>& areas, bool post_to_chat_page, bool protect_content) const {
         TgBot::PostStoryRequest request{};
         request.business_connection_id = business_connection_id;
         request.content = content;
@@ -1774,7 +1774,7 @@ namespace TgBot {
         co_return parseResponse<Story::Ptr>(response);
     }
 
-    coro::task<TelegramResponse<Story::Ptr>> Api::repostStory(const std::string& business_connection_id, int64_t from_chat_id, int64_t from_story_id, int64_t active_period, bool post_to_chat_page, bool protect_content) const {
+    coro::task<TelegramResponse<Story::Ptr>> Api::repostStory(const std::string& business_connection_id, std::int64_t from_chat_id, std::int64_t from_story_id, std::int64_t active_period, bool post_to_chat_page, bool protect_content) const {
         TgBot::RepostStoryRequest request{};
         request.business_connection_id = business_connection_id;
         request.from_chat_id = from_chat_id;
@@ -1790,7 +1790,7 @@ namespace TgBot {
         co_return parseResponse<Story::Ptr>(response);
     }
 
-    coro::task<TelegramResponse<Story::Ptr>> Api::editStory(const std::string& business_connection_id, int64_t story_id, const InputStoryContent::Ptr& content, const std::string& caption, const std::string& parse_mode, const std::vector<MessageEntity::Ptr>& caption_entities, const std::vector<StoryArea::Ptr>& areas) const {
+    coro::task<TelegramResponse<Story::Ptr>> Api::editStory(const std::string& business_connection_id, std::int64_t story_id, InputStoryContent::Ptr content, const std::string& caption, const std::string& parse_mode, const std::vector<MessageEntity::Ptr>& caption_entities, const std::vector<StoryArea::Ptr>& areas) const {
         TgBot::EditStoryRequest request{};
         request.business_connection_id = business_connection_id;
         request.story_id = story_id;
@@ -1807,7 +1807,7 @@ namespace TgBot {
         co_return parseResponse<Story::Ptr>(response);
     }
 
-    coro::task<TelegramResponse<bool>> Api::deleteStory(const std::string& business_connection_id, int64_t story_id) const {
+    coro::task<TelegramResponse<bool>> Api::deleteStory(const std::string& business_connection_id, std::int64_t story_id) const {
         TgBot::DeleteStoryRequest request{};
         request.business_connection_id = business_connection_id;
         request.story_id = story_id;
@@ -1822,7 +1822,7 @@ namespace TgBot {
 
     // Updating messages
 
-    coro::task<TelegramResponse<Message::Ptr>> Api::editMessageText(const std::string& text, const std::string& business_connection_id, int64_t chat_id, int64_t message_id, const std::string& inline_message_id, const std::string& parse_mode, const std::vector<MessageEntity::Ptr>& entities, const LinkPreviewOptions::Ptr& link_preview_options, const InlineKeyboardMarkup::Ptr& reply_markup) const {
+    coro::task<TelegramResponse<Message::Ptr>> Api::editMessageText(const std::string& text, const std::string& business_connection_id, std::int64_t chat_id, std::int64_t message_id, const std::string& inline_message_id, const std::string& parse_mode, const std::vector<MessageEntity::Ptr>& entities, LinkPreviewOptions::Ptr link_preview_options, InlineKeyboardMarkup::Ptr reply_markup) const {
         TgBot::EditMessageTextRequest request{};
         request.text = text;
         request.business_connection_id = business_connection_id;
@@ -1841,7 +1841,7 @@ namespace TgBot {
         co_return parseResponse<Message::Ptr>(response);
     }
 
-    coro::task<TelegramResponse<Message::Ptr>> Api::editMessageCaption(const std::string& business_connection_id, int64_t chat_id, int64_t message_id, const std::string& inline_message_id, const std::string& caption, const std::string& parse_mode, const std::vector<MessageEntity::Ptr>& caption_entities, bool show_caption_above_media, const InlineKeyboardMarkup::Ptr& reply_markup) const {
+    coro::task<TelegramResponse<Message::Ptr>> Api::editMessageCaption(const std::string& business_connection_id, std::int64_t chat_id, std::int64_t message_id, const std::string& inline_message_id, const std::string& caption, const std::string& parse_mode, const std::vector<MessageEntity::Ptr>& caption_entities, bool show_caption_above_media, InlineKeyboardMarkup::Ptr reply_markup) const {
         TgBot::EditMessageCaptionRequest request{};
         request.business_connection_id = business_connection_id;
         request.chat_id = chat_id;
@@ -1860,7 +1860,7 @@ namespace TgBot {
         co_return parseResponse<Message::Ptr>(response);
     }
 
-    coro::task<TelegramResponse<Message::Ptr>> Api::editMessageMedia(const InputMedia::Ptr& media, const std::string& business_connection_id, int64_t chat_id, int64_t message_id, const std::string& inline_message_id, const InlineKeyboardMarkup::Ptr& reply_markup) const {
+    coro::task<TelegramResponse<Message::Ptr>> Api::editMessageMedia(InputMedia::Ptr media, const std::string& business_connection_id, std::int64_t chat_id, std::int64_t message_id, const std::string& inline_message_id, InlineKeyboardMarkup::Ptr reply_markup) const {
         TgBot::EditMessageMediaRequest request{};
         request.media = media;
         request.business_connection_id = business_connection_id;
@@ -1876,7 +1876,7 @@ namespace TgBot {
         co_return parseResponse<Message::Ptr>(response);
     }
 
-    coro::task<TelegramResponse<Message::Ptr>> Api::editMessageLiveLocation(double latitude, double longitude, const std::string& business_connection_id, int64_t chat_id, int64_t message_id, const std::string& inline_message_id, int64_t live_period, double horizontal_accuracy, int64_t heading, int64_t proximity_alert_radius, const InlineKeyboardMarkup::Ptr& reply_markup) const {
+    coro::task<TelegramResponse<Message::Ptr>> Api::editMessageLiveLocation(double latitude, double longitude, const std::string& business_connection_id, std::int64_t chat_id, std::int64_t message_id, const std::string& inline_message_id, std::int64_t live_period, double horizontal_accuracy, std::int64_t heading, std::int64_t proximity_alert_radius, InlineKeyboardMarkup::Ptr reply_markup) const {
         TgBot::EditMessageLiveLocationRequest request{};
         request.latitude = latitude;
         request.longitude = longitude;
@@ -1897,7 +1897,7 @@ namespace TgBot {
         co_return parseResponse<Message::Ptr>(response);
     }
 
-    coro::task<TelegramResponse<Message::Ptr>> Api::stopMessageLiveLocation(const std::string& business_connection_id, int64_t chat_id, int64_t message_id, const std::string& inline_message_id, const InlineKeyboardMarkup::Ptr& reply_markup) const {
+    coro::task<TelegramResponse<Message::Ptr>> Api::stopMessageLiveLocation(const std::string& business_connection_id, std::int64_t chat_id, std::int64_t message_id, const std::string& inline_message_id, InlineKeyboardMarkup::Ptr reply_markup) const {
         TgBot::StopMessageLiveLocationRequest request{};
         request.business_connection_id = business_connection_id;
         request.chat_id = chat_id;
@@ -1912,7 +1912,7 @@ namespace TgBot {
         co_return parseResponse<Message::Ptr>(response);
     }
 
-    coro::task<TelegramResponse<Message::Ptr>> Api::editMessageChecklist(const std::string& business_connection_id, int64_t chat_id, int64_t message_id, const InputChecklist::Ptr& checklist, const InlineKeyboardMarkup::Ptr& reply_markup) const {
+    coro::task<TelegramResponse<Message::Ptr>> Api::editMessageChecklist(const std::string& business_connection_id, std::int64_t chat_id, std::int64_t message_id, InputChecklist::Ptr checklist, InlineKeyboardMarkup::Ptr reply_markup) const {
         TgBot::EditMessageChecklistRequest request{};
         request.business_connection_id = business_connection_id;
         request.chat_id = chat_id;
@@ -1927,7 +1927,7 @@ namespace TgBot {
         co_return parseResponse<Message::Ptr>(response);
     }
 
-    coro::task<TelegramResponse<Message::Ptr>> Api::editMessageReplyMarkup(const std::string& business_connection_id, int64_t chat_id, int64_t message_id, const std::string& inline_message_id, const InlineKeyboardMarkup::Ptr& reply_markup) const {
+    coro::task<TelegramResponse<Message::Ptr>> Api::editMessageReplyMarkup(const std::string& business_connection_id, std::int64_t chat_id, std::int64_t message_id, const std::string& inline_message_id, InlineKeyboardMarkup::Ptr reply_markup) const {
         TgBot::EditMessageReplyMarkupRequest request{};
         request.business_connection_id = business_connection_id;
         request.chat_id = chat_id;
@@ -1942,7 +1942,7 @@ namespace TgBot {
         co_return parseResponse<Message::Ptr>(response);
     }
 
-    coro::task<TelegramResponse<Poll::Ptr>> Api::stopPoll(int64_t chat_id, int64_t message_id, const std::string& business_connection_id, const InlineKeyboardMarkup::Ptr& reply_markup) const {
+    coro::task<TelegramResponse<Poll::Ptr>> Api::stopPoll(std::int64_t chat_id, std::int64_t message_id, const std::string& business_connection_id, InlineKeyboardMarkup::Ptr reply_markup) const {
         TgBot::StopPollRequest request{};
         request.chat_id = chat_id;
         request.message_id = message_id;
@@ -1956,7 +1956,7 @@ namespace TgBot {
         co_return parseResponse<Poll::Ptr>(response);
     }
 
-    coro::task<TelegramResponse<bool>> Api::approveSuggestedPost(int64_t chat_id, int64_t message_id, int64_t send_date) const {
+    coro::task<TelegramResponse<bool>> Api::approveSuggestedPost(std::int64_t chat_id, std::int64_t message_id, std::int64_t send_date) const {
         TgBot::ApproveSuggestedPostRequest request{};
         request.chat_id = chat_id;
         request.message_id = message_id;
@@ -1969,7 +1969,7 @@ namespace TgBot {
         co_return parseResponse<bool>(response);
     }
 
-    coro::task<TelegramResponse<bool>> Api::declineSuggestedPost(int64_t chat_id, int64_t message_id, const std::string& comment) const {
+    coro::task<TelegramResponse<bool>> Api::declineSuggestedPost(std::int64_t chat_id, std::int64_t message_id, const std::string& comment) const {
         TgBot::DeclineSuggestedPostRequest request{};
         request.chat_id = chat_id;
         request.message_id = message_id;
@@ -1982,7 +1982,7 @@ namespace TgBot {
         co_return parseResponse<bool>(response);
     }
 
-    coro::task<TelegramResponse<bool>> Api::deleteMessage(int64_t chat_id, int64_t message_id) const {
+    coro::task<TelegramResponse<bool>> Api::deleteMessage(std::int64_t chat_id, std::int64_t message_id) const {
         TgBot::DeleteMessageRequest request{};
         request.chat_id = chat_id;
         request.message_id = message_id;
@@ -1994,7 +1994,7 @@ namespace TgBot {
         co_return parseResponse<bool>(response);
     }
 
-    coro::task<TelegramResponse<bool>> Api::deleteMessages(int64_t chat_id, const std::vector<int64_t>& message_ids) const {
+    coro::task<TelegramResponse<bool>> Api::deleteMessages(std::int64_t chat_id, const std::vector<std::int64_t>& message_ids) const {
         TgBot::DeleteMessagesRequest request{};
         request.chat_id = chat_id;
         request.message_ids = message_ids;
@@ -2009,7 +2009,7 @@ namespace TgBot {
 
     // Stickers
 
-    coro::task<TelegramResponse<Message::Ptr>> Api::sendSticker(int64_t chat_id, const std::string& sticker, const std::string& business_connection_id, int64_t message_thread_id, int64_t direct_messages_topic_id, const std::string& emoji, bool disable_notification, bool protect_content, bool allow_paid_broadcast, const std::string& message_effect_id, const SuggestedPostParameters::Ptr& suggested_post_parameters, const ReplyParameters::Ptr& reply_parameters, const KeyboardOption::Ptr& reply_markup) const {
+    coro::task<TelegramResponse<Message::Ptr>> Api::sendSticker(std::int64_t chat_id, const std::string& sticker, const std::string& business_connection_id, std::int64_t message_thread_id, std::int64_t direct_messages_topic_id, const std::string& emoji, bool disable_notification, bool protect_content, bool allow_paid_broadcast, const std::string& message_effect_id, SuggestedPostParameters::Ptr suggested_post_parameters, ReplyParameters::Ptr reply_parameters, KeyboardOption::Ptr reply_markup) const {
         TgBot::SendStickerRequest request{};
         request.chat_id = chat_id;
         request.sticker = sticker;
@@ -2054,7 +2054,7 @@ namespace TgBot {
         co_return parseResponse<std::vector<Sticker::Ptr>>(response);
     }
 
-    coro::task<TelegramResponse<File::Ptr>> Api::uploadStickerFile(int64_t user_id, const InputFile::Ptr& sticker, const std::string& sticker_format) const {
+    coro::task<TelegramResponse<File::Ptr>> Api::uploadStickerFile(std::int64_t user_id, InputFile::Ptr sticker, const std::string& sticker_format) const {
         TgBot::UploadStickerFileRequest request{};
         request.user_id = user_id;
         request.sticker = sticker;
@@ -2068,7 +2068,7 @@ namespace TgBot {
         co_return parseResponse<File::Ptr>(response);
     }
 
-    coro::task<TelegramResponse<bool>> Api::createNewStickerSet(int64_t user_id, const std::string& name, const std::string& title, const std::vector<InputSticker::Ptr>& stickers, const std::string& sticker_type, bool needs_repainting) const {
+    coro::task<TelegramResponse<bool>> Api::createNewStickerSet(std::int64_t user_id, const std::string& name, const std::string& title, const std::vector<InputSticker::Ptr>& stickers, const std::string& sticker_type, bool needs_repainting) const {
         TgBot::CreateNewStickerSetRequest request{};
         request.user_id = user_id;
         request.name = name;
@@ -2084,7 +2084,7 @@ namespace TgBot {
         co_return parseResponse<bool>(response);
     }
 
-    coro::task<TelegramResponse<bool>> Api::addStickerToSet(int64_t user_id, const std::string& name, const InputSticker::Ptr& sticker) const {
+    coro::task<TelegramResponse<bool>> Api::addStickerToSet(std::int64_t user_id, const std::string& name, InputSticker::Ptr sticker) const {
         TgBot::AddStickerToSetRequest request{};
         request.user_id = user_id;
         request.name = name;
@@ -2097,7 +2097,7 @@ namespace TgBot {
         co_return parseResponse<bool>(response);
     }
 
-    coro::task<TelegramResponse<bool>> Api::setStickerPositionInSet(const std::string& sticker, int64_t position) const {
+    coro::task<TelegramResponse<bool>> Api::setStickerPositionInSet(const std::string& sticker, std::int64_t position) const {
         TgBot::SetStickerPositionInSetRequest request{};
         request.sticker = sticker;
         request.position = position;
@@ -2120,7 +2120,7 @@ namespace TgBot {
         co_return parseResponse<bool>(response);
     }
 
-    coro::task<TelegramResponse<bool>> Api::replaceStickerInSet(int64_t user_id, const std::string& name, const std::string& old_sticker, const InputSticker::Ptr& sticker) const {
+    coro::task<TelegramResponse<bool>> Api::replaceStickerInSet(std::int64_t user_id, const std::string& name, const std::string& old_sticker, InputSticker::Ptr sticker) const {
         TgBot::ReplaceStickerInSetRequest request{};
         request.user_id = user_id;
         request.name = name;
@@ -2158,7 +2158,7 @@ namespace TgBot {
         co_return parseResponse<bool>(response);
     }
 
-    coro::task<TelegramResponse<bool>> Api::setStickerMaskPosition(const std::string& sticker, const MaskPosition::Ptr& mask_position) const {
+    coro::task<TelegramResponse<bool>> Api::setStickerMaskPosition(const std::string& sticker, MaskPosition::Ptr mask_position) const {
         TgBot::SetStickerMaskPositionRequest request{};
         request.sticker = sticker;
         request.mask_position = mask_position;
@@ -2182,7 +2182,7 @@ namespace TgBot {
         co_return parseResponse<bool>(response);
     }
 
-    coro::task<TelegramResponse<bool>> Api::setStickerSetThumbnail(const std::string& name, int64_t user_id, const std::string& format, const std::string& thumbnail) const {
+    coro::task<TelegramResponse<bool>> Api::setStickerSetThumbnail(const std::string& name, std::int64_t user_id, const std::string& format, const std::string& thumbnail) const {
         TgBot::SetStickerSetThumbnailRequest request{};
         request.name = name;
         request.user_id = user_id;
@@ -2222,7 +2222,7 @@ namespace TgBot {
 
     // Inline mode
 
-    coro::task<TelegramResponse<bool>> Api::answerInlineQuery(const std::string& inline_query_id, const std::vector<InlineQueryResult::Ptr>& results, int64_t cache_time, bool is_personal, const std::string& next_offset, const InlineQueryResultsButton::Ptr& button) const {
+    coro::task<TelegramResponse<bool>> Api::answerInlineQuery(const std::string& inline_query_id, const std::vector<InlineQueryResult::Ptr>& results, std::int64_t cache_time, bool is_personal, const std::string& next_offset, InlineQueryResultsButton::Ptr button) const {
         TgBot::AnswerInlineQueryRequest request{};
         request.inline_query_id = inline_query_id;
         request.results = results;
@@ -2238,7 +2238,7 @@ namespace TgBot {
         co_return parseResponse<bool>(response);
     }
 
-    coro::task<TelegramResponse<SentWebAppMessage::Ptr>> Api::answerWebAppQuery(const std::string& web_app_query_id, const InlineQueryResult::Ptr& result) const {
+    coro::task<TelegramResponse<SentWebAppMessage::Ptr>> Api::answerWebAppQuery(const std::string& web_app_query_id, InlineQueryResult::Ptr result) const {
         TgBot::AnswerWebAppQueryRequest request{};
         request.web_app_query_id = web_app_query_id;
         request.result = result;
@@ -2250,7 +2250,7 @@ namespace TgBot {
         co_return parseResponse<SentWebAppMessage::Ptr>(response);
     }
 
-    coro::task<TelegramResponse<PreparedInlineMessage::Ptr>> Api::savePreparedInlineMessage(int64_t user_id, const InlineQueryResult::Ptr& result, bool allow_user_chats, bool allow_bot_chats, bool allow_group_chats, bool allow_channel_chats) const {
+    coro::task<TelegramResponse<PreparedInlineMessage::Ptr>> Api::savePreparedInlineMessage(std::int64_t user_id, InlineQueryResult::Ptr result, bool allow_user_chats, bool allow_bot_chats, bool allow_group_chats, bool allow_channel_chats) const {
         TgBot::SavePreparedInlineMessageRequest request{};
         request.user_id = user_id;
         request.result = result;
@@ -2269,7 +2269,7 @@ namespace TgBot {
 
     // Payments
 
-    coro::task<TelegramResponse<Message::Ptr>> Api::sendInvoice(int64_t chat_id, const std::string& title, const std::string& description, const std::string& payload, const std::string& currency, const std::vector<LabeledPrice::Ptr>& prices, int64_t message_thread_id, int64_t direct_messages_topic_id, const std::string& provider_token, int64_t max_tip_amount, const std::vector<int64_t>& suggested_tip_amounts, const std::string& start_parameter, const std::string& provider_data, const std::string& photo_url, int64_t photo_size, int64_t photo_width, int64_t photo_height, bool need_name, bool need_phone_number, bool need_email, bool need_shipping_address, bool send_phone_number_to_provider, bool send_email_to_provider, bool is_flexible, bool disable_notification, bool protect_content, bool allow_paid_broadcast, const std::string& message_effect_id, const SuggestedPostParameters::Ptr& suggested_post_parameters, const ReplyParameters::Ptr& reply_parameters, const InlineKeyboardMarkup::Ptr& reply_markup) const {
+    coro::task<TelegramResponse<Message::Ptr>> Api::sendInvoice(std::int64_t chat_id, const std::string& title, const std::string& description, const std::string& payload, const std::string& currency, const std::vector<LabeledPrice::Ptr>& prices, std::int64_t message_thread_id, std::int64_t direct_messages_topic_id, const std::string& provider_token, std::int64_t max_tip_amount, const std::vector<std::int64_t>& suggested_tip_amounts, const std::string& start_parameter, const std::string& provider_data, const std::string& photo_url, std::int64_t photo_size, std::int64_t photo_width, std::int64_t photo_height, bool need_name, bool need_phone_number, bool need_email, bool need_shipping_address, bool send_phone_number_to_provider, bool send_email_to_provider, bool is_flexible, bool disable_notification, bool protect_content, bool allow_paid_broadcast, const std::string& message_effect_id, SuggestedPostParameters::Ptr suggested_post_parameters, ReplyParameters::Ptr reply_parameters, InlineKeyboardMarkup::Ptr reply_markup) const {
         TgBot::SendInvoiceRequest request{};
         request.chat_id = chat_id;
         request.title = title;
@@ -2310,7 +2310,7 @@ namespace TgBot {
         co_return parseResponse<Message::Ptr>(response);
     }
 
-    coro::task<TelegramResponse<std::string>> Api::createInvoiceLink(const std::string& title, const std::string& description, const std::string& payload, const std::string& currency, const std::vector<LabeledPrice::Ptr>& prices, const std::string& business_connection_id, const std::string& provider_token, int64_t subscription_period, int64_t max_tip_amount, const std::vector<int64_t>& suggested_tip_amounts, const std::string& provider_data, const std::string& photo_url, int64_t photo_size, int64_t photo_width, int64_t photo_height, bool need_name, bool need_phone_number, bool need_email, bool need_shipping_address, bool send_phone_number_to_provider, bool send_email_to_provider, bool is_flexible) const {
+    coro::task<TelegramResponse<std::string>> Api::createInvoiceLink(const std::string& title, const std::string& description, const std::string& payload, const std::string& currency, const std::vector<LabeledPrice::Ptr>& prices, const std::string& business_connection_id, const std::string& provider_token, std::int64_t subscription_period, std::int64_t max_tip_amount, const std::vector<std::int64_t>& suggested_tip_amounts, const std::string& provider_data, const std::string& photo_url, std::int64_t photo_size, std::int64_t photo_width, std::int64_t photo_height, bool need_name, bool need_phone_number, bool need_email, bool need_shipping_address, bool send_phone_number_to_provider, bool send_email_to_provider, bool is_flexible) const {
         TgBot::CreateInvoiceLinkRequest request{};
         request.title = title;
         request.description = description;
@@ -2369,7 +2369,7 @@ namespace TgBot {
         co_return parseResponse<bool>(response);
     }
 
-    coro::task<TelegramResponse<StarTransactions::Ptr>> Api::getStarTransactions(int64_t offset, int64_t limit) const {
+    coro::task<TelegramResponse<StarTransactions::Ptr>> Api::getStarTransactions(std::int64_t offset, std::int64_t limit) const {
         TgBot::GetStarTransactionsRequest request{};
         request.offset = offset;
         request.limit = limit;
@@ -2381,7 +2381,7 @@ namespace TgBot {
         co_return parseResponse<StarTransactions::Ptr>(response);
     }
 
-    coro::task<TelegramResponse<bool>> Api::refundStarPayment(int64_t user_id, const std::string& telegram_payment_charge_id) const {
+    coro::task<TelegramResponse<bool>> Api::refundStarPayment(std::int64_t user_id, const std::string& telegram_payment_charge_id) const {
         TgBot::RefundStarPaymentRequest request{};
         request.user_id = user_id;
         request.telegram_payment_charge_id = telegram_payment_charge_id;
@@ -2393,7 +2393,7 @@ namespace TgBot {
         co_return parseResponse<bool>(response);
     }
 
-    coro::task<TelegramResponse<bool>> Api::editUserStarSubscription(int64_t user_id, const std::string& telegram_payment_charge_id, bool is_canceled) const {
+    coro::task<TelegramResponse<bool>> Api::editUserStarSubscription(std::int64_t user_id, const std::string& telegram_payment_charge_id, bool is_canceled) const {
         TgBot::EditUserStarSubscriptionRequest request{};
         request.user_id = user_id;
         request.telegram_payment_charge_id = telegram_payment_charge_id;
@@ -2409,7 +2409,7 @@ namespace TgBot {
 
     // Telegram Passport
 
-    coro::task<TelegramResponse<bool>> Api::setPassportDataErrors(int64_t user_id, const std::vector<PassportElementError::Ptr>& errors) const {
+    coro::task<TelegramResponse<bool>> Api::setPassportDataErrors(std::int64_t user_id, const std::vector<PassportElementError::Ptr>& errors) const {
         TgBot::SetPassportDataErrorsRequest request{};
         request.user_id = user_id;
         request.errors = errors;
@@ -2424,7 +2424,7 @@ namespace TgBot {
 
     // Games
 
-    coro::task<TelegramResponse<Message::Ptr>> Api::sendGame(int64_t chat_id, const std::string& game_short_name, const std::string& business_connection_id, int64_t message_thread_id, bool disable_notification, bool protect_content, bool allow_paid_broadcast, const std::string& message_effect_id, const ReplyParameters::Ptr& reply_parameters, const InlineKeyboardMarkup::Ptr& reply_markup) const {
+    coro::task<TelegramResponse<Message::Ptr>> Api::sendGame(std::int64_t chat_id, const std::string& game_short_name, const std::string& business_connection_id, std::int64_t message_thread_id, bool disable_notification, bool protect_content, bool allow_paid_broadcast, const std::string& message_effect_id, ReplyParameters::Ptr reply_parameters, InlineKeyboardMarkup::Ptr reply_markup) const {
         TgBot::SendGameRequest request{};
         request.chat_id = chat_id;
         request.game_short_name = game_short_name;
@@ -2444,7 +2444,7 @@ namespace TgBot {
         co_return parseResponse<Message::Ptr>(response);
     }
 
-    coro::task<TelegramResponse<Message::Ptr>> Api::setGameScore(int64_t user_id, int64_t score, bool force, bool disable_edit_message, int64_t chat_id, int64_t message_id, const std::string& inline_message_id) const {
+    coro::task<TelegramResponse<Message::Ptr>> Api::setGameScore(std::int64_t user_id, std::int64_t score, bool force, bool disable_edit_message, std::int64_t chat_id, std::int64_t message_id, const std::string& inline_message_id) const {
         TgBot::SetGameScoreRequest request{};
         request.user_id = user_id;
         request.score = score;
@@ -2461,7 +2461,7 @@ namespace TgBot {
         co_return parseResponse<Message::Ptr>(response);
     }
 
-    coro::task<TelegramResponse<std::vector<GameHighScore::Ptr>>> Api::getGameHighScores(int64_t user_id, int64_t chat_id, int64_t message_id, const std::string& inline_message_id) const {
+    coro::task<TelegramResponse<std::vector<GameHighScore::Ptr>>> Api::getGameHighScores(std::int64_t user_id, std::int64_t chat_id, std::int64_t message_id, const std::string& inline_message_id) const {
         TgBot::GetGameHighScoresRequest request{};
         request.user_id = user_id;
         request.chat_id = chat_id;

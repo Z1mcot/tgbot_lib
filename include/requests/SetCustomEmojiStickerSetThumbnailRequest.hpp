@@ -21,10 +21,10 @@ namespace TgBot {
     struct SetCustomEmojiStickerSetThumbnailRequest {
         typedef std::shared_ptr<SetCustomEmojiStickerSetThumbnailRequest> Ptr;
         // Sticker set name
-        std::string name;
+        std::string name = "";
 
         // Custom emoji identifier of a sticker from the sticker set; pass an empty string to drop the thumbnail and use the first sticker as the thumbnail.
-        std::string custom_emoji_id;
+        std::string custom_emoji_id = "";
     };
     void to_json(json& j, const SetCustomEmojiStickerSetThumbnailRequest& value);
     void from_json(const json& j, SetCustomEmojiStickerSetThumbnailRequest& value);

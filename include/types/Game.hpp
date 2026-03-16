@@ -32,22 +32,22 @@ namespace TgBot {
 
         virtual ~Game() = default;
         // Title of the game
-        std::string title;
+        std::string title = "";
 
         // Description of the game
-        std::string description;
+        std::string description = "";
 
         // Photo that will be displayed in the game message in chats.
-        std::vector<PhotoSize::Ptr> photo;
+        std::vector<PhotoSize::Ptr> photo = std::vector<PhotoSize::Ptr>();
 
         // Optional. Brief description of the game or high scores included in the game message. Can be automatically edited to include current high scores for the game when the bot calls setGameScore, or manually edited using editMessageText. 0-4096 characters.
-        std::string text;
+        std::string text = "";
 
         // Optional. Special entities that appear in text, such as usernames, URLs, bot commands, etc.
-        std::vector<MessageEntity::Ptr> text_entities;
+        std::vector<MessageEntity::Ptr> text_entities = std::vector<MessageEntity::Ptr>();
 
         // Optional. Animation that will be displayed in the game message in chats. Upload via BotFather
-        Animation::Ptr animation;
+        Animation::Ptr animation = nullptr;
     };
     void to_json(json& j, const Game& value);
     void from_json(const json& j, Game& value);

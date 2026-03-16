@@ -88,31 +88,31 @@ namespace TgBot {
 
         virtual ~ChatFullInfo() = default;
         // Unique identifier for this chat. This number may have more than 32 significant bits and some programming languages may have difficulty/silent defects in interpreting it. But it has at most 52 significant bits, so a signed 64-bit integer or double-precision float type are safe for storing this identifier.
-        int64_t id = 0;
+        std::int64_t id = 0;
 
         // Type of the chat, can be either “private”, “group”, “supergroup” or “channel”
-        std::string type_;
+        std::string type_ = "";
 
         // Identifier of the accent color for the chat name and backgrounds of the chat photo, reply header, and link preview. See accent colors for more details.
-        int64_t accent_color_id = 0;
+        std::int64_t accent_color_id = 0;
 
         // The maximum number of reactions that can be set on a message in the chat
-        int64_t max_reaction_count = 0;
+        std::int64_t max_reaction_count = 0;
 
         // Information about types of gifts that are accepted by the chat or by the corresponding user for private chats
-        AcceptedGiftTypes::Ptr accepted_gift_types;
+        AcceptedGiftTypes::Ptr accepted_gift_types = nullptr;
 
         // Optional. Title, for supergroups, channels and group chats
-        std::string title;
+        std::string title = "";
 
         // Optional. Username, for private chats, supergroups and channels if available
-        std::string username;
+        std::string username = "";
 
         // Optional. First name of the other party in a private chat
-        std::string first_name;
+        std::string first_name = "";
 
         // Optional. Last name of the other party in a private chat
-        std::string last_name;
+        std::string last_name = "";
 
         // Optional. True, if the supergroup chat is a forum (has topics enabled)
         bool is_forum = false;
@@ -121,49 +121,49 @@ namespace TgBot {
         bool is_direct_messages = false;
 
         // Optional. Chat photo
-        ChatPhoto::Ptr photo;
+        ChatPhoto::Ptr photo = nullptr;
 
         // Optional. If non-empty, the list of all active chat usernames; for private chats, supergroups and channels
-        std::vector<std::string> active_usernames;
+        std::vector<std::string> active_usernames = std::vector<std::string>();
 
         // Optional. For private chats, the date of birth of the user
-        Birthdate::Ptr birthdate;
+        Birthdate::Ptr birthdate = nullptr;
 
         // Optional. For private chats with business accounts, the intro of the business
-        BusinessIntro::Ptr business_intro;
+        BusinessIntro::Ptr business_intro = nullptr;
 
         // Optional. For private chats with business accounts, the location of the business
-        BusinessLocation::Ptr business_location;
+        BusinessLocation::Ptr business_location = nullptr;
 
         // Optional. For private chats with business accounts, the opening hours of the business
-        BusinessOpeningHours::Ptr business_opening_hours;
+        BusinessOpeningHours::Ptr business_opening_hours = nullptr;
 
         // Optional. For private chats, the personal channel of the user
-        Chat::Ptr personal_chat;
+        Chat::Ptr personal_chat = nullptr;
 
         // Optional. Information about the corresponding channel chat; for direct messages chats only
-        Chat::Ptr parent_chat;
+        Chat::Ptr parent_chat = nullptr;
 
         // Optional. List of available reactions allowed in the chat. If omitted, then all emoji reactions are allowed.
-        std::vector<ReactionType::Ptr> available_reactions;
+        std::vector<ReactionType::Ptr> available_reactions = std::vector<ReactionType::Ptr>();
 
         // Optional. Custom emoji identifier of the emoji chosen by the chat for the reply header and link preview background
-        std::string background_custom_emoji_id;
+        std::string background_custom_emoji_id = "";
 
         // Optional. Identifier of the accent color for the chat's profile background. See profile accent colors for more details.
-        int64_t profile_accent_color_id = 0;
+        std::int64_t profile_accent_color_id = 0;
 
         // Optional. Custom emoji identifier of the emoji chosen by the chat for its profile background
-        std::string profile_background_custom_emoji_id;
+        std::string profile_background_custom_emoji_id = "";
 
         // Optional. Custom emoji identifier of the emoji status of the chat or the other party in a private chat
-        std::string emoji_status_custom_emoji_id;
+        std::string emoji_status_custom_emoji_id = "";
 
         // Optional. Expiration date of the emoji status of the chat or the other party in a private chat, in Unix time, if any
-        int64_t emoji_status_expiration_date = 0;
+        std::int64_t emoji_status_expiration_date = 0;
 
         // Optional. Bio of the other party in a private chat
-        std::string bio;
+        std::string bio = "";
 
         // Optional. True, if privacy settings of the other party in the private chat allows to use tg://user?id=<user_id> links only in chats with the user
         bool has_private_forwards = false;
@@ -178,28 +178,28 @@ namespace TgBot {
         bool join_by_request = false;
 
         // Optional. Description, for groups, supergroups and channel chats
-        std::string description;
+        std::string description = "";
 
         // Optional. Primary invite link, for groups, supergroups and channel chats
-        std::string invite_link;
+        std::string invite_link = "";
 
         // Optional. The most recent pinned message (by sending date)
-        Message::Ptr pinned_message;
+        Message::Ptr pinned_message = nullptr;
 
         // Optional. Default chat member permissions, for groups and supergroups
-        ChatPermissions::Ptr permissions;
+        ChatPermissions::Ptr permissions = nullptr;
 
         // Optional. True, if paid media messages can be sent or forwarded to the channel chat. The field is available only for channel chats.
         bool can_send_paid_media = false;
 
         // Optional. For supergroups, the minimum allowed delay between consecutive messages sent by each unprivileged user; in seconds
-        int64_t slow_mode_delay = 0;
+        std::int64_t slow_mode_delay = 0;
 
         // Optional. For supergroups, the minimum number of boosts that a non-administrator user needs to add in order to ignore slow mode and chat permissions
-        int64_t unrestrict_boost_count = 0;
+        std::int64_t unrestrict_boost_count = 0;
 
         // Optional. The time after which all messages sent to the chat will be automatically deleted; in seconds
-        int64_t message_auto_delete_time = 0;
+        std::int64_t message_auto_delete_time = 0;
 
         // Optional. True, if aggressive anti-spam checks are enabled in the supergroup. The field is only available to chat administrators.
         bool has_aggressive_anti_spam_enabled = false;
@@ -214,31 +214,31 @@ namespace TgBot {
         bool has_visible_history = false;
 
         // Optional. For supergroups, name of the group sticker set
-        std::string sticker_set_name;
+        std::string sticker_set_name = "";
 
         // Optional. True, if the bot can change the group sticker set
         bool can_set_sticker_set = false;
 
         // Optional. For supergroups, the name of the group's custom emoji sticker set. Custom emoji from this set can be used by all users and bots in the group.
-        std::string custom_emoji_sticker_set_name;
+        std::string custom_emoji_sticker_set_name = "";
 
         // Optional. Unique identifier for the linked chat, i.e. the discussion group identifier for a channel and vice versa; for supergroups and channel chats. This identifier may be greater than 32 bits and some programming languages may have difficulty/silent defects in interpreting it. But it is smaller than 52 bits, so a signed 64 bit integer or double-precision float type are safe for storing this identifier.
-        int64_t linked_chat_id = 0;
+        std::int64_t linked_chat_id = 0;
 
         // Optional. For supergroups, the location to which the supergroup is connected
-        ChatLocation::Ptr location;
+        ChatLocation::Ptr location = nullptr;
 
         // Optional. For private chats, the rating of the user if any
-        UserRating::Ptr rating;
+        UserRating::Ptr rating = nullptr;
 
         // Optional. For private chats, the first audio added to the profile of the user
-        Audio::Ptr first_profile_audio;
+        Audio::Ptr first_profile_audio = nullptr;
 
         // Optional. The color scheme based on a unique gift that must be used for the chat's name, message replies and link previews
-        UniqueGiftColors::Ptr unique_gift_colors;
+        UniqueGiftColors::Ptr unique_gift_colors = nullptr;
 
         // Optional. The number of Telegram Stars a general user have to pay to send a message to the chat
-        int64_t paid_message_star_count = 0;
+        std::int64_t paid_message_star_count = 0;
     };
     void to_json(json& j, const ChatFullInfo& value);
     void from_json(const json& j, ChatFullInfo& value);

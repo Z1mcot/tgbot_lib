@@ -26,10 +26,10 @@ namespace TgBot {
     struct SavePreparedInlineMessageRequest {
         typedef std::shared_ptr<SavePreparedInlineMessageRequest> Ptr;
         // Unique identifier of the target user that can use the prepared message
-        int64_t user_id = 0;
+        std::int64_t user_id = 0;
 
         // A JSON-serialized object describing the message to be sent
-        InlineQueryResult::Ptr result;
+        InlineQueryResult::Ptr result = nullptr;
 
         // Pass True if the message can be sent to private chats with users
         bool allow_user_chats = false;

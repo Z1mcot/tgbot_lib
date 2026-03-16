@@ -27,10 +27,10 @@ namespace TgBot {
 
         virtual ~ChecklistTasksAdded() = default;
         // List of tasks added to the checklist
-        std::vector<ChecklistTask::Ptr> tasks;
+        std::vector<ChecklistTask::Ptr> tasks = std::vector<ChecklistTask::Ptr>();
 
         // Optional. Message containing the checklist to which the tasks were added. Note that the Message object in this field will not contain the reply_to_message field even if it itself is a reply.
-        Message::Ptr checklist_message;
+        Message::Ptr checklist_message = nullptr;
     };
     void to_json(json& j, const ChecklistTasksAdded& value);
     void from_json(const json& j, ChecklistTasksAdded& value);

@@ -21,10 +21,10 @@ namespace TgBot {
     struct GetUserChatBoostsRequest {
         typedef std::shared_ptr<GetUserChatBoostsRequest> Ptr;
         // Unique identifier for the chat or username of the channel (in the format @channelusername)
-        int64_t chat_id = 0;
+        std::int64_t chat_id = 0;
 
         // Unique identifier of the target user
-        int64_t user_id = 0;
+        std::int64_t user_id = 0;
     };
     void to_json(json& j, const GetUserChatBoostsRequest& value);
     void from_json(const json& j, GetUserChatBoostsRequest& value);

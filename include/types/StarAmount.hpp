@@ -25,10 +25,10 @@ namespace TgBot {
 
         virtual ~StarAmount() = default;
         // Integer amount of Telegram Stars, rounded to 0; can be negative
-        int64_t amount = 0;
+        std::int64_t amount = 0;
 
         // Optional. The number of 1/1000000000 shares of Telegram Stars; from -999999999 to 999999999; can be negative if and only if amount is non-positive
-        int64_t nanostar_amount = 0;
+        std::int64_t nanostar_amount = 0;
     };
     void to_json(json& j, const StarAmount& value);
     void from_json(const json& j, StarAmount& value);

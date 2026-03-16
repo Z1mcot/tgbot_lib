@@ -37,34 +37,34 @@ namespace TgBot {
 
         virtual ~TransactionPartnerUser() = default;
         // Type of the transaction partner, always “user”
-        std::string type_;
+        std::string type_ = "";
 
         // Type of the transaction, currently one of “invoice_payment” for payments via invoices, “paid_media_payment” for payments for paid media, “gift_purchase” for gifts sent by the bot, “premium_purchase” for Telegram Premium subscriptions gifted by the bot, “business_account_transfer” for direct transfers from managed business accounts
-        std::string transaction_type;
+        std::string transaction_type = "";
 
         // Information about the user
-        User::Ptr user;
+        User::Ptr user = nullptr;
 
         // Optional. Information about the affiliate that received a commission via this transaction. Can be available only for “invoice_payment” and “paid_media_payment” transactions.
-        AffiliateInfo::Ptr affiliate;
+        AffiliateInfo::Ptr affiliate = nullptr;
 
         // Optional. Bot-specified invoice payload. Can be available only for “invoice_payment” transactions.
-        std::string invoice_payload;
+        std::string invoice_payload = "";
 
         // Optional. The duration of the paid subscription. Can be available only for “invoice_payment” transactions.
-        int64_t subscription_period = 0;
+        std::int64_t subscription_period = 0;
 
         // Optional. Information about the paid media bought by the user; for “paid_media_payment” transactions only
-        std::vector<PaidMedia::Ptr> paid_media;
+        std::vector<PaidMedia::Ptr> paid_media = std::vector<PaidMedia::Ptr>();
 
         // Optional. Bot-specified paid media payload. Can be available only for “paid_media_payment” transactions.
-        std::string paid_media_payload;
+        std::string paid_media_payload = "";
 
         // Optional. The gift sent to the user by the bot; for “gift_purchase” transactions only
-        Gift::Ptr gift;
+        Gift::Ptr gift = nullptr;
 
         // Optional. Number of months the gifted Telegram Premium subscription will be active for; for “premium_purchase” transactions only
-        int64_t premium_subscription_duration = 0;
+        std::int64_t premium_subscription_duration = 0;
     };
     void to_json(json& j, const TransactionPartnerUser& value);
     void from_json(const json& j, TransactionPartnerUser& value);

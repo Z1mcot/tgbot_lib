@@ -27,16 +27,16 @@ namespace TgBot {
 
         virtual ~PassportElementErrorSelfie() = default;
         // Error source, must be selfie
-        std::string source;
+        std::string source = "";
 
         // The section of the user's Telegram Passport which has the issue, one of “passport”, “driver_license”, “identity_card”, “internal_passport”
-        std::string type_;
+        std::string type_ = "";
 
         // Base64-encoded hash of the file with the selfie
-        std::string file_hash;
+        std::string file_hash = "";
 
         // Error message
-        std::string message;
+        std::string message = "";
     };
     void to_json(json& j, const PassportElementErrorSelfie& value);
     void from_json(const json& j, PassportElementErrorSelfie& value);

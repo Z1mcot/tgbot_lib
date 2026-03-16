@@ -44,10 +44,10 @@ namespace TgBot {
 
         virtual ~ChatMemberRestricted() = default;
         // The member's status in the chat, always “restricted”
-        std::string status;
+        std::string status = "";
 
         // Information about the user
-        User::Ptr user;
+        User::Ptr user = nullptr;
 
         // True, if the user is a member of the chat at the moment of the request
         bool is_member = false;
@@ -98,10 +98,10 @@ namespace TgBot {
         bool can_manage_topics = false;
 
         // Date when restrictions will be lifted for this user; Unix time. If 0, then the user is restricted forever
-        int64_t until_date = 0;
+        std::int64_t until_date = 0;
 
         // Optional. Tag of the member
-        std::string tag;
+        std::string tag = "";
     };
     void to_json(json& j, const ChatMemberRestricted& value);
     void from_json(const json& j, ChatMemberRestricted& value);

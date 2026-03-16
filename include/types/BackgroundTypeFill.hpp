@@ -27,13 +27,13 @@ namespace TgBot {
 
         virtual ~BackgroundTypeFill() = default;
         // Type of the background, always “fill”
-        std::string type_;
+        std::string type_ = "";
 
         // The background fill
-        BackgroundFill::Ptr fill;
+        BackgroundFill::Ptr fill = nullptr;
 
         // Dimming of the background in dark themes, as a percentage; 0-100
-        int64_t dark_theme_dimming = 0;
+        std::int64_t dark_theme_dimming = 0;
     };
     void to_json(json& j, const BackgroundTypeFill& value);
     void from_json(const json& j, BackgroundTypeFill& value);

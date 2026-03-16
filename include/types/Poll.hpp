@@ -39,16 +39,16 @@ namespace TgBot {
 
         virtual ~Poll() = default;
         // Unique poll identifier
-        std::string id;
+        std::string id = "";
 
         // Poll question, 1-300 characters
-        std::string question;
+        std::string question = "";
 
         // List of poll options
-        std::vector<PollOption::Ptr> options;
+        std::vector<PollOption::Ptr> options = std::vector<PollOption::Ptr>();
 
         // Total number of users that voted in the poll
-        int64_t total_voter_count = 0;
+        std::int64_t total_voter_count = 0;
 
         // True, if the poll is closed
         bool is_closed = false;
@@ -57,28 +57,28 @@ namespace TgBot {
         bool is_anonymous = false;
 
         // Poll type, currently can be “regular” or “quiz”
-        std::string type_;
+        std::string type_ = "";
 
         // True, if the poll allows multiple answers
         bool allows_multiple_answers = false;
 
         // Optional. Special entities that appear in the question. Currently, only custom emoji entities are allowed in poll questions
-        std::vector<MessageEntity::Ptr> question_entities;
+        std::vector<MessageEntity::Ptr> question_entities = std::vector<MessageEntity::Ptr>();
 
         // Optional. 0-based identifier of the correct answer option. Available only for polls in the quiz mode, which are closed, or was sent (not forwarded) by the bot or to the private chat with the bot.
-        int64_t correct_option_id = 0;
+        std::int64_t correct_option_id = 0;
 
         // Optional. Text that is shown when a user chooses an incorrect answer or taps on the lamp icon in a quiz-style poll, 0-200 characters
-        std::string explanation;
+        std::string explanation = "";
 
         // Optional. Special entities like usernames, URLs, bot commands, etc. that appear in the explanation
-        std::vector<MessageEntity::Ptr> explanation_entities;
+        std::vector<MessageEntity::Ptr> explanation_entities = std::vector<MessageEntity::Ptr>();
 
         // Optional. Amount of time in seconds the poll will be active after creation
-        int64_t open_period = 0;
+        std::int64_t open_period = 0;
 
         // Optional. Point in time (Unix timestamp) when the poll will be automatically closed
-        int64_t close_date = 0;
+        std::int64_t close_date = 0;
     };
     void to_json(json& j, const Poll& value);
     void from_json(const json& j, Poll& value);

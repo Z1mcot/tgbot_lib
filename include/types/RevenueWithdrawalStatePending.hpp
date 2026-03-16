@@ -24,7 +24,7 @@ namespace TgBot {
 
         virtual ~RevenueWithdrawalStatePending() = default;
         // Type of the state, always “pending”
-        std::string type_;
+        std::string type_ = "";
     };
     void to_json(json& j, const RevenueWithdrawalStatePending& value);
     void from_json(const json& j, RevenueWithdrawalStatePending& value);

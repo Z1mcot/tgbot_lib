@@ -28,7 +28,7 @@ namespace TgBot {
 
         virtual ~SwitchInlineQueryChosenChat() = default;
         // Optional. The default inline query to be inserted in the input field. If left empty, only the bot's username will be inserted
-        std::string query;
+        std::string query = "";
 
         // Optional. True, if private chats with users can be chosen
         bool allow_user_chats = false;

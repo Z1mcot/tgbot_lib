@@ -22,10 +22,10 @@ namespace TgBot {
     struct SetChatMenuButtonRequest {
         typedef std::shared_ptr<SetChatMenuButtonRequest> Ptr;
         // Unique identifier for the target private chat. If not specified, default bot's menu button will be changed
-        int64_t chat_id = 0;
+        std::int64_t chat_id = 0;
 
         // A JSON-serialized object for the bot's new menu button. Defaults to MenuButtonDefault
-        MenuButton::Ptr menu_button;
+        MenuButton::Ptr menu_button = nullptr;
     };
     void to_json(json& j, const SetChatMenuButtonRequest& value);
     void from_json(const json& j, SetChatMenuButtonRequest& value);

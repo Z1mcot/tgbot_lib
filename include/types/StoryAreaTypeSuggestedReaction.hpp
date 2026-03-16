@@ -28,10 +28,10 @@ namespace TgBot {
 
         virtual ~StoryAreaTypeSuggestedReaction() = default;
         // Type of the area, always “suggested_reaction”
-        std::string type_;
+        std::string type_ = "";
 
         // Type of the reaction
-        ReactionType::Ptr reaction_type;
+        ReactionType::Ptr reaction_type = nullptr;
 
         // Optional. Pass True if the reaction area has a dark background
         bool is_dark = false;

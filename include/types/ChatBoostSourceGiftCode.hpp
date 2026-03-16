@@ -26,10 +26,10 @@ namespace TgBot {
 
         virtual ~ChatBoostSourceGiftCode() = default;
         // Source of the boost, always “gift_code”
-        std::string source;
+        std::string source = "";
 
         // User for which the gift code was created
-        User::Ptr user;
+        User::Ptr user = nullptr;
     };
     void to_json(json& j, const ChatBoostSourceGiftCode& value);
     void from_json(const json& j, ChatBoostSourceGiftCode& value);

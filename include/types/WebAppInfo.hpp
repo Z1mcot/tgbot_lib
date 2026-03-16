@@ -24,7 +24,7 @@ namespace TgBot {
 
         virtual ~WebAppInfo() = default;
         // An HTTPS URL of a Web App to be opened with additional data as specified in Initializing Web Apps
-        std::string url;
+        std::string url = "";
     };
     void to_json(json& j, const WebAppInfo& value);
     void from_json(const json& j, WebAppInfo& value);

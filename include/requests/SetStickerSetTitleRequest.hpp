@@ -21,10 +21,10 @@ namespace TgBot {
     struct SetStickerSetTitleRequest {
         typedef std::shared_ptr<SetStickerSetTitleRequest> Ptr;
         // Sticker set name
-        std::string name;
+        std::string name = "";
 
         // Sticker set title, 1-64 characters
-        std::string title;
+        std::string title = "";
     };
     void to_json(json& j, const SetStickerSetTitleRequest& value);
     void from_json(const json& j, SetStickerSetTitleRequest& value);

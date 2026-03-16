@@ -26,10 +26,10 @@ namespace TgBot {
 
         virtual ~UserProfileAudios() = default;
         // Total number of profile audios for the target user
-        int64_t total_count = 0;
+        std::int64_t total_count = 0;
 
         // Requested profile audios
-        std::vector<Audio::Ptr> audios;
+        std::vector<Audio::Ptr> audios = std::vector<Audio::Ptr>();
     };
     void to_json(json& j, const UserProfileAudios& value);
     void from_json(const json& j, UserProfileAudios& value);

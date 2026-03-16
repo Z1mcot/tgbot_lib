@@ -30,19 +30,19 @@ namespace TgBot {
 
         virtual ~InlineQueryResultCachedSticker() = default;
         // Type of the result, must be sticker
-        std::string type_;
+        std::string type_ = "";
 
         // Unique identifier for this result, 1-64 bytes
-        std::string id;
+        std::string id = "";
 
         // A valid file identifier of the sticker
-        std::string sticker_file_id;
+        std::string sticker_file_id = "";
 
         // Optional. Inline keyboard attached to the message
-        InlineKeyboardMarkup::Ptr reply_markup;
+        InlineKeyboardMarkup::Ptr reply_markup = nullptr;
 
         // Optional. Content of the message to be sent instead of the sticker
-        InputMessageContent::Ptr input_message_content;
+        InputMessageContent::Ptr input_message_content = nullptr;
     };
     void to_json(json& j, const InlineQueryResultCachedSticker& value);
     void from_json(const json& j, InlineQueryResultCachedSticker& value);

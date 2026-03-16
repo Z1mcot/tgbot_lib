@@ -31,22 +31,22 @@ namespace TgBot {
 
         virtual ~Chat() = default;
         // Unique identifier for this chat. This number may have more than 32 significant bits and some programming languages may have difficulty/silent defects in interpreting it. But it has at most 52 significant bits, so a signed 64-bit integer or double-precision float type are safe for storing this identifier.
-        int64_t id = 0;
+        std::int64_t id = 0;
 
         // Type of the chat, can be either “private”, “group”, “supergroup” or “channel”
-        std::string type_;
+        std::string type_ = "";
 
         // Optional. Title, for supergroups, channels and group chats
-        std::string title;
+        std::string title = "";
 
         // Optional. Username, for private chats, supergroups and channels if available
-        std::string username;
+        std::string username = "";
 
         // Optional. First name of the other party in a private chat
-        std::string first_name;
+        std::string first_name = "";
 
         // Optional. Last name of the other party in a private chat
-        std::string last_name;
+        std::string last_name = "";
 
         // Optional. True, if the supergroup chat is a forum (has topics enabled)
         bool is_forum = false;

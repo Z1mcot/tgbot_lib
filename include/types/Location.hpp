@@ -38,13 +38,13 @@ namespace TgBot {
         double horizontal_accuracy = 0.0;
 
         // Optional. Time relative to the message sending date, during which the location can be updated; in seconds. For active live locations only.
-        int64_t live_period = 0;
+        std::int64_t live_period = 0;
 
         // Optional. The direction in which user is moving, in degrees; 1-360. For active live locations only.
-        int64_t heading = 0;
+        std::int64_t heading = 0;
 
         // Optional. The maximum distance for proximity alerts about approaching another chat member, in meters. For sent live locations only.
-        int64_t proximity_alert_radius = 0;
+        std::int64_t proximity_alert_radius = 0;
     };
     void to_json(json& j, const Location& value);
     void from_json(const json& j, Location& value);

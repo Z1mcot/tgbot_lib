@@ -26,19 +26,19 @@ namespace TgBot {
     struct ForwardMessagesRequest {
         typedef std::shared_ptr<ForwardMessagesRequest> Ptr;
         // Unique identifier for the target chat or username of the target channel (in the format @channelusername)
-        int64_t chat_id = 0;
+        std::int64_t chat_id = 0;
 
         // Unique identifier for the chat where the original messages were sent (or channel username in the format @channelusername)
-        int64_t from_chat_id = 0;
+        std::int64_t from_chat_id = 0;
 
         // A JSON-serialized list of 1-100 identifiers of messages in the chat from_chat_id to forward. The identifiers must be specified in a strictly increasing order.
-        std::vector<int64_t> message_ids;
+        std::vector<std::int64_t> message_ids = std::vector<std::int64_t>();
 
         // Unique identifier for the target message thread (topic) of a forum; for forum supergroups and private chats of bots with forum topic mode enabled only
-        int64_t message_thread_id = 0;
+        std::int64_t message_thread_id = 0;
 
         // Identifier of the direct messages topic to which the messages will be forwarded; required if the messages are forwarded to a direct messages chat
-        int64_t direct_messages_topic_id = 0;
+        std::int64_t direct_messages_topic_id = 0;
 
         // Sends the messages silently. Users will receive a notification with no sound.
         bool disable_notification = false;

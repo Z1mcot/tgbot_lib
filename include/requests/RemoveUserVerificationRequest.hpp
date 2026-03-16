@@ -20,7 +20,7 @@ namespace TgBot {
     struct RemoveUserVerificationRequest {
         typedef std::shared_ptr<RemoveUserVerificationRequest> Ptr;
         // Unique identifier of the target user
-        int64_t user_id = 0;
+        std::int64_t user_id = 0;
     };
     void to_json(json& j, const RemoveUserVerificationRequest& value);
     void from_json(const json& j, RemoveUserVerificationRequest& value);

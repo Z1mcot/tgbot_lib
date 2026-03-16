@@ -26,10 +26,10 @@ namespace TgBot {
 
         virtual ~Story() = default;
         // Chat that posted the story
-        Chat::Ptr chat;
+        Chat::Ptr chat = nullptr;
 
         // Unique identifier for the story in the chat
-        int64_t id = 0;
+        std::int64_t id = 0;
     };
     void to_json(json& j, const Story& value);
     void from_json(const json& j, Story& value);

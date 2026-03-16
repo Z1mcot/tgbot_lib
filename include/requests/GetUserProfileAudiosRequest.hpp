@@ -22,13 +22,13 @@ namespace TgBot {
     struct GetUserProfileAudiosRequest {
         typedef std::shared_ptr<GetUserProfileAudiosRequest> Ptr;
         // Unique identifier of the target user
-        int64_t user_id = 0;
+        std::int64_t user_id = 0;
 
         // Sequential number of the first audio to be returned. By default, all audios are returned.
-        int64_t offset = 0;
+        std::int64_t offset = 0;
 
         // Limits the number of audios to be retrieved. Values between 1-100 are accepted. Defaults to 100.
-        int64_t limit = 0;
+        std::int64_t limit = 0;
     };
     void to_json(json& j, const GetUserProfileAudiosRequest& value);
     void from_json(const json& j, GetUserProfileAudiosRequest& value);

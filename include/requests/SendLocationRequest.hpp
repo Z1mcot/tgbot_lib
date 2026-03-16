@@ -39,7 +39,7 @@ namespace TgBot {
     struct SendLocationRequest {
         typedef std::shared_ptr<SendLocationRequest> Ptr;
         // Unique identifier for the target chat or username of the target channel (in the format @channelusername)
-        int64_t chat_id = 0;
+        std::int64_t chat_id = 0;
 
         // Latitude of the location
         double latitude = 0.0;
@@ -48,25 +48,25 @@ namespace TgBot {
         double longitude = 0.0;
 
         // Unique identifier of the business connection on behalf of which the message will be sent
-        std::string business_connection_id;
+        std::string business_connection_id = "";
 
         // Unique identifier for the target message thread (topic) of a forum; for forum supergroups and private chats of bots with forum topic mode enabled only
-        int64_t message_thread_id = 0;
+        std::int64_t message_thread_id = 0;
 
         // Identifier of the direct messages topic to which the message will be sent; required if the message is sent to a direct messages chat
-        int64_t direct_messages_topic_id = 0;
+        std::int64_t direct_messages_topic_id = 0;
 
         // The radius of uncertainty for the location, measured in meters; 0-1500
         double horizontal_accuracy = 0.0;
 
         // Period in seconds during which the location will be updated (see Live Locations, should be between 60 and 86400, or 0x7FFFFFFF for live locations that can be edited indefinitely.
-        int64_t live_period = 0;
+        std::int64_t live_period = 0;
 
         // For live locations, a direction in which the user is moving, in degrees. Must be between 1 and 360 if specified.
-        int64_t heading = 0;
+        std::int64_t heading = 0;
 
         // For live locations, a maximum distance for proximity alerts about approaching another chat member, in meters. Must be between 1 and 100000 if specified.
-        int64_t proximity_alert_radius = 0;
+        std::int64_t proximity_alert_radius = 0;
 
         // Sends the message silently. Users will receive a notification with no sound.
         bool disable_notification = false;
@@ -78,16 +78,16 @@ namespace TgBot {
         bool allow_paid_broadcast = false;
 
         // Unique identifier of the message effect to be added to the message; for private chats only
-        std::string message_effect_id;
+        std::string message_effect_id = "";
 
         // A JSON-serialized object containing the parameters of the suggested post to send; for direct messages chats only. If the message is sent as a reply to another suggested post, then that suggested post is automatically declined.
-        SuggestedPostParameters::Ptr suggested_post_parameters;
+        SuggestedPostParameters::Ptr suggested_post_parameters = nullptr;
 
         // Description of the message to reply to
-        ReplyParameters::Ptr reply_parameters;
+        ReplyParameters::Ptr reply_parameters = nullptr;
 
         // Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove a reply keyboard or to force a reply from the user
-        KeyboardOption::Ptr reply_markup;
+        KeyboardOption::Ptr reply_markup = nullptr;
     };
     void to_json(json& j, const SendLocationRequest& value);
     void from_json(const json& j, SendLocationRequest& value);

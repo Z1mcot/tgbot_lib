@@ -22,10 +22,10 @@ namespace TgBot {
     struct AnswerWebAppQueryRequest {
         typedef std::shared_ptr<AnswerWebAppQueryRequest> Ptr;
         // Unique identifier for the query to be answered
-        std::string web_app_query_id;
+        std::string web_app_query_id = "";
 
         // A JSON-serialized object describing the message to be sent
-        InlineQueryResult::Ptr result;
+        InlineQueryResult::Ptr result = nullptr;
     };
     void to_json(json& j, const AnswerWebAppQueryRequest& value);
     void from_json(const json& j, AnswerWebAppQueryRequest& value);

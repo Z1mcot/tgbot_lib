@@ -31,25 +31,25 @@ namespace TgBot {
     struct PostStoryRequest {
         typedef std::shared_ptr<PostStoryRequest> Ptr;
         // Unique identifier of the business connection
-        std::string business_connection_id;
+        std::string business_connection_id = "";
 
         // Content of the story
-        InputStoryContent::Ptr content;
+        InputStoryContent::Ptr content = nullptr;
 
         // Period after which the story is moved to the archive, in seconds; must be one of 6 * 3600, 12 * 3600, 86400, or 2 * 86400
-        int64_t active_period = 0;
+        std::int64_t active_period = 0;
 
         // Caption of the story, 0-2048 characters after entities parsing
-        std::string caption;
+        std::string caption = "";
 
         // Mode for parsing entities in the story caption. See formatting options for more details.
-        std::string parse_mode;
+        std::string parse_mode = "";
 
         // A JSON-serialized list of special entities that appear in the caption, which can be specified instead of parse_mode
-        std::vector<MessageEntity::Ptr> caption_entities;
+        std::vector<MessageEntity::Ptr> caption_entities = std::vector<MessageEntity::Ptr>();
 
         // A JSON-serialized list of clickable areas to be shown on the story
-        std::vector<StoryArea::Ptr> areas;
+        std::vector<StoryArea::Ptr> areas = std::vector<StoryArea::Ptr>();
 
         // Pass True to keep the story accessible after it expires
         bool post_to_chat_page = false;

@@ -30,22 +30,22 @@ namespace TgBot {
     struct ForwardMessageRequest {
         typedef std::shared_ptr<ForwardMessageRequest> Ptr;
         // Unique identifier for the target chat or username of the target channel (in the format @channelusername)
-        int64_t chat_id = 0;
+        std::int64_t chat_id = 0;
 
         // Unique identifier for the chat where the original message was sent (or channel username in the format @channelusername)
-        int64_t from_chat_id = 0;
+        std::int64_t from_chat_id = 0;
 
         // Message identifier in the chat specified in from_chat_id
-        int64_t message_id = 0;
+        std::int64_t message_id = 0;
 
         // Unique identifier for the target message thread (topic) of a forum; for forum supergroups and private chats of bots with forum topic mode enabled only
-        int64_t message_thread_id = 0;
+        std::int64_t message_thread_id = 0;
 
         // Identifier of the direct messages topic to which the message will be forwarded; required if the message is forwarded to a direct messages chat
-        int64_t direct_messages_topic_id = 0;
+        std::int64_t direct_messages_topic_id = 0;
 
         // New start timestamp for the forwarded video in the message
-        int64_t video_start_timestamp = 0;
+        std::int64_t video_start_timestamp = 0;
 
         // Sends the message silently. Users will receive a notification with no sound.
         bool disable_notification = false;
@@ -54,10 +54,10 @@ namespace TgBot {
         bool protect_content = false;
 
         // Unique identifier of the message effect to be added to the message; only available when forwarding to private chats
-        std::string message_effect_id;
+        std::string message_effect_id = "";
 
         // A JSON-serialized object containing the parameters of the suggested post to send; for direct messages chats only
-        SuggestedPostParameters::Ptr suggested_post_parameters;
+        SuggestedPostParameters::Ptr suggested_post_parameters = nullptr;
     };
     void to_json(json& j, const ForwardMessageRequest& value);
     void from_json(const json& j, ForwardMessageRequest& value);

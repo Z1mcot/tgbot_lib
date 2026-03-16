@@ -27,13 +27,13 @@ namespace TgBot {
 
         virtual ~ChatMemberBanned() = default;
         // The member's status in the chat, always “kicked”
-        std::string status;
+        std::string status = "";
 
         // Information about the user
-        User::Ptr user;
+        User::Ptr user = nullptr;
 
         // Date when restrictions will be lifted for this user; Unix time. If 0, then the user is banned forever
-        int64_t until_date = 0;
+        std::int64_t until_date = 0;
     };
     void to_json(json& j, const ChatMemberBanned& value);
     void from_json(const json& j, ChatMemberBanned& value);

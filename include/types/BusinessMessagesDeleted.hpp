@@ -27,13 +27,13 @@ namespace TgBot {
 
         virtual ~BusinessMessagesDeleted() = default;
         // Unique identifier of the business connection
-        std::string business_connection_id;
+        std::string business_connection_id = "";
 
         // Information about a chat in the business account. The bot may not have access to the chat or the corresponding user.
-        Chat::Ptr chat;
+        Chat::Ptr chat = nullptr;
 
         // The list of identifiers of deleted messages in the chat of the business account
-        std::vector<int64_t> message_ids;
+        std::vector<std::int64_t> message_ids = std::vector<std::int64_t>();
     };
     void to_json(json& j, const BusinessMessagesDeleted& value);
     void from_json(const json& j, BusinessMessagesDeleted& value);

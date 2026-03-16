@@ -33,13 +33,13 @@ namespace TgBot {
 
         virtual ~Giveaway() = default;
         // The list of chats which the user must join to participate in the giveaway
-        std::vector<Chat::Ptr> chats;
+        std::vector<Chat::Ptr> chats = std::vector<Chat::Ptr>();
 
         // Point in time (Unix timestamp) when winners of the giveaway will be selected
-        int64_t winners_selection_date = 0;
+        std::int64_t winners_selection_date = 0;
 
         // The number of users which are supposed to be selected as winners of the giveaway
-        int64_t winner_count = 0;
+        std::int64_t winner_count = 0;
 
         // Optional. True, if only users who join the chats after the giveaway started should be eligible to win
         bool only_new_members = false;
@@ -48,16 +48,16 @@ namespace TgBot {
         bool has_public_winners = false;
 
         // Optional. Description of additional giveaway prize
-        std::string prize_description;
+        std::string prize_description = "";
 
         // Optional. A list of two-letter ISO 3166-1 alpha-2 country codes indicating the countries from which eligible users for the giveaway must come. If empty, then all users can participate in the giveaway. Users with a phone number that was bought on Fragment can always participate in giveaways.
-        std::vector<std::string> country_codes;
+        std::vector<std::string> country_codes = std::vector<std::string>();
 
         // Optional. The number of Telegram Stars to be split between giveaway winners; for Telegram Star giveaways only
-        int64_t prize_star_count = 0;
+        std::int64_t prize_star_count = 0;
 
         // Optional. The number of months the Telegram Premium subscription won from the giveaway will be active for; for Telegram Premium giveaways only
-        int64_t premium_subscription_month_count = 0;
+        std::int64_t premium_subscription_month_count = 0;
     };
     void to_json(json& j, const Giveaway& value);
     void from_json(const json& j, Giveaway& value);

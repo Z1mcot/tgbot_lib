@@ -20,7 +20,7 @@ namespace TgBot {
     struct GetChatMemberCountRequest {
         typedef std::shared_ptr<GetChatMemberCountRequest> Ptr;
         // Unique identifier for the target chat or username of the target supergroup or channel (in the format @channelusername)
-        int64_t chat_id = 0;
+        std::int64_t chat_id = 0;
     };
     void to_json(json& j, const GetChatMemberCountRequest& value);
     void from_json(const json& j, GetChatMemberCountRequest& value);

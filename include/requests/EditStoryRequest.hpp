@@ -29,25 +29,25 @@ namespace TgBot {
     struct EditStoryRequest {
         typedef std::shared_ptr<EditStoryRequest> Ptr;
         // Unique identifier of the business connection
-        std::string business_connection_id;
+        std::string business_connection_id = "";
 
         // Unique identifier of the story to edit
-        int64_t story_id = 0;
+        std::int64_t story_id = 0;
 
         // Content of the story
-        InputStoryContent::Ptr content;
+        InputStoryContent::Ptr content = nullptr;
 
         // Caption of the story, 0-2048 characters after entities parsing
-        std::string caption;
+        std::string caption = "";
 
         // Mode for parsing entities in the story caption. See formatting options for more details.
-        std::string parse_mode;
+        std::string parse_mode = "";
 
         // A JSON-serialized list of special entities that appear in the caption, which can be specified instead of parse_mode
-        std::vector<MessageEntity::Ptr> caption_entities;
+        std::vector<MessageEntity::Ptr> caption_entities = std::vector<MessageEntity::Ptr>();
 
         // A JSON-serialized list of clickable areas to be shown on the story
-        std::vector<StoryArea::Ptr> areas;
+        std::vector<StoryArea::Ptr> areas = std::vector<StoryArea::Ptr>();
     };
     void to_json(json& j, const EditStoryRequest& value);
     void from_json(const json& j, EditStoryRequest& value);

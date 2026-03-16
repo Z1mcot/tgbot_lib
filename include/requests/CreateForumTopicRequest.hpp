@@ -23,16 +23,16 @@ namespace TgBot {
     struct CreateForumTopicRequest {
         typedef std::shared_ptr<CreateForumTopicRequest> Ptr;
         // Unique identifier for the target chat or username of the target supergroup (in the format @supergroupusername)
-        int64_t chat_id = 0;
+        std::int64_t chat_id = 0;
 
         // Topic name, 1-128 characters
-        std::string name;
+        std::string name = "";
 
         // Color of the topic icon in RGB format. Currently, must be one of 7322096 (0x6FB9F0), 16766590 (0xFFD67E), 13338331 (0xCB86DB), 9367192 (0x8EEE98), 16749490 (0xFF93B2), or 16478047 (0xFB6F5F)
-        int64_t icon_color = 0;
+        std::int64_t icon_color = 0;
 
         // Unique identifier of the custom emoji shown as the topic icon. Use getForumTopicIconStickers to get all allowed custom emoji identifiers.
-        std::string icon_custom_emoji_id;
+        std::string icon_custom_emoji_id = "";
     };
     void to_json(json& j, const CreateForumTopicRequest& value);
     void from_json(const json& j, CreateForumTopicRequest& value);

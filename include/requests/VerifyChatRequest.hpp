@@ -21,10 +21,10 @@ namespace TgBot {
     struct VerifyChatRequest {
         typedef std::shared_ptr<VerifyChatRequest> Ptr;
         // Unique identifier for the target chat or username of the target channel (in the format @channelusername). Channel direct messages chats can't be verified.
-        int64_t chat_id = 0;
+        std::int64_t chat_id = 0;
 
         // Custom description for the verification; 0-70 characters. Must be empty if the organization isn't allowed to provide a custom verification description.
-        std::string custom_description;
+        std::string custom_description = "";
     };
     void to_json(json& j, const VerifyChatRequest& value);
     void from_json(const json& j, VerifyChatRequest& value);

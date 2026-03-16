@@ -71,79 +71,79 @@ namespace TgBot {
 
         virtual ~ExternalReplyInfo() = default;
         // Origin of the message replied to by the given message
-        MessageOrigin::Ptr origin;
+        MessageOrigin::Ptr origin = nullptr;
 
         // Optional. Chat the original message belongs to. Available only if the chat is a supergroup or a channel.
-        Chat::Ptr chat;
+        Chat::Ptr chat = nullptr;
 
         // Optional. Unique message identifier inside the original chat. Available only if the original chat is a supergroup or a channel.
-        int64_t message_id = 0;
+        std::int64_t message_id = 0;
 
         // Optional. Options used for link preview generation for the original message, if it is a text message
-        LinkPreviewOptions::Ptr link_preview_options;
+        LinkPreviewOptions::Ptr link_preview_options = nullptr;
 
         // Optional. Message is an animation, information about the animation
-        Animation::Ptr animation;
+        Animation::Ptr animation = nullptr;
 
         // Optional. Message is an audio file, information about the file
-        Audio::Ptr audio;
+        Audio::Ptr audio = nullptr;
 
         // Optional. Message is a general file, information about the file
-        Document::Ptr document;
+        Document::Ptr document = nullptr;
 
         // Optional. Message contains paid media; information about the paid media
-        PaidMediaInfo::Ptr paid_media;
+        PaidMediaInfo::Ptr paid_media = nullptr;
 
         // Optional. Message is a photo, available sizes of the photo
-        std::vector<PhotoSize::Ptr> photo;
+        std::vector<PhotoSize::Ptr> photo = std::vector<PhotoSize::Ptr>();
 
         // Optional. Message is a sticker, information about the sticker
-        Sticker::Ptr sticker;
+        Sticker::Ptr sticker = nullptr;
 
         // Optional. Message is a forwarded story
-        Story::Ptr story;
+        Story::Ptr story = nullptr;
 
         // Optional. Message is a video, information about the video
-        Video::Ptr video;
+        Video::Ptr video = nullptr;
 
         // Optional. Message is a video note, information about the video message
-        VideoNote::Ptr video_note;
+        VideoNote::Ptr video_note = nullptr;
 
         // Optional. Message is a voice message, information about the file
-        Voice::Ptr voice;
+        Voice::Ptr voice = nullptr;
 
         // Optional. True, if the message media is covered by a spoiler animation
         bool has_media_spoiler = false;
 
         // Optional. Message is a checklist
-        Checklist::Ptr checklist;
+        Checklist::Ptr checklist = nullptr;
 
         // Optional. Message is a shared contact, information about the contact
-        Contact::Ptr contact;
+        Contact::Ptr contact = nullptr;
 
         // Optional. Message is a dice with random value
-        Dice::Ptr dice;
+        Dice::Ptr dice = nullptr;
 
         // Optional. Message is a game, information about the game. More about games »
-        Game::Ptr game;
+        Game::Ptr game = nullptr;
 
         // Optional. Message is a scheduled giveaway, information about the giveaway
-        Giveaway::Ptr giveaway;
+        Giveaway::Ptr giveaway = nullptr;
 
         // Optional. A giveaway with public winners was completed
-        GiveawayWinners::Ptr giveaway_winners;
+        GiveawayWinners::Ptr giveaway_winners = nullptr;
 
         // Optional. Message is an invoice for a payment, information about the invoice. More about payments »
-        Invoice::Ptr invoice;
+        Invoice::Ptr invoice = nullptr;
 
         // Optional. Message is a shared location, information about the location
-        Location::Ptr location;
+        Location::Ptr location = nullptr;
 
         // Optional. Message is a native poll, information about the poll
-        Poll::Ptr poll;
+        Poll::Ptr poll = nullptr;
 
         // Optional. Message is a venue, information about the venue
-        Venue::Ptr venue;
+        Venue::Ptr venue = nullptr;
     };
     void to_json(json& j, const ExternalReplyInfo& value);
     void from_json(const json& j, ExternalReplyInfo& value);

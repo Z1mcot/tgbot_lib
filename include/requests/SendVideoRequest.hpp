@@ -47,46 +47,46 @@ namespace TgBot {
     struct SendVideoRequest {
         typedef std::shared_ptr<SendVideoRequest> Ptr;
         // Unique identifier for the target chat or username of the target channel (in the format @channelusername)
-        int64_t chat_id = 0;
+        std::int64_t chat_id = 0;
 
         // Video to send. Pass a file_id as String to send a video that exists on the Telegram servers (recommended), pass an HTTP URL as a String for Telegram to get a video from the Internet, or upload a new video using multipart/form-data. More information on Sending Files »
-        std::string video;
+        std::string video = "";
 
         // Unique identifier of the business connection on behalf of which the message will be sent
-        std::string business_connection_id;
+        std::string business_connection_id = "";
 
         // Unique identifier for the target message thread (topic) of a forum; for forum supergroups and private chats of bots with forum topic mode enabled only
-        int64_t message_thread_id = 0;
+        std::int64_t message_thread_id = 0;
 
         // Identifier of the direct messages topic to which the message will be sent; required if the message is sent to a direct messages chat
-        int64_t direct_messages_topic_id = 0;
+        std::int64_t direct_messages_topic_id = 0;
 
         // Duration of sent video in seconds
-        int64_t duration = 0;
+        std::int64_t duration = 0;
 
         // Video width
-        int64_t width = 0;
+        std::int64_t width = 0;
 
         // Video height
-        int64_t height = 0;
+        std::int64_t height = 0;
 
         // Thumbnail of the file sent; can be ignored if thumbnail generation for the file is supported server-side. The thumbnail should be in JPEG format and less than 200 kB in size. A thumbnail's width and height should not exceed 320. Ignored if the file is not uploaded using multipart/form-data. Thumbnails can't be reused and can be only uploaded as a new file, so you can pass “attach://<file_attach_name>” if the thumbnail was uploaded using multipart/form-data under <file_attach_name>. More information on Sending Files »
-        std::string thumbnail;
+        std::string thumbnail = "";
 
         // Cover for the video in the message. Pass a file_id to send a file that exists on the Telegram servers (recommended), pass an HTTP URL for Telegram to get a file from the Internet, or pass “attach://<file_attach_name>” to upload a new one using multipart/form-data under <file_attach_name> name. More information on Sending Files »
-        std::string cover;
+        std::string cover = "";
 
         // Start timestamp for the video in the message
-        int64_t start_timestamp = 0;
+        std::int64_t start_timestamp = 0;
 
         // Video caption (may also be used when resending videos by file_id), 0-1024 characters after entities parsing
-        std::string caption;
+        std::string caption = "";
 
         // Mode for parsing entities in the video caption. See formatting options for more details.
-        std::string parse_mode;
+        std::string parse_mode = "";
 
         // A JSON-serialized list of special entities that appear in the caption, which can be specified instead of parse_mode
-        std::vector<MessageEntity::Ptr> caption_entities;
+        std::vector<MessageEntity::Ptr> caption_entities = std::vector<MessageEntity::Ptr>();
 
         // Pass True, if the caption must be shown above the message media
         bool show_caption_above_media = false;
@@ -107,16 +107,16 @@ namespace TgBot {
         bool allow_paid_broadcast = false;
 
         // Unique identifier of the message effect to be added to the message; for private chats only
-        std::string message_effect_id;
+        std::string message_effect_id = "";
 
         // A JSON-serialized object containing the parameters of the suggested post to send; for direct messages chats only. If the message is sent as a reply to another suggested post, then that suggested post is automatically declined.
-        SuggestedPostParameters::Ptr suggested_post_parameters;
+        SuggestedPostParameters::Ptr suggested_post_parameters = nullptr;
 
         // Description of the message to reply to
-        ReplyParameters::Ptr reply_parameters;
+        ReplyParameters::Ptr reply_parameters = nullptr;
 
         // Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove a reply keyboard or to force a reply from the user
-        KeyboardOption::Ptr reply_markup;
+        KeyboardOption::Ptr reply_markup = nullptr;
     };
     void to_json(json& j, const SendVideoRequest& value);
     void from_json(const json& j, SendVideoRequest& value);

@@ -23,16 +23,16 @@ namespace TgBot {
     struct EditForumTopicRequest {
         typedef std::shared_ptr<EditForumTopicRequest> Ptr;
         // Unique identifier for the target chat or username of the target supergroup (in the format @supergroupusername)
-        int64_t chat_id = 0;
+        std::int64_t chat_id = 0;
 
         // Unique identifier for the target message thread of the forum topic
-        int64_t message_thread_id = 0;
+        std::int64_t message_thread_id = 0;
 
         // New topic name, 0-128 characters. If not specified or empty, the current name of the topic will be kept
-        std::string name;
+        std::string name = "";
 
         // New unique identifier of the custom emoji shown as the topic icon. Use getForumTopicIconStickers to get all allowed custom emoji identifiers. Pass an empty string to remove the icon. If not specified, the current icon will be kept
-        std::string icon_custom_emoji_id;
+        std::string icon_custom_emoji_id = "";
     };
     void to_json(json& j, const EditForumTopicRequest& value);
     void from_json(const json& j, EditForumTopicRequest& value);

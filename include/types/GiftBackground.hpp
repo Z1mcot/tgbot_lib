@@ -26,13 +26,13 @@ namespace TgBot {
 
         virtual ~GiftBackground() = default;
         // Center color of the background in RGB format
-        int64_t center_color = 0;
+        std::int64_t center_color = 0;
 
         // Edge color of the background in RGB format
-        int64_t edge_color = 0;
+        std::int64_t edge_color = 0;
 
         // Text color of the background in RGB format
-        int64_t text_color = 0;
+        std::int64_t text_color = 0;
     };
     void to_json(json& j, const GiftBackground& value);
     void from_json(const json& j, GiftBackground& value);

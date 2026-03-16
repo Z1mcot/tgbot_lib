@@ -26,10 +26,10 @@ namespace TgBot {
 
         virtual ~BusinessOpeningHours() = default;
         // Unique name of the time zone for which the opening hours are defined
-        std::string time_zone_name;
+        std::string time_zone_name = "";
 
         // List of time intervals describing business opening hours
-        std::vector<BusinessOpeningHoursInterval::Ptr> opening_hours;
+        std::vector<BusinessOpeningHoursInterval::Ptr> opening_hours = std::vector<BusinessOpeningHoursInterval::Ptr>();
     };
     void to_json(json& j, const BusinessOpeningHours& value);
     void from_json(const json& j, BusinessOpeningHours& value);

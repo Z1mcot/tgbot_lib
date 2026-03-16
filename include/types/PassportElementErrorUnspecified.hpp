@@ -27,16 +27,16 @@ namespace TgBot {
 
         virtual ~PassportElementErrorUnspecified() = default;
         // Error source, must be unspecified
-        std::string source;
+        std::string source = "";
 
         // Type of element of the user's Telegram Passport which has the issue
-        std::string type_;
+        std::string type_ = "";
 
         // Base64-encoded element hash
-        std::string element_hash;
+        std::string element_hash = "";
 
         // Error message
-        std::string message;
+        std::string message = "";
     };
     void to_json(json& j, const PassportElementErrorUnspecified& value);
     void from_json(const json& j, PassportElementErrorUnspecified& value);

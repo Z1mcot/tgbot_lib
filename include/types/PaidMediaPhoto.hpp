@@ -26,10 +26,10 @@ namespace TgBot {
 
         virtual ~PaidMediaPhoto() = default;
         // Type of the paid media, always “photo”
-        std::string type_;
+        std::string type_ = "";
 
         // The photo
-        std::vector<PhotoSize::Ptr> photo;
+        std::vector<PhotoSize::Ptr> photo = std::vector<PhotoSize::Ptr>();
     };
     void to_json(json& j, const PaidMediaPhoto& value);
     void from_json(const json& j, PaidMediaPhoto& value);

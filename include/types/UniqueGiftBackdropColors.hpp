@@ -27,16 +27,16 @@ namespace TgBot {
 
         virtual ~UniqueGiftBackdropColors() = default;
         // The color in the center of the backdrop in RGB format
-        int64_t center_color = 0;
+        std::int64_t center_color = 0;
 
         // The color on the edges of the backdrop in RGB format
-        int64_t edge_color = 0;
+        std::int64_t edge_color = 0;
 
         // The color to be applied to the symbol in RGB format
-        int64_t symbol_color = 0;
+        std::int64_t symbol_color = 0;
 
         // The color for the text on the backdrop in RGB format
-        int64_t text_color = 0;
+        std::int64_t text_color = 0;
     };
     void to_json(json& j, const UniqueGiftBackdropColors& value);
     void from_json(const json& j, UniqueGiftBackdropColors& value);

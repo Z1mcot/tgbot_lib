@@ -41,19 +41,19 @@ namespace TgBot {
 
         virtual ~Sticker() = default;
         // Identifier for this file, which can be used to download or reuse the file
-        std::string file_id;
+        std::string file_id = "";
 
         // Unique identifier for this file, which is supposed to be the same over time and for different bots. Can't be used to download or reuse the file.
-        std::string file_unique_id;
+        std::string file_unique_id = "";
 
         // Type of the sticker, currently one of “regular”, “mask”, “custom_emoji”. The type of the sticker is independent from its format, which is determined by the fields is_animated and is_video.
-        std::string type_;
+        std::string type_ = "";
 
         // Sticker width
-        int64_t width = 0;
+        std::int64_t width = 0;
 
         // Sticker height
-        int64_t height = 0;
+        std::int64_t height = 0;
 
         // True, if the sticker is animated
         bool is_animated = false;
@@ -62,28 +62,28 @@ namespace TgBot {
         bool is_video = false;
 
         // Optional. Sticker thumbnail in the .WEBP or .JPG format
-        PhotoSize::Ptr thumbnail;
+        PhotoSize::Ptr thumbnail = nullptr;
 
         // Optional. Emoji associated with the sticker
-        std::string emoji;
+        std::string emoji = "";
 
         // Optional. Name of the sticker set to which the sticker belongs
-        std::string set_name;
+        std::string set_name = "";
 
         // Optional. For premium regular stickers, premium animation for the sticker
-        File::Ptr premium_animation;
+        File::Ptr premium_animation = nullptr;
 
         // Optional. For mask stickers, the position where the mask should be placed
-        MaskPosition::Ptr mask_position;
+        MaskPosition::Ptr mask_position = nullptr;
 
         // Optional. For custom emoji stickers, unique identifier of the custom emoji
-        std::string custom_emoji_id;
+        std::string custom_emoji_id = "";
 
         // Optional. True, if the sticker must be repainted to a text color in messages, the color of the Telegram Premium badge in emoji status, white color on chat photos, or another appropriate color in other places
         bool needs_repainting = false;
 
         // Optional. File size in bytes
-        int64_t file_size = 0;
+        std::int64_t file_size = 0;
     };
     void to_json(json& j, const Sticker& value);
     void from_json(const json& j, Sticker& value);

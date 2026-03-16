@@ -27,16 +27,16 @@ namespace TgBot {
 
         virtual ~UserRating() = default;
         // Current level of the user, indicating their reliability when purchasing digital goods and services. A higher level suggests a more trustworthy customer; a negative level is likely reason for concern.
-        int64_t level = 0;
+        std::int64_t level = 0;
 
         // Numerical value of the user's rating; the higher the rating, the better
-        int64_t rating = 0;
+        std::int64_t rating = 0;
 
         // The rating value required to get the current level
-        int64_t current_level_rating = 0;
+        std::int64_t current_level_rating = 0;
 
         // Optional. The rating value required to get to the next level; omitted if the maximum level was reached
-        int64_t next_level_rating = 0;
+        std::int64_t next_level_rating = 0;
     };
     void to_json(json& j, const UserRating& value);
     void from_json(const json& j, UserRating& value);

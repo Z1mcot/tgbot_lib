@@ -24,7 +24,7 @@ namespace TgBot {
 
         virtual ~GiveawayCreated() = default;
         // Optional. The number of Telegram Stars to be split between giveaway winners; for Telegram Star giveaways only
-        int64_t prize_star_count = 0;
+        std::int64_t prize_star_count = 0;
     };
     void to_json(json& j, const GiveawayCreated& value);
     void from_json(const json& j, GiveawayCreated& value);

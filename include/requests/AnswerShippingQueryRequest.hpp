@@ -24,16 +24,16 @@ namespace TgBot {
     struct AnswerShippingQueryRequest {
         typedef std::shared_ptr<AnswerShippingQueryRequest> Ptr;
         // Unique identifier for the query to be answered
-        std::string shipping_query_id;
+        std::string shipping_query_id = "";
 
         // Pass True if delivery to the specified address is possible and False if there are any problems (for example, if delivery to the specified address is not possible)
         bool ok = false;
 
         // Required if ok is True. A JSON-serialized array of available shipping options.
-        std::vector<ShippingOption::Ptr> shipping_options;
+        std::vector<ShippingOption::Ptr> shipping_options = std::vector<ShippingOption::Ptr>();
 
         // Required if ok is False. Error message in human readable form that explains why it is impossible to complete the order (e.g. “Sorry, delivery to your desired address is unavailable”). Telegram will display this message to the user.
-        std::string error_message;
+        std::string error_message = "";
     };
     void to_json(json& j, const AnswerShippingQueryRequest& value);
     void from_json(const json& j, AnswerShippingQueryRequest& value);

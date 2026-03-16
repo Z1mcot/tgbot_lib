@@ -28,19 +28,19 @@ namespace TgBot {
 
         virtual ~PhotoSize() = default;
         // Identifier for this file, which can be used to download or reuse the file
-        std::string file_id;
+        std::string file_id = "";
 
         // Unique identifier for this file, which is supposed to be the same over time and for different bots. Can't be used to download or reuse the file.
-        std::string file_unique_id;
+        std::string file_unique_id = "";
 
         // Photo width
-        int64_t width = 0;
+        std::int64_t width = 0;
 
         // Photo height
-        int64_t height = 0;
+        std::int64_t height = 0;
 
         // Optional. File size in bytes
-        int64_t file_size = 0;
+        std::int64_t file_size = 0;
     };
     void to_json(json& j, const PhotoSize& value);
     void from_json(const json& j, PhotoSize& value);

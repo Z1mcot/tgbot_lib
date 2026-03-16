@@ -41,34 +41,34 @@ namespace TgBot {
     struct SendPaidMediaRequest {
         typedef std::shared_ptr<SendPaidMediaRequest> Ptr;
         // Unique identifier for the target chat or username of the target channel (in the format @channelusername). If the chat is a channel, all Telegram Star proceeds from this media will be credited to the chat's balance. Otherwise, they will be credited to the bot's balance.
-        int64_t chat_id = 0;
+        std::int64_t chat_id = 0;
 
         // The number of Telegram Stars that must be paid to buy access to the media; 1-25000
-        int64_t star_count = 0;
+        std::int64_t star_count = 0;
 
         // A JSON-serialized array describing the media to be sent; up to 10 items
-        std::vector<InputPaidMedia::Ptr> media;
+        std::vector<InputPaidMedia::Ptr> media = std::vector<InputPaidMedia::Ptr>();
 
         // Unique identifier of the business connection on behalf of which the message will be sent
-        std::string business_connection_id;
+        std::string business_connection_id = "";
 
         // Unique identifier for the target message thread (topic) of a forum; for forum supergroups and private chats of bots with forum topic mode enabled only
-        int64_t message_thread_id = 0;
+        std::int64_t message_thread_id = 0;
 
         // Identifier of the direct messages topic to which the message will be sent; required if the message is sent to a direct messages chat
-        int64_t direct_messages_topic_id = 0;
+        std::int64_t direct_messages_topic_id = 0;
 
         // Bot-defined paid media payload, 0-128 bytes. This will not be displayed to the user, use it for your internal processes.
-        std::string payload;
+        std::string payload = "";
 
         // Media caption, 0-1024 characters after entities parsing
-        std::string caption;
+        std::string caption = "";
 
         // Mode for parsing entities in the media caption. See formatting options for more details.
-        std::string parse_mode;
+        std::string parse_mode = "";
 
         // A JSON-serialized list of special entities that appear in the caption, which can be specified instead of parse_mode
-        std::vector<MessageEntity::Ptr> caption_entities;
+        std::vector<MessageEntity::Ptr> caption_entities = std::vector<MessageEntity::Ptr>();
 
         // Pass True, if the caption must be shown above the message media
         bool show_caption_above_media = false;
@@ -83,13 +83,13 @@ namespace TgBot {
         bool allow_paid_broadcast = false;
 
         // A JSON-serialized object containing the parameters of the suggested post to send; for direct messages chats only. If the message is sent as a reply to another suggested post, then that suggested post is automatically declined.
-        SuggestedPostParameters::Ptr suggested_post_parameters;
+        SuggestedPostParameters::Ptr suggested_post_parameters = nullptr;
 
         // Description of the message to reply to
-        ReplyParameters::Ptr reply_parameters;
+        ReplyParameters::Ptr reply_parameters = nullptr;
 
         // Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove a reply keyboard or to force a reply from the user
-        KeyboardOption::Ptr reply_markup;
+        KeyboardOption::Ptr reply_markup = nullptr;
     };
     void to_json(json& j, const SendPaidMediaRequest& value);
     void from_json(const json& j, SendPaidMediaRequest& value);

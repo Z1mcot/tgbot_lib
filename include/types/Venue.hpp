@@ -31,25 +31,25 @@ namespace TgBot {
 
         virtual ~Venue() = default;
         // Venue location. Can't be a live location
-        Location::Ptr location;
+        Location::Ptr location = nullptr;
 
         // Name of the venue
-        std::string title;
+        std::string title = "";
 
         // Address of the venue
-        std::string address;
+        std::string address = "";
 
         // Optional. Foursquare identifier of the venue
-        std::string foursquare_id;
+        std::string foursquare_id = "";
 
         // Optional. Foursquare type of the venue. (For example, “arts_entertainment/default”, “arts_entertainment/aquarium” or “food/icecream”.)
-        std::string foursquare_type;
+        std::string foursquare_type = "";
 
         // Optional. Google Places identifier of the venue
-        std::string google_place_id;
+        std::string google_place_id = "";
 
         // Optional. Google Places type of the venue. (See supported types.)
-        std::string google_place_type;
+        std::string google_place_type = "";
     };
     void to_json(json& j, const Venue& value);
     void from_json(const json& j, Venue& value);

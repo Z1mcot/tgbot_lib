@@ -25,10 +25,10 @@ namespace TgBot {
 
         virtual ~BackgroundFillSolid() = default;
         // Type of the background fill, always “solid”
-        std::string type_;
+        std::string type_ = "";
 
         // The color of the background fill in the RGB24 format
-        int64_t color = 0;
+        std::int64_t color = 0;
     };
     void to_json(json& j, const BackgroundFillSolid& value);
     void from_json(const json& j, BackgroundFillSolid& value);

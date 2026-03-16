@@ -34,34 +34,34 @@ namespace TgBot {
 
         virtual ~EncryptedPassportElement() = default;
         // Element type. One of “personal_details”, “passport”, “driver_license”, “identity_card”, “internal_passport”, “address”, “utility_bill”, “bank_statement”, “rental_agreement”, “passport_registration”, “temporary_registration”, “phone_number”, “email”.
-        std::string type_;
+        std::string type_ = "";
 
         // Base64-encoded element hash for using in PassportElementErrorUnspecified
-        std::string hash;
+        std::string hash = "";
 
         // Optional. Base64-encoded encrypted Telegram Passport element data provided by the user; available only for “personal_details”, “passport”, “driver_license”, “identity_card”, “internal_passport” and “address” types. Can be decrypted and verified using the accompanying EncryptedCredentials.
-        std::string data;
+        std::string data = "";
 
         // Optional. User's verified phone number; available only for “phone_number” type
-        std::string phone_number;
+        std::string phone_number = "";
 
         // Optional. User's verified email address; available only for “email” type
-        std::string email;
+        std::string email = "";
 
         // Optional. Array of encrypted files with documents provided by the user; available only for “utility_bill”, “bank_statement”, “rental_agreement”, “passport_registration” and “temporary_registration” types. Files can be decrypted and verified using the accompanying EncryptedCredentials.
-        std::vector<PassportFile::Ptr> files;
+        std::vector<PassportFile::Ptr> files = std::vector<PassportFile::Ptr>();
 
         // Optional. Encrypted file with the front side of the document, provided by the user; available only for “passport”, “driver_license”, “identity_card” and “internal_passport”. The file can be decrypted and verified using the accompanying EncryptedCredentials.
-        PassportFile::Ptr front_side;
+        PassportFile::Ptr front_side = nullptr;
 
         // Optional. Encrypted file with the reverse side of the document, provided by the user; available only for “driver_license” and “identity_card”. The file can be decrypted and verified using the accompanying EncryptedCredentials.
-        PassportFile::Ptr reverse_side;
+        PassportFile::Ptr reverse_side = nullptr;
 
         // Optional. Encrypted file with the selfie of the user holding a document, provided by the user; available if requested for “passport”, “driver_license”, “identity_card” and “internal_passport”. The file can be decrypted and verified using the accompanying EncryptedCredentials.
-        PassportFile::Ptr selfie;
+        PassportFile::Ptr selfie = nullptr;
 
         // Optional. Array of encrypted files with translated versions of documents provided by the user; available if requested for “passport”, “driver_license”, “identity_card”, “internal_passport”, “utility_bill”, “bank_statement”, “rental_agreement”, “passport_registration” and “temporary_registration” types. Files can be decrypted and verified using the accompanying EncryptedCredentials.
-        std::vector<PassportFile::Ptr> translation;
+        std::vector<PassportFile::Ptr> translation = std::vector<PassportFile::Ptr>();
     };
     void to_json(json& j, const EncryptedPassportElement& value);
     void from_json(const json& j, EncryptedPassportElement& value);

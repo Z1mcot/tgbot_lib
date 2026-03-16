@@ -25,7 +25,7 @@ namespace TgBot {
 
         virtual ~ChatOwnerChanged() = default;
         // The new owner of the chat
-        User::Ptr new_owner;
+        User::Ptr new_owner = nullptr;
     };
     void to_json(json& j, const ChatOwnerChanged& value);
     void from_json(const json& j, ChatOwnerChanged& value);

@@ -21,10 +21,10 @@ namespace TgBot {
     struct ApproveChatJoinRequestRequest {
         typedef std::shared_ptr<ApproveChatJoinRequestRequest> Ptr;
         // Unique identifier for the target chat or username of the target channel (in the format @channelusername)
-        int64_t chat_id = 0;
+        std::int64_t chat_id = 0;
 
         // Unique identifier of the target user
-        int64_t user_id = 0;
+        std::int64_t user_id = 0;
     };
     void to_json(json& j, const ApproveChatJoinRequestRequest& value);
     void from_json(const json& j, ApproveChatJoinRequestRequest& value);

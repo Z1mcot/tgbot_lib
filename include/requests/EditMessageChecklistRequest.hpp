@@ -26,19 +26,19 @@ namespace TgBot {
     struct EditMessageChecklistRequest {
         typedef std::shared_ptr<EditMessageChecklistRequest> Ptr;
         // Unique identifier of the business connection on behalf of which the message will be sent
-        std::string business_connection_id;
+        std::string business_connection_id = "";
 
         // Unique identifier for the target chat
-        int64_t chat_id = 0;
+        std::int64_t chat_id = 0;
 
         // Unique identifier for the target message
-        int64_t message_id = 0;
+        std::int64_t message_id = 0;
 
         // A JSON-serialized object for the new checklist
-        InputChecklist::Ptr checklist;
+        InputChecklist::Ptr checklist = nullptr;
 
         // A JSON-serialized object for the new inline keyboard for the message
-        InlineKeyboardMarkup::Ptr reply_markup;
+        InlineKeyboardMarkup::Ptr reply_markup = nullptr;
     };
     void to_json(json& j, const EditMessageChecklistRequest& value);
     void from_json(const json& j, EditMessageChecklistRequest& value);

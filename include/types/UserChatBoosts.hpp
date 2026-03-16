@@ -25,7 +25,7 @@ namespace TgBot {
 
         virtual ~UserChatBoosts() = default;
         // The list of boosts added to the chat by the user
-        std::vector<ChatBoost::Ptr> boosts;
+        std::vector<ChatBoost::Ptr> boosts = std::vector<ChatBoost::Ptr>();
     };
     void to_json(json& j, const UserChatBoosts& value);
     void from_json(const json& j, UserChatBoosts& value);

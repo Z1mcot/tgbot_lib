@@ -30,19 +30,19 @@ namespace TgBot {
 
         virtual ~StickerSet() = default;
         // Sticker set name
-        std::string name;
+        std::string name = "";
 
         // Sticker set title
-        std::string title;
+        std::string title = "";
 
         // Type of stickers in the set, currently one of “regular”, “mask”, “custom_emoji”
-        std::string sticker_type;
+        std::string sticker_type = "";
 
         // List of all set stickers
-        std::vector<Sticker::Ptr> stickers;
+        std::vector<Sticker::Ptr> stickers = std::vector<Sticker::Ptr>();
 
         // Optional. Sticker set thumbnail in the .WEBP, .TGS, or .WEBM format
-        PhotoSize::Ptr thumbnail;
+        PhotoSize::Ptr thumbnail = nullptr;
     };
     void to_json(json& j, const StickerSet& value);
     void from_json(const json& j, StickerSet& value);

@@ -25,10 +25,10 @@ namespace TgBot {
 
         virtual ~StoryAreaTypeLink() = default;
         // Type of the area, always “link”
-        std::string type_;
+        std::string type_ = "";
 
         // HTTP or tg:// URL to be opened when the area is clicked
-        std::string url;
+        std::string url = "";
     };
     void to_json(json& j, const StoryAreaTypeLink& value);
     void from_json(const json& j, StoryAreaTypeLink& value);

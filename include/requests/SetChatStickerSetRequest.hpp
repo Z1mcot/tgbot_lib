@@ -21,10 +21,10 @@ namespace TgBot {
     struct SetChatStickerSetRequest {
         typedef std::shared_ptr<SetChatStickerSetRequest> Ptr;
         // Unique identifier for the target chat or username of the target supergroup (in the format @supergroupusername)
-        int64_t chat_id = 0;
+        std::int64_t chat_id = 0;
 
         // Name of the sticker set to be set as the group sticker set
-        std::string sticker_set_name;
+        std::string sticker_set_name = "";
     };
     void to_json(json& j, const SetChatStickerSetRequest& value);
     void from_json(const json& j, SetChatStickerSetRequest& value);

@@ -35,10 +35,10 @@ namespace TgBot {
 
         virtual ~ChatInviteLink() = default;
         // The invite link. If the link was created by another chat administrator, then the second part of the link will be replaced with “…”.
-        std::string invite_link;
+        std::string invite_link = "";
 
         // Creator of the link
-        User::Ptr creator;
+        User::Ptr creator = nullptr;
 
         // True, if users joining the chat via the link need to be approved by chat administrators
         bool creates_join_request = false;
@@ -50,22 +50,22 @@ namespace TgBot {
         bool is_revoked = false;
 
         // Optional. Invite link name
-        std::string name;
+        std::string name = "";
 
         // Optional. Point in time (Unix timestamp) when the link will expire or has been expired
-        int64_t expire_date = 0;
+        std::int64_t expire_date = 0;
 
         // Optional. The maximum number of users that can be members of the chat simultaneously after joining the chat via this invite link; 1-99999
-        int64_t member_limit = 0;
+        std::int64_t member_limit = 0;
 
         // Optional. Number of pending join requests created using this link
-        int64_t pending_join_request_count = 0;
+        std::int64_t pending_join_request_count = 0;
 
         // Optional. The number of seconds the subscription will be active for before the next payment
-        int64_t subscription_period = 0;
+        std::int64_t subscription_period = 0;
 
         // Optional. The amount of Telegram Stars a user must pay initially and after each subsequent subscription period to be a member of the chat using the link
-        int64_t subscription_price = 0;
+        std::int64_t subscription_price = 0;
     };
     void to_json(json& j, const ChatInviteLink& value);
     void from_json(const json& j, ChatInviteLink& value);

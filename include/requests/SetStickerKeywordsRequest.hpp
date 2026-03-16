@@ -21,10 +21,10 @@ namespace TgBot {
     struct SetStickerKeywordsRequest {
         typedef std::shared_ptr<SetStickerKeywordsRequest> Ptr;
         // File identifier of the sticker
-        std::string sticker;
+        std::string sticker = "";
 
         // A JSON-serialized list of 0-20 search keywords for the sticker with total length of up to 64 characters
-        std::vector<std::string> keywords;
+        std::vector<std::string> keywords = std::vector<std::string>();
     };
     void to_json(json& j, const SetStickerKeywordsRequest& value);
     void from_json(const json& j, SetStickerKeywordsRequest& value);

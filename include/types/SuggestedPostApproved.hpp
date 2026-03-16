@@ -28,13 +28,13 @@ namespace TgBot {
 
         virtual ~SuggestedPostApproved() = default;
         // Date when the post will be published
-        int64_t send_date = 0;
+        std::int64_t send_date = 0;
 
         // Optional. Message containing the suggested post. Note that the Message object in this field will not contain the reply_to_message field even if it itself is a reply.
-        Message::Ptr suggested_post_message;
+        Message::Ptr suggested_post_message = nullptr;
 
         // Optional. Amount paid for the post
-        SuggestedPostPrice::Ptr price;
+        SuggestedPostPrice::Ptr price = nullptr;
     };
     void to_json(json& j, const SuggestedPostApproved& value);
     void from_json(const json& j, SuggestedPostApproved& value);

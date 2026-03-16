@@ -196,40 +196,40 @@ namespace TgBot {
 
         virtual ~Message() = default;
         // Unique message identifier inside this chat. In specific instances (e.g., message containing a video sent to a big chat), the server might automatically schedule a message instead of sending it immediately. In such cases, this field will be 0 and the relevant message will be unusable until it is actually sent
-        int64_t message_id = 0;
+        std::int64_t message_id = 0;
 
         // Date the message was sent in Unix time. It is always a positive number, representing a valid date.
-        int64_t date = 0;
+        std::int64_t date = 0;
 
         // Chat the message belongs to
-        Chat::Ptr chat;
+        Chat::Ptr chat = nullptr;
 
         // Optional. Unique identifier of a message thread or forum topic to which the message belongs; for supergroups and private chats only
-        int64_t message_thread_id = 0;
+        std::int64_t message_thread_id = 0;
 
         // Optional. Information about the direct messages chat topic that contains the message
-        DirectMessagesTopic::Ptr direct_messages_topic;
+        DirectMessagesTopic::Ptr direct_messages_topic = nullptr;
 
         // Optional. Sender of the message; may be empty for messages sent to channels. For backward compatibility, if the message was sent on behalf of a chat, the field contains a fake sender user in non-channel chats
-        User::Ptr from;
+        User::Ptr from = nullptr;
 
         // Optional. Sender of the message when sent on behalf of a chat. For example, the supergroup itself for messages sent by its anonymous administrators or a linked channel for messages automatically forwarded to the channel's discussion group. For backward compatibility, if the message was sent on behalf of a chat, the field from contains a fake sender user in non-channel chats.
-        Chat::Ptr sender_chat;
+        Chat::Ptr sender_chat = nullptr;
 
         // Optional. If the sender of the message boosted the chat, the number of boosts added by the user
-        int64_t sender_boost_count = 0;
+        std::int64_t sender_boost_count = 0;
 
         // Optional. The bot that actually sent the message on behalf of the business account. Available only for outgoing messages sent on behalf of the connected business account.
-        User::Ptr sender_business_bot;
+        User::Ptr sender_business_bot = nullptr;
 
         // Optional. Tag or custom title of the sender of the message; for supergroups only
-        std::string sender_tag;
+        std::string sender_tag = "";
 
         // Optional. Unique identifier of the business connection from which the message was received. If non-empty, the message belongs to a chat of the corresponding business account that is independent from any potential bot chat which might share the same identifier.
-        std::string business_connection_id;
+        std::string business_connection_id = "";
 
         // Optional. Information about the original message for forwarded messages
-        MessageOrigin::Ptr forward_origin;
+        MessageOrigin::Ptr forward_origin = nullptr;
 
         // Optional. True, if the message is sent to a topic in a forum supergroup or a private chat with the bot
         bool is_topic_message = false;
@@ -238,25 +238,25 @@ namespace TgBot {
         bool is_automatic_forward = false;
 
         // Optional. For replies in the same chat and message thread, the original message. Note that the Message object in this field will not contain further reply_to_message fields even if it itself is a reply.
-        Message::Ptr reply_to_message;
+        Message::Ptr reply_to_message = nullptr;
 
         // Optional. Information about the message that is being replied to, which may come from another chat or forum topic
-        ExternalReplyInfo::Ptr external_reply;
+        ExternalReplyInfo::Ptr external_reply = nullptr;
 
         // Optional. For replies that quote part of the original message, the quoted part of the message
-        TextQuote::Ptr quote;
+        TextQuote::Ptr quote = nullptr;
 
         // Optional. For replies to a story, the original story
-        Story::Ptr reply_to_story;
+        Story::Ptr reply_to_story = nullptr;
 
         // Optional. Identifier of the specific checklist task that is being replied to
-        int64_t reply_to_checklist_task_id = 0;
+        std::int64_t reply_to_checklist_task_id = 0;
 
         // Optional. Bot through which the message was sent
-        User::Ptr via_bot;
+        User::Ptr via_bot = nullptr;
 
         // Optional. Date the message was last edited in Unix time
-        int64_t edit_date = 0;
+        std::int64_t edit_date = 0;
 
         // Optional. True, if the message can't be forwarded
         bool has_protected_content = false;
@@ -268,64 +268,64 @@ namespace TgBot {
         bool is_paid_post = false;
 
         // Optional. The unique identifier inside this chat of a media message group this message belongs to
-        std::string media_group_id;
+        std::string media_group_id = "";
 
         // Optional. Signature of the post author for messages in channels, or the custom title of an anonymous group administrator
-        std::string author_signature;
+        std::string author_signature = "";
 
         // Optional. The number of Telegram Stars that were paid by the sender of the message to send it
-        int64_t paid_star_count = 0;
+        std::int64_t paid_star_count = 0;
 
         // Optional. For text messages, the actual UTF-8 text of the message
-        std::string text;
+        std::string text = "";
 
         // Optional. For text messages, special entities like usernames, URLs, bot commands, etc. that appear in the text
-        std::vector<MessageEntity::Ptr> entities;
+        std::vector<MessageEntity::Ptr> entities = std::vector<MessageEntity::Ptr>();
 
         // Optional. Options used for link preview generation for the message, if it is a text message and link preview options were changed
-        LinkPreviewOptions::Ptr link_preview_options;
+        LinkPreviewOptions::Ptr link_preview_options = nullptr;
 
         // Optional. Information about suggested post parameters if the message is a suggested post in a channel direct messages chat. If the message is an approved or declined suggested post, then it can't be edited.
-        SuggestedPostInfo::Ptr suggested_post_info;
+        SuggestedPostInfo::Ptr suggested_post_info = nullptr;
 
         // Optional. Unique identifier of the message effect added to the message
-        std::string effect_id;
+        std::string effect_id = "";
 
         // Optional. Message is an animation, information about the animation. For backward compatibility, when this field is set, the document field will also be set
-        Animation::Ptr animation;
+        Animation::Ptr animation = nullptr;
 
         // Optional. Message is an audio file, information about the file
-        Audio::Ptr audio;
+        Audio::Ptr audio = nullptr;
 
         // Optional. Message is a general file, information about the file
-        Document::Ptr document;
+        Document::Ptr document = nullptr;
 
         // Optional. Message contains paid media; information about the paid media
-        PaidMediaInfo::Ptr paid_media;
+        PaidMediaInfo::Ptr paid_media = nullptr;
 
         // Optional. Message is a photo, available sizes of the photo
-        std::vector<PhotoSize::Ptr> photo;
+        std::vector<PhotoSize::Ptr> photo = std::vector<PhotoSize::Ptr>();
 
         // Optional. Message is a sticker, information about the sticker
-        Sticker::Ptr sticker;
+        Sticker::Ptr sticker = nullptr;
 
         // Optional. Message is a forwarded story
-        Story::Ptr story;
+        Story::Ptr story = nullptr;
 
         // Optional. Message is a video, information about the video
-        Video::Ptr video;
+        Video::Ptr video = nullptr;
 
         // Optional. Message is a video note, information about the video message
-        VideoNote::Ptr video_note;
+        VideoNote::Ptr video_note = nullptr;
 
         // Optional. Message is a voice message, information about the file
-        Voice::Ptr voice;
+        Voice::Ptr voice = nullptr;
 
         // Optional. Caption for the animation, audio, document, paid media, photo, video or voice
-        std::string caption;
+        std::string caption = "";
 
         // Optional. For messages with a caption, special entities like usernames, URLs, bot commands, etc. that appear in the caption
-        std::vector<MessageEntity::Ptr> caption_entities;
+        std::vector<MessageEntity::Ptr> caption_entities = std::vector<MessageEntity::Ptr>();
 
         // Optional. True, if the caption must be shown above the message media
         bool show_caption_above_media = false;
@@ -334,43 +334,43 @@ namespace TgBot {
         bool has_media_spoiler = false;
 
         // Optional. Message is a checklist
-        Checklist::Ptr checklist;
+        Checklist::Ptr checklist = nullptr;
 
         // Optional. Message is a shared contact, information about the contact
-        Contact::Ptr contact;
+        Contact::Ptr contact = nullptr;
 
         // Optional. Message is a dice with random value
-        Dice::Ptr dice;
+        Dice::Ptr dice = nullptr;
 
         // Optional. Message is a game, information about the game. More about games »
-        Game::Ptr game;
+        Game::Ptr game = nullptr;
 
         // Optional. Message is a native poll, information about the poll
-        Poll::Ptr poll;
+        Poll::Ptr poll = nullptr;
 
         // Optional. Message is a venue, information about the venue. For backward compatibility, when this field is set, the location field will also be set
-        Venue::Ptr venue;
+        Venue::Ptr venue = nullptr;
 
         // Optional. Message is a shared location, information about the location
-        Location::Ptr location;
+        Location::Ptr location = nullptr;
 
         // Optional. New members that were added to the group or supergroup and information about them (the bot itself may be one of these members)
-        std::vector<User::Ptr> new_chat_members;
+        std::vector<User::Ptr> new_chat_members = std::vector<User::Ptr>();
 
         // Optional. A member was removed from the group, information about them (this member may be the bot itself)
-        User::Ptr left_chat_member;
+        User::Ptr left_chat_member = nullptr;
 
         // Optional. Service message: chat owner has left
-        ChatOwnerLeft::Ptr chat_owner_left;
+        ChatOwnerLeft::Ptr chat_owner_left = nullptr;
 
         // Optional. Service message: chat owner has changed
-        ChatOwnerChanged::Ptr chat_owner_changed;
+        ChatOwnerChanged::Ptr chat_owner_changed = nullptr;
 
         // Optional. A chat title was changed to this value
-        std::string new_chat_title;
+        std::string new_chat_title = "";
 
         // Optional. A chat photo was change to this value
-        std::vector<PhotoSize::Ptr> new_chat_photo;
+        std::vector<PhotoSize::Ptr> new_chat_photo = std::vector<PhotoSize::Ptr>();
 
         // Optional. Service message: the chat photo was deleted
         bool delete_chat_photo = false;
@@ -385,133 +385,133 @@ namespace TgBot {
         bool channel_chat_created = false;
 
         // Optional. Service message: auto-delete timer settings changed in the chat
-        MessageAutoDeleteTimerChanged::Ptr message_auto_delete_timer_changed;
+        MessageAutoDeleteTimerChanged::Ptr message_auto_delete_timer_changed = nullptr;
 
         // Optional. The group has been migrated to a supergroup with the specified identifier. This number may have more than 32 significant bits and some programming languages may have difficulty/silent defects in interpreting it. But it has at most 52 significant bits, so a signed 64-bit integer or double-precision float type are safe for storing this identifier.
-        int64_t migrate_to_chat_id = 0;
+        std::int64_t migrate_to_chat_id = 0;
 
         // Optional. The supergroup has been migrated from a group with the specified identifier. This number may have more than 32 significant bits and some programming languages may have difficulty/silent defects in interpreting it. But it has at most 52 significant bits, so a signed 64-bit integer or double-precision float type are safe for storing this identifier.
-        int64_t migrate_from_chat_id = 0;
+        std::int64_t migrate_from_chat_id = 0;
 
         // Optional. Specified message was pinned. Note that the Message object in this field will not contain further reply_to_message fields even if it itself is a reply.
-        MaybeInaccessibleMessage::Ptr pinned_message;
+        MaybeInaccessibleMessage::Ptr pinned_message = nullptr;
 
         // Optional. Message is an invoice for a payment, information about the invoice. More about payments »
-        Invoice::Ptr invoice;
+        Invoice::Ptr invoice = nullptr;
 
         // Optional. Message is a service message about a successful payment, information about the payment. More about payments »
-        SuccessfulPayment::Ptr successful_payment;
+        SuccessfulPayment::Ptr successful_payment = nullptr;
 
         // Optional. Message is a service message about a refunded payment, information about the payment. More about payments »
-        RefundedPayment::Ptr refunded_payment;
+        RefundedPayment::Ptr refunded_payment = nullptr;
 
         // Optional. Service message: users were shared with the bot
-        UsersShared::Ptr users_shared;
+        UsersShared::Ptr users_shared = nullptr;
 
         // Optional. Service message: a chat was shared with the bot
-        ChatShared::Ptr chat_shared;
+        ChatShared::Ptr chat_shared = nullptr;
 
         // Optional. Service message: a regular gift was sent or received
-        GiftInfo::Ptr gift;
+        GiftInfo::Ptr gift = nullptr;
 
         // Optional. Service message: a unique gift was sent or received
-        UniqueGiftInfo::Ptr unique_gift;
+        UniqueGiftInfo::Ptr unique_gift = nullptr;
 
         // Optional. Service message: upgrade of a gift was purchased after the gift was sent
-        GiftInfo::Ptr gift_upgrade_sent;
+        GiftInfo::Ptr gift_upgrade_sent = nullptr;
 
         // Optional. The domain name of the website on which the user has logged in. More about Telegram Login »
-        std::string connected_website;
+        std::string connected_website = "";
 
         // Optional. Service message: the user allowed the bot to write messages after adding it to the attachment or side menu, launching a Web App from a link, or accepting an explicit request from a Web App sent by the method requestWriteAccess
-        WriteAccessAllowed::Ptr write_access_allowed;
+        WriteAccessAllowed::Ptr write_access_allowed = nullptr;
 
         // Optional. Telegram Passport data
-        PassportData::Ptr passport_data;
+        PassportData::Ptr passport_data = nullptr;
 
         // Optional. Service message. A user in the chat triggered another user's proximity alert while sharing Live Location.
-        ProximityAlertTriggered::Ptr proximity_alert_triggered;
+        ProximityAlertTriggered::Ptr proximity_alert_triggered = nullptr;
 
         // Optional. Service message: user boosted the chat
-        ChatBoostAdded::Ptr boost_added;
+        ChatBoostAdded::Ptr boost_added = nullptr;
 
         // Optional. Service message: chat background set
-        ChatBackground::Ptr chat_background_set;
+        ChatBackground::Ptr chat_background_set = nullptr;
 
         // Optional. Service message: some tasks in a checklist were marked as done or not done
-        std::shared_ptr<ChecklistTasksDone> checklist_tasks_done;
+        std::shared_ptr<ChecklistTasksDone> checklist_tasks_done = std::shared_ptr<ChecklistTasksDone>();
 
         // Optional. Service message: tasks were added to a checklist
-        std::shared_ptr<ChecklistTasksAdded> checklist_tasks_added;
+        std::shared_ptr<ChecklistTasksAdded> checklist_tasks_added = std::shared_ptr<ChecklistTasksAdded>();
 
         // Optional. Service message: the price for paid messages in the corresponding direct messages chat of a channel has changed
-        DirectMessagePriceChanged::Ptr direct_message_price_changed;
+        DirectMessagePriceChanged::Ptr direct_message_price_changed = nullptr;
 
         // Optional. Service message: forum topic created
-        ForumTopicCreated::Ptr forum_topic_created;
+        ForumTopicCreated::Ptr forum_topic_created = nullptr;
 
         // Optional. Service message: forum topic edited
-        ForumTopicEdited::Ptr forum_topic_edited;
+        ForumTopicEdited::Ptr forum_topic_edited = nullptr;
 
         // Optional. Service message: forum topic closed
-        ForumTopicClosed::Ptr forum_topic_closed;
+        ForumTopicClosed::Ptr forum_topic_closed = nullptr;
 
         // Optional. Service message: forum topic reopened
-        ForumTopicReopened::Ptr forum_topic_reopened;
+        ForumTopicReopened::Ptr forum_topic_reopened = nullptr;
 
         // Optional. Service message: the 'General' forum topic hidden
-        GeneralForumTopicHidden::Ptr general_forum_topic_hidden;
+        GeneralForumTopicHidden::Ptr general_forum_topic_hidden = nullptr;
 
         // Optional. Service message: the 'General' forum topic unhidden
-        GeneralForumTopicUnhidden::Ptr general_forum_topic_unhidden;
+        GeneralForumTopicUnhidden::Ptr general_forum_topic_unhidden = nullptr;
 
         // Optional. Service message: a scheduled giveaway was created
-        GiveawayCreated::Ptr giveaway_created;
+        GiveawayCreated::Ptr giveaway_created = nullptr;
 
         // Optional. The message is a scheduled giveaway message
-        Giveaway::Ptr giveaway;
+        Giveaway::Ptr giveaway = nullptr;
 
         // Optional. A giveaway with public winners was completed
-        GiveawayWinners::Ptr giveaway_winners;
+        GiveawayWinners::Ptr giveaway_winners = nullptr;
 
         // Optional. Service message: a giveaway without public winners was completed
-        std::shared_ptr<GiveawayCompleted> giveaway_completed;
+        std::shared_ptr<GiveawayCompleted> giveaway_completed = std::shared_ptr<GiveawayCompleted>();
 
         // Optional. Service message: the price for paid messages has changed in the chat
-        PaidMessagePriceChanged::Ptr paid_message_price_changed;
+        PaidMessagePriceChanged::Ptr paid_message_price_changed = nullptr;
 
         // Optional. Service message: a suggested post was approved
-        std::shared_ptr<SuggestedPostApproved> suggested_post_approved;
+        std::shared_ptr<SuggestedPostApproved> suggested_post_approved = std::shared_ptr<SuggestedPostApproved>();
 
         // Optional. Service message: approval of a suggested post has failed
-        std::shared_ptr<SuggestedPostApprovalFailed> suggested_post_approval_failed;
+        std::shared_ptr<SuggestedPostApprovalFailed> suggested_post_approval_failed = std::shared_ptr<SuggestedPostApprovalFailed>();
 
         // Optional. Service message: a suggested post was declined
-        std::shared_ptr<SuggestedPostDeclined> suggested_post_declined;
+        std::shared_ptr<SuggestedPostDeclined> suggested_post_declined = std::shared_ptr<SuggestedPostDeclined>();
 
         // Optional. Service message: payment for a suggested post was received
-        std::shared_ptr<SuggestedPostPaid> suggested_post_paid;
+        std::shared_ptr<SuggestedPostPaid> suggested_post_paid = std::shared_ptr<SuggestedPostPaid>();
 
         // Optional. Service message: payment for a suggested post was refunded
-        std::shared_ptr<SuggestedPostRefunded> suggested_post_refunded;
+        std::shared_ptr<SuggestedPostRefunded> suggested_post_refunded = std::shared_ptr<SuggestedPostRefunded>();
 
         // Optional. Service message: video chat scheduled
-        VideoChatScheduled::Ptr video_chat_scheduled;
+        VideoChatScheduled::Ptr video_chat_scheduled = nullptr;
 
         // Optional. Service message: video chat started
-        VideoChatStarted::Ptr video_chat_started;
+        VideoChatStarted::Ptr video_chat_started = nullptr;
 
         // Optional. Service message: video chat ended
-        VideoChatEnded::Ptr video_chat_ended;
+        VideoChatEnded::Ptr video_chat_ended = nullptr;
 
         // Optional. Service message: new participants invited to a video chat
-        VideoChatParticipantsInvited::Ptr video_chat_participants_invited;
+        VideoChatParticipantsInvited::Ptr video_chat_participants_invited = nullptr;
 
         // Optional. Service message: data sent by a Web App
-        WebAppData::Ptr web_app_data;
+        WebAppData::Ptr web_app_data = nullptr;
 
         // Optional. Inline keyboard attached to the message. login_url buttons are represented as ordinary url buttons.
-        InlineKeyboardMarkup::Ptr reply_markup;
+        InlineKeyboardMarkup::Ptr reply_markup = nullptr;
     };
     void to_json(json& j, const Message& value);
     void from_json(const json& j, Message& value);

@@ -25,7 +25,7 @@ namespace TgBot {
 
         virtual ~ChatBackground() = default;
         // Type of the background
-        BackgroundType::Ptr type_;
+        BackgroundType::Ptr type_ = nullptr;
     };
     void to_json(json& j, const ChatBackground& value);
     void from_json(const json& j, ChatBackground& value);

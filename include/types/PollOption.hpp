@@ -27,13 +27,13 @@ namespace TgBot {
 
         virtual ~PollOption() = default;
         // Option text, 1-100 characters
-        std::string text;
+        std::string text = "";
 
         // Number of users that voted for this option
-        int64_t voter_count = 0;
+        std::int64_t voter_count = 0;
 
         // Optional. Special entities that appear in the option text. Currently, only custom emoji entities are allowed in poll option texts
-        std::vector<MessageEntity::Ptr> text_entities;
+        std::vector<MessageEntity::Ptr> text_entities = std::vector<MessageEntity::Ptr>();
     };
     void to_json(json& j, const PollOption& value);
     void from_json(const json& j, PollOption& value);

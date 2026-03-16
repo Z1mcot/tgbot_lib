@@ -26,22 +26,22 @@ namespace TgBot {
     struct GiftPremiumSubscriptionRequest {
         typedef std::shared_ptr<GiftPremiumSubscriptionRequest> Ptr;
         // Unique identifier of the target user who will receive a Telegram Premium subscription
-        int64_t user_id = 0;
+        std::int64_t user_id = 0;
 
         // Number of months the Telegram Premium subscription will be active for the user; must be one of 3, 6, or 12
-        int64_t month_count = 0;
+        std::int64_t month_count = 0;
 
         // Number of Telegram Stars to pay for the Telegram Premium subscription; must be 1000 for 3 months, 1500 for 6 months, and 2500 for 12 months
-        int64_t star_count = 0;
+        std::int64_t star_count = 0;
 
         // Text that will be shown along with the service message about the subscription; 0-128 characters
-        std::string text;
+        std::string text = "";
 
         // Mode for parsing entities in the text. See formatting options for more details. Entities other than “bold”, “italic”, “underline”, “strikethrough”, “spoiler”, and “custom_emoji” are ignored.
-        std::string text_parse_mode;
+        std::string text_parse_mode = "";
 
         // A JSON-serialized list of special entities that appear in the gift text. It can be specified instead of text_parse_mode. Entities other than “bold”, “italic”, “underline”, “strikethrough”, “spoiler”, and “custom_emoji” are ignored.
-        std::vector<MessageEntity::Ptr> text_entities;
+        std::vector<MessageEntity::Ptr> text_entities = std::vector<MessageEntity::Ptr>();
     };
     void to_json(json& j, const GiftPremiumSubscriptionRequest& value);
     void from_json(const json& j, GiftPremiumSubscriptionRequest& value);

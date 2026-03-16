@@ -25,10 +25,10 @@ namespace TgBot {
 
         virtual ~Dice() = default;
         // Emoji on which the dice throw animation is based
-        std::string emoji;
+        std::string emoji = "";
 
         // Value of the dice, 1-6 for “”, “” and “” base emoji, 1-5 for “” and “” base emoji, 1-64 for “” base emoji
-        int64_t value = 0;
+        std::int64_t value = 0;
     };
     void to_json(json& j, const Dice& value);
     void from_json(const json& j, Dice& value);

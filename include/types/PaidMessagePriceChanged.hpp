@@ -24,7 +24,7 @@ namespace TgBot {
 
         virtual ~PaidMessagePriceChanged() = default;
         // The new number of Telegram Stars that must be paid by non-administrator users of the supergroup chat for each sent message
-        int64_t paid_message_star_count = 0;
+        std::int64_t paid_message_star_count = 0;
     };
     void to_json(json& j, const PaidMessagePriceChanged& value);
     void from_json(const json& j, PaidMessagePriceChanged& value);

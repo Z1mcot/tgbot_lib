@@ -24,7 +24,7 @@ namespace TgBot {
 
         virtual ~RevenueWithdrawalStateFailed() = default;
         // Type of the state, always “failed”
-        std::string type_;
+        std::string type_ = "";
     };
     void to_json(json& j, const RevenueWithdrawalStateFailed& value);
     void from_json(const json& j, RevenueWithdrawalStateFailed& value);

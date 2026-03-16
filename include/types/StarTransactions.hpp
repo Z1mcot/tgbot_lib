@@ -25,7 +25,7 @@ namespace TgBot {
 
         virtual ~StarTransactions() = default;
         // The list of transactions
-        std::vector<StarTransaction::Ptr> transactions;
+        std::vector<StarTransaction::Ptr> transactions = std::vector<StarTransaction::Ptr>();
     };
     void to_json(json& j, const StarTransactions& value);
     void from_json(const json& j, StarTransactions& value);

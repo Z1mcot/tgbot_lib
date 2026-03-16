@@ -21,10 +21,10 @@ namespace TgBot {
     struct UnbanChatSenderChatRequest {
         typedef std::shared_ptr<UnbanChatSenderChatRequest> Ptr;
         // Unique identifier for the target chat or username of the target channel (in the format @channelusername)
-        int64_t chat_id = 0;
+        std::int64_t chat_id = 0;
 
         // Unique identifier of the target sender chat
-        int64_t sender_chat_id = 0;
+        std::int64_t sender_chat_id = 0;
     };
     void to_json(json& j, const UnbanChatSenderChatRequest& value);
     void from_json(const json& j, UnbanChatSenderChatRequest& value);

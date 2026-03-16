@@ -25,7 +25,7 @@ namespace TgBot {
 
         virtual ~InlineKeyboardMarkup() = default;
         // Array of button rows, each represented by an Array of InlineKeyboardButton objects
-        std::vector<std::vector<InlineKeyboardButton::Ptr>> inline_keyboard;
+        std::vector<std::vector<InlineKeyboardButton::Ptr>> inline_keyboard = std::vector<std::vector<InlineKeyboardButton::Ptr>>();
     };
     void to_json(json& j, const InlineKeyboardMarkup& value);
     void from_json(const json& j, InlineKeyboardMarkup& value);

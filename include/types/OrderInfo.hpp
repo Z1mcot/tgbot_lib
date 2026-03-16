@@ -28,16 +28,16 @@ namespace TgBot {
 
         virtual ~OrderInfo() = default;
         // Optional. User name
-        std::string name;
+        std::string name = "";
 
         // Optional. User's phone number
-        std::string phone_number;
+        std::string phone_number = "";
 
         // Optional. User email
-        std::string email;
+        std::string email = "";
 
         // Optional. User shipping address
-        ShippingAddress::Ptr shipping_address;
+        ShippingAddress::Ptr shipping_address = nullptr;
     };
     void to_json(json& j, const OrderInfo& value);
     void from_json(const json& j, OrderInfo& value);

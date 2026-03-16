@@ -28,16 +28,16 @@ namespace TgBot {
 
         virtual ~InlineQueryResultGame() = default;
         // Type of the result, must be game
-        std::string type_;
+        std::string type_ = "";
 
         // Unique identifier for this result, 1-64 bytes
-        std::string id;
+        std::string id = "";
 
         // Short name of the game
-        std::string game_short_name;
+        std::string game_short_name = "";
 
         // Optional. Inline keyboard attached to the message
-        InlineKeyboardMarkup::Ptr reply_markup;
+        InlineKeyboardMarkup::Ptr reply_markup = nullptr;
     };
     void to_json(json& j, const InlineQueryResultGame& value);
     void from_json(const json& j, InlineQueryResultGame& value);

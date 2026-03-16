@@ -26,10 +26,10 @@ namespace TgBot {
 
         virtual ~SuggestedPostDeclined() = default;
         // Optional. Message containing the suggested post. Note that the Message object in this field will not contain the reply_to_message field even if it itself is a reply.
-        Message::Ptr suggested_post_message;
+        Message::Ptr suggested_post_message = nullptr;
 
         // Optional. Comment with which the post was declined
-        std::string comment;
+        std::string comment = "";
     };
     void to_json(json& j, const SuggestedPostDeclined& value);
     void from_json(const json& j, SuggestedPostDeclined& value);

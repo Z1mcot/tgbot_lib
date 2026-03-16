@@ -36,37 +36,37 @@ namespace TgBot {
 
         virtual ~InlineQueryResultContact() = default;
         // Type of the result, must be contact
-        std::string type_;
+        std::string type_ = "";
 
         // Unique identifier for this result, 1-64 Bytes
-        std::string id;
+        std::string id = "";
 
         // Contact's phone number
-        std::string phone_number;
+        std::string phone_number = "";
 
         // Contact's first name
-        std::string first_name;
+        std::string first_name = "";
 
         // Optional. Contact's last name
-        std::string last_name;
+        std::string last_name = "";
 
         // Optional. Additional data about the contact in the form of a vCard, 0-2048 bytes
-        std::string vcard;
+        std::string vcard = "";
 
         // Optional. Inline keyboard attached to the message
-        InlineKeyboardMarkup::Ptr reply_markup;
+        InlineKeyboardMarkup::Ptr reply_markup = nullptr;
 
         // Optional. Content of the message to be sent instead of the contact
-        InputMessageContent::Ptr input_message_content;
+        InputMessageContent::Ptr input_message_content = nullptr;
 
         // Optional. Url of the thumbnail for the result
-        std::string thumbnail_url;
+        std::string thumbnail_url = "";
 
         // Optional. Thumbnail width
-        int64_t thumbnail_width = 0;
+        std::int64_t thumbnail_width = 0;
 
         // Optional. Thumbnail height
-        int64_t thumbnail_height = 0;
+        std::int64_t thumbnail_height = 0;
     };
     void to_json(json& j, const InlineQueryResultContact& value);
     void from_json(const json& j, InlineQueryResultContact& value);

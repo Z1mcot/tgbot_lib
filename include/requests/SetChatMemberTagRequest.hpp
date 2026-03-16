@@ -22,13 +22,13 @@ namespace TgBot {
     struct SetChatMemberTagRequest {
         typedef std::shared_ptr<SetChatMemberTagRequest> Ptr;
         // Unique identifier for the target chat or username of the target supergroup (in the format @supergroupusername)
-        int64_t chat_id = 0;
+        std::int64_t chat_id = 0;
 
         // Unique identifier of the target user
-        int64_t user_id = 0;
+        std::int64_t user_id = 0;
 
         // New tag for the member; 0-16 characters, emoji are not allowed
-        std::string tag;
+        std::string tag = "";
     };
     void to_json(json& j, const SetChatMemberTagRequest& value);
     void from_json(const json& j, SetChatMemberTagRequest& value);

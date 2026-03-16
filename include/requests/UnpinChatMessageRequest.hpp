@@ -22,13 +22,13 @@ namespace TgBot {
     struct UnpinChatMessageRequest {
         typedef std::shared_ptr<UnpinChatMessageRequest> Ptr;
         // Unique identifier for the target chat or username of the target channel (in the format @channelusername)
-        int64_t chat_id = 0;
+        std::int64_t chat_id = 0;
 
         // Unique identifier of the business connection on behalf of which the message will be unpinned
-        std::string business_connection_id;
+        std::string business_connection_id = "";
 
         // Identifier of the message to unpin. Required if business_connection_id is specified. If not specified, the most recent pinned message (by sending date) will be unpinned.
-        int64_t message_id = 0;
+        std::int64_t message_id = 0;
     };
     void to_json(json& j, const UnpinChatMessageRequest& value);
     void from_json(const json& j, UnpinChatMessageRequest& value);

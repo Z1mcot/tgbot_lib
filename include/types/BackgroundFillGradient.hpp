@@ -27,16 +27,16 @@ namespace TgBot {
 
         virtual ~BackgroundFillGradient() = default;
         // Type of the background fill, always “gradient”
-        std::string type_;
+        std::string type_ = "";
 
         // Top color of the gradient in the RGB24 format
-        int64_t top_color = 0;
+        std::int64_t top_color = 0;
 
         // Bottom color of the gradient in the RGB24 format
-        int64_t bottom_color = 0;
+        std::int64_t bottom_color = 0;
 
         // Clockwise rotation angle of the background fill in degrees; 0-359
-        int64_t rotation_angle = 0;
+        std::int64_t rotation_angle = 0;
     };
     void to_json(json& j, const BackgroundFillGradient& value);
     void from_json(const json& j, BackgroundFillGradient& value);

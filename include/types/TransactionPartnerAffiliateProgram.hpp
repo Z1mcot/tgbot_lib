@@ -27,13 +27,13 @@ namespace TgBot {
 
         virtual ~TransactionPartnerAffiliateProgram() = default;
         // Type of the transaction partner, always “affiliate_program”
-        std::string type_;
+        std::string type_ = "";
 
         // The number of Telegram Stars received by the bot for each 1000 Telegram Stars received by the affiliate program sponsor from referred users
-        int64_t commission_per_mille = 0;
+        std::int64_t commission_per_mille = 0;
 
         // Optional. Information about the bot that sponsored the affiliate program
-        User::Ptr sponsor_user;
+        User::Ptr sponsor_user = nullptr;
     };
     void to_json(json& j, const TransactionPartnerAffiliateProgram& value);
     void from_json(const json& j, TransactionPartnerAffiliateProgram& value);

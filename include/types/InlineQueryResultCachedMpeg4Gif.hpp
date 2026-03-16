@@ -36,34 +36,34 @@ namespace TgBot {
 
         virtual ~InlineQueryResultCachedMpeg4Gif() = default;
         // Type of the result, must be mpeg4_gif
-        std::string type_;
+        std::string type_ = "";
 
         // Unique identifier for this result, 1-64 bytes
-        std::string id;
+        std::string id = "";
 
         // A valid file identifier for the MPEG4 file
-        std::string mpeg4_file_id;
+        std::string mpeg4_file_id = "";
 
         // Optional. Title for the result
-        std::string title;
+        std::string title = "";
 
         // Optional. Caption of the MPEG-4 file to be sent, 0-1024 characters after entities parsing
-        std::string caption;
+        std::string caption = "";
 
         // Optional. Mode for parsing entities in the caption. See formatting options for more details.
-        std::string parse_mode;
+        std::string parse_mode = "";
 
         // Optional. List of special entities that appear in the caption, which can be specified instead of parse_mode
-        std::vector<MessageEntity::Ptr> caption_entities;
+        std::vector<MessageEntity::Ptr> caption_entities = std::vector<MessageEntity::Ptr>();
 
         // Optional. Pass True, if the caption must be shown above the message media
         bool show_caption_above_media = false;
 
         // Optional. Inline keyboard attached to the message
-        InlineKeyboardMarkup::Ptr reply_markup;
+        InlineKeyboardMarkup::Ptr reply_markup = nullptr;
 
         // Optional. Content of the message to be sent instead of the video animation
-        InputMessageContent::Ptr input_message_content;
+        InputMessageContent::Ptr input_message_content = nullptr;
     };
     void to_json(json& j, const InlineQueryResultCachedMpeg4Gif& value);
     void from_json(const json& j, InlineQueryResultCachedMpeg4Gif& value);

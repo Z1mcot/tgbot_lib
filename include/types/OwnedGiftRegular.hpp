@@ -41,25 +41,25 @@ namespace TgBot {
 
         virtual ~OwnedGiftRegular() = default;
         // Type of the gift, always “regular”
-        std::string type_;
+        std::string type_ = "";
 
         // Information about the regular gift
-        Gift::Ptr gift;
+        Gift::Ptr gift = nullptr;
 
         // Date the gift was sent in Unix time
-        int64_t send_date = 0;
+        std::int64_t send_date = 0;
 
         // Optional. Unique identifier of the gift for the bot; for gifts received on behalf of business accounts only
-        std::string owned_gift_id;
+        std::string owned_gift_id = "";
 
         // Optional. Sender of the gift if it is a known user
-        User::Ptr sender_user;
+        User::Ptr sender_user = nullptr;
 
         // Optional. Text of the message that was added to the gift
-        std::string text;
+        std::string text = "";
 
         // Optional. Special entities that appear in the text
-        std::vector<MessageEntity::Ptr> entities;
+        std::vector<MessageEntity::Ptr> entities = std::vector<MessageEntity::Ptr>();
 
         // Optional. True, if the sender and gift text are shown only to the gift receiver; otherwise, everyone will be able to see them
         bool is_private = false;
@@ -74,16 +74,16 @@ namespace TgBot {
         bool was_refunded = false;
 
         // Optional. Number of Telegram Stars that can be claimed by the receiver instead of the gift; omitted if the gift cannot be converted to Telegram Stars; for gifts received on behalf of business accounts only
-        int64_t convert_star_count = 0;
+        std::int64_t convert_star_count = 0;
 
         // Optional. Number of Telegram Stars that were paid for the ability to upgrade the gift
-        int64_t prepaid_upgrade_star_count = 0;
+        std::int64_t prepaid_upgrade_star_count = 0;
 
         // Optional. True, if the gift's upgrade was purchased after the gift was sent; for gifts received on behalf of business accounts only
         bool is_upgrade_separate = false;
 
         // Optional. Unique number reserved for this gift when upgraded. See the number field in UniqueGift
-        int64_t unique_gift_number = 0;
+        std::int64_t unique_gift_number = 0;
     };
     void to_json(json& j, const OwnedGiftRegular& value);
     void from_json(const json& j, OwnedGiftRegular& value);

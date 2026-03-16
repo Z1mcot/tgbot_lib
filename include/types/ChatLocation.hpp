@@ -26,10 +26,10 @@ namespace TgBot {
 
         virtual ~ChatLocation() = default;
         // The location to which the supergroup is connected. Can't be a live location.
-        Location::Ptr location;
+        Location::Ptr location = nullptr;
 
         // Location address; 1-64 characters, as defined by the chat owner
-        std::string address;
+        std::string address = "";
     };
     void to_json(json& j, const ChatLocation& value);
     void from_json(const json& j, ChatLocation& value);

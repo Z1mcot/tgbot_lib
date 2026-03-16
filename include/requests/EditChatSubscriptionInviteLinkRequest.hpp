@@ -22,13 +22,13 @@ namespace TgBot {
     struct EditChatSubscriptionInviteLinkRequest {
         typedef std::shared_ptr<EditChatSubscriptionInviteLinkRequest> Ptr;
         // Unique identifier for the target chat or username of the target channel (in the format @channelusername)
-        int64_t chat_id = 0;
+        std::int64_t chat_id = 0;
 
         // The invite link to edit
-        std::string invite_link;
+        std::string invite_link = "";
 
         // Invite link name; 0-32 characters
-        std::string name;
+        std::string name = "";
     };
     void to_json(json& j, const EditChatSubscriptionInviteLinkRequest& value);
     void from_json(const json& j, EditChatSubscriptionInviteLinkRequest& value);

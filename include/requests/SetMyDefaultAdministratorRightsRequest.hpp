@@ -22,7 +22,7 @@ namespace TgBot {
     struct SetMyDefaultAdministratorRightsRequest {
         typedef std::shared_ptr<SetMyDefaultAdministratorRightsRequest> Ptr;
         // A JSON-serialized object describing new default administrator rights. If not specified, the default administrator rights will be cleared.
-        ChatAdministratorRights::Ptr rights;
+        ChatAdministratorRights::Ptr rights = nullptr;
 
         // Pass True to change the default administrator rights of the bot in channels. Otherwise, the default administrator rights of the bot for groups and supergroups will be changed.
         bool for_channels = false;

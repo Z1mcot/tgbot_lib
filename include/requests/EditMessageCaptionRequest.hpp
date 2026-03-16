@@ -30,31 +30,31 @@ namespace TgBot {
     struct EditMessageCaptionRequest {
         typedef std::shared_ptr<EditMessageCaptionRequest> Ptr;
         // Unique identifier of the business connection on behalf of which the message to be edited was sent
-        std::string business_connection_id;
+        std::string business_connection_id = "";
 
         // Required if inline_message_id is not specified. Unique identifier for the target chat or username of the target channel (in the format @channelusername)
-        int64_t chat_id = 0;
+        std::int64_t chat_id = 0;
 
         // Required if inline_message_id is not specified. Identifier of the message to edit
-        int64_t message_id = 0;
+        std::int64_t message_id = 0;
 
         // Required if chat_id and message_id are not specified. Identifier of the inline message
-        std::string inline_message_id;
+        std::string inline_message_id = "";
 
         // New caption of the message, 0-1024 characters after entities parsing
-        std::string caption;
+        std::string caption = "";
 
         // Mode for parsing entities in the message caption. See formatting options for more details.
-        std::string parse_mode;
+        std::string parse_mode = "";
 
         // A JSON-serialized list of special entities that appear in the caption, which can be specified instead of parse_mode
-        std::vector<MessageEntity::Ptr> caption_entities;
+        std::vector<MessageEntity::Ptr> caption_entities = std::vector<MessageEntity::Ptr>();
 
         // Pass True, if the caption must be shown above the message media. Supported only for animation, photo and video messages.
         bool show_caption_above_media = false;
 
         // A JSON-serialized object for an inline keyboard.
-        InlineKeyboardMarkup::Ptr reply_markup;
+        InlineKeyboardMarkup::Ptr reply_markup = nullptr;
     };
     void to_json(json& j, const EditMessageCaptionRequest& value);
     void from_json(const json& j, EditMessageCaptionRequest& value);

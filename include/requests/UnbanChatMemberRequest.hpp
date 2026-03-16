@@ -22,10 +22,10 @@ namespace TgBot {
     struct UnbanChatMemberRequest {
         typedef std::shared_ptr<UnbanChatMemberRequest> Ptr;
         // Unique identifier for the target group or username of the target supergroup or channel (in the format @channelusername)
-        int64_t chat_id = 0;
+        std::int64_t chat_id = 0;
 
         // Unique identifier of the target user
-        int64_t user_id = 0;
+        std::int64_t user_id = 0;
 
         // Do nothing if the user is not banned
         bool only_if_banned = false;

@@ -27,13 +27,13 @@ namespace TgBot {
 
         virtual ~BusinessIntro() = default;
         // Optional. Title text of the business intro
-        std::string title;
+        std::string title = "";
 
         // Optional. Message text of the business intro
-        std::string message;
+        std::string message = "";
 
         // Optional. Sticker of the business intro
-        Sticker::Ptr sticker;
+        Sticker::Ptr sticker = nullptr;
     };
     void to_json(json& j, const BusinessIntro& value);
     void from_json(const json& j, BusinessIntro& value);

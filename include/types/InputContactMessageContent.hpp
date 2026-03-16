@@ -27,16 +27,16 @@ namespace TgBot {
 
         virtual ~InputContactMessageContent() = default;
         // Contact's phone number
-        std::string phone_number;
+        std::string phone_number = "";
 
         // Contact's first name
-        std::string first_name;
+        std::string first_name = "";
 
         // Optional. Contact's last name
-        std::string last_name;
+        std::string last_name = "";
 
         // Optional. Additional data about the contact in the form of a vCard, 0-2048 bytes
-        std::string vcard;
+        std::string vcard = "";
     };
     void to_json(json& j, const InputContactMessageContent& value);
     void from_json(const json& j, InputContactMessageContent& value);

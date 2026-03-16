@@ -20,7 +20,7 @@ namespace TgBot {
     struct DeleteChatPhotoRequest {
         typedef std::shared_ptr<DeleteChatPhotoRequest> Ptr;
         // Unique identifier for the target chat or username of the target channel (in the format @channelusername)
-        int64_t chat_id = 0;
+        std::int64_t chat_id = 0;
     };
     void to_json(json& j, const DeleteChatPhotoRequest& value);
     void from_json(const json& j, DeleteChatPhotoRequest& value);

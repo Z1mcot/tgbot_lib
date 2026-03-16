@@ -29,13 +29,13 @@ namespace TgBot {
 
         virtual ~BackgroundTypeWallpaper() = default;
         // Type of the background, always “wallpaper”
-        std::string type_;
+        std::string type_ = "";
 
         // Document with the wallpaper
-        Document::Ptr document;
+        Document::Ptr document = nullptr;
 
         // Dimming of the background in dark themes, as a percentage; 0-100
-        int64_t dark_theme_dimming = 0;
+        std::int64_t dark_theme_dimming = 0;
 
         // Optional. True, if the wallpaper is downscaled to fit in a 450x450 square and then box-blurred with radius 12
         bool is_blurred = false;

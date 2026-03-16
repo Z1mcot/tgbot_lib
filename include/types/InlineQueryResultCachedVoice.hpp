@@ -35,31 +35,31 @@ namespace TgBot {
 
         virtual ~InlineQueryResultCachedVoice() = default;
         // Type of the result, must be voice
-        std::string type_;
+        std::string type_ = "";
 
         // Unique identifier for this result, 1-64 bytes
-        std::string id;
+        std::string id = "";
 
         // A valid file identifier for the voice message
-        std::string voice_file_id;
+        std::string voice_file_id = "";
 
         // Voice message title
-        std::string title;
+        std::string title = "";
 
         // Optional. Caption, 0-1024 characters after entities parsing
-        std::string caption;
+        std::string caption = "";
 
         // Optional. Mode for parsing entities in the voice message caption. See formatting options for more details.
-        std::string parse_mode;
+        std::string parse_mode = "";
 
         // Optional. List of special entities that appear in the caption, which can be specified instead of parse_mode
-        std::vector<MessageEntity::Ptr> caption_entities;
+        std::vector<MessageEntity::Ptr> caption_entities = std::vector<MessageEntity::Ptr>();
 
         // Optional. Inline keyboard attached to the message
-        InlineKeyboardMarkup::Ptr reply_markup;
+        InlineKeyboardMarkup::Ptr reply_markup = nullptr;
 
         // Optional. Content of the message to be sent instead of the voice message
-        InputMessageContent::Ptr input_message_content;
+        InputMessageContent::Ptr input_message_content = nullptr;
     };
     void to_json(json& j, const InlineQueryResultCachedVoice& value);
     void from_json(const json& j, InlineQueryResultCachedVoice& value);

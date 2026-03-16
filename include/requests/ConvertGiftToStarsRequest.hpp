@@ -21,10 +21,10 @@ namespace TgBot {
     struct ConvertGiftToStarsRequest {
         typedef std::shared_ptr<ConvertGiftToStarsRequest> Ptr;
         // Unique identifier of the business connection
-        std::string business_connection_id;
+        std::string business_connection_id = "";
 
         // Unique identifier of the regular gift that should be converted to Telegram Stars
-        std::string owned_gift_id;
+        std::string owned_gift_id = "";
     };
     void to_json(json& j, const ConvertGiftToStarsRequest& value);
     void from_json(const json& j, ConvertGiftToStarsRequest& value);

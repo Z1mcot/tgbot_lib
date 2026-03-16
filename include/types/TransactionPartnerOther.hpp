@@ -24,7 +24,7 @@ namespace TgBot {
 
         virtual ~TransactionPartnerOther() = default;
         // Type of the transaction partner, always “other”
-        std::string type_;
+        std::string type_ = "";
     };
     void to_json(json& j, const TransactionPartnerOther& value);
     void from_json(const json& j, TransactionPartnerOther& value);

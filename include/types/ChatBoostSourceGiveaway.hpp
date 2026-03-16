@@ -29,16 +29,16 @@ namespace TgBot {
 
         virtual ~ChatBoostSourceGiveaway() = default;
         // Source of the boost, always “giveaway”
-        std::string source;
+        std::string source = "";
 
         // Identifier of a message in the chat with the giveaway; the message could have been deleted already. May be 0 if the message isn't sent yet.
-        int64_t giveaway_message_id = 0;
+        std::int64_t giveaway_message_id = 0;
 
         // Optional. User that won the prize in the giveaway if any; for Telegram Premium giveaways only
-        User::Ptr user;
+        User::Ptr user = nullptr;
 
         // Optional. The number of Telegram Stars to be split between giveaway winners; for Telegram Star giveaways only
-        int64_t prize_star_count = 0;
+        std::int64_t prize_star_count = 0;
 
         // Optional. True, if the giveaway was completed, but there was no user to win the prize
         bool is_unclaimed = false;

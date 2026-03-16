@@ -16,7 +16,7 @@ namespace TgBot {
         if (!secret_token_.empty()) {
             request.secret_token = secret_token_;
         }
-        co_await client_.setWebhook(request);
+        co_await client_.setWebhook(url_);
     }
 
     void WebhookService::start() {

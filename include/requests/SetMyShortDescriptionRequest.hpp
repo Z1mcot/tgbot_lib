@@ -21,10 +21,10 @@ namespace TgBot {
     struct SetMyShortDescriptionRequest {
         typedef std::shared_ptr<SetMyShortDescriptionRequest> Ptr;
         // New short description for the bot; 0-120 characters. Pass an empty string to remove the dedicated short description for the given language.
-        std::string short_description;
+        std::string short_description = "";
 
         // A two-letter ISO 639-1 language code. If empty, the short description will be applied to all users for whose language there is no dedicated short description.
-        std::string language_code;
+        std::string language_code = "";
     };
     void to_json(json& j, const SetMyShortDescriptionRequest& value);
     void from_json(const json& j, SetMyShortDescriptionRequest& value);

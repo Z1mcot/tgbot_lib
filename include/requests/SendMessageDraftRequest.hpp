@@ -26,22 +26,22 @@ namespace TgBot {
     struct SendMessageDraftRequest {
         typedef std::shared_ptr<SendMessageDraftRequest> Ptr;
         // Unique identifier for the target private chat
-        int64_t chat_id = 0;
+        std::int64_t chat_id = 0;
 
         // Unique identifier of the message draft; must be non-zero. Changes of drafts with the same identifier are animated
-        int64_t draft_id = 0;
+        std::int64_t draft_id = 0;
 
         // Text of the message to be sent, 1-4096 characters after entities parsing
-        std::string text;
+        std::string text = "";
 
         // Unique identifier for the target message thread
-        int64_t message_thread_id = 0;
+        std::int64_t message_thread_id = 0;
 
         // Mode for parsing entities in the message text. See formatting options for more details.
-        std::string parse_mode;
+        std::string parse_mode = "";
 
         // A JSON-serialized list of special entities that appear in message text, which can be specified instead of parse_mode
-        std::vector<MessageEntity::Ptr> entities;
+        std::vector<MessageEntity::Ptr> entities = std::vector<MessageEntity::Ptr>();
     };
     void to_json(json& j, const SendMessageDraftRequest& value);
     void from_json(const json& j, SendMessageDraftRequest& value);

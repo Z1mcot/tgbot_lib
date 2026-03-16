@@ -23,13 +23,13 @@ namespace TgBot {
     struct UploadStickerFileRequest {
         typedef std::shared_ptr<UploadStickerFileRequest> Ptr;
         // User identifier of sticker file owner
-        int64_t user_id = 0;
+        std::int64_t user_id = 0;
 
         // A file with the sticker in .WEBP, .PNG, .TGS, or .WEBM format. See https://core.telegram.org/stickers for technical requirements. More information on Sending Files »
-        InputFile::Ptr sticker;
+        InputFile::Ptr sticker = nullptr;
 
         // Format of the sticker, must be one of “static”, “animated”, “video”
-        std::string sticker_format;
+        std::string sticker_format = "";
     };
     void to_json(json& j, const UploadStickerFileRequest& value);
     void from_json(const json& j, UploadStickerFileRequest& value);

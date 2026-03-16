@@ -27,13 +27,13 @@ namespace TgBot {
 
         virtual ~InaccessibleMessage() = default;
         // Chat the message belonged to
-        Chat::Ptr chat;
+        Chat::Ptr chat = nullptr;
 
         // Unique message identifier inside the chat
-        int64_t message_id = 0;
+        std::int64_t message_id = 0;
 
         // Always 0. The field can be used to differentiate regular and inaccessible messages.
-        int64_t date = 0;
+        std::int64_t date = 0;
     };
     void to_json(json& j, const InaccessibleMessage& value);
     void from_json(const json& j, InaccessibleMessage& value);

@@ -25,10 +25,10 @@ namespace TgBot {
 
         virtual ~ForumTopicEdited() = default;
         // Optional. New name of the topic, if it was edited
-        std::string name;
+        std::string name = "";
 
         // Optional. New identifier of the custom emoji shown as the topic icon, if it was edited; an empty string if the icon was removed
-        std::string icon_custom_emoji_id;
+        std::string icon_custom_emoji_id = "";
     };
     void to_json(json& j, const ForumTopicEdited& value);
     void from_json(const json& j, ForumTopicEdited& value);

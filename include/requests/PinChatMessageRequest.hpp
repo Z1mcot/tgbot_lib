@@ -23,13 +23,13 @@ namespace TgBot {
     struct PinChatMessageRequest {
         typedef std::shared_ptr<PinChatMessageRequest> Ptr;
         // Unique identifier for the target chat or username of the target channel (in the format @channelusername)
-        int64_t chat_id = 0;
+        std::int64_t chat_id = 0;
 
         // Identifier of a message to pin
-        int64_t message_id = 0;
+        std::int64_t message_id = 0;
 
         // Unique identifier of the business connection on behalf of which the message will be pinned
-        std::string business_connection_id;
+        std::string business_connection_id = "";
 
         // Pass True if it is not necessary to send a notification to all chat members about the new pinned message. Notifications are always disabled in channels and private chats.
         bool disable_notification = false;

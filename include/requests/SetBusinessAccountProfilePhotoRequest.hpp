@@ -23,10 +23,10 @@ namespace TgBot {
     struct SetBusinessAccountProfilePhotoRequest {
         typedef std::shared_ptr<SetBusinessAccountProfilePhotoRequest> Ptr;
         // Unique identifier of the business connection
-        std::string business_connection_id;
+        std::string business_connection_id = "";
 
         // The new profile photo to set
-        InputProfilePhoto::Ptr photo;
+        InputProfilePhoto::Ptr photo = nullptr;
 
         // Pass True to set the public photo, which will be visible even if the main photo is hidden by the business account's privacy settings. An account can have only one public photo.
         bool is_public = false;

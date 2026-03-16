@@ -27,13 +27,13 @@ namespace TgBot {
 
         virtual ~InputPollOption() = default;
         // Option text, 1-100 characters
-        std::string text;
+        std::string text = "";
 
         // Optional. Mode for parsing entities in the text. See formatting options for more details. Currently, only custom emoji entities are allowed
-        std::string text_parse_mode;
+        std::string text_parse_mode = "";
 
         // Optional. A JSON-serialized list of special entities that appear in the poll option text. It can be specified instead of text_parse_mode
-        std::vector<MessageEntity::Ptr> text_entities;
+        std::vector<MessageEntity::Ptr> text_entities = std::vector<MessageEntity::Ptr>();
     };
     void to_json(json& j, const InputPollOption& value);
     void from_json(const json& j, InputPollOption& value);

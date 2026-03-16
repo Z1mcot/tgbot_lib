@@ -25,7 +25,7 @@ namespace TgBot {
 
         virtual ~VideoChatParticipantsInvited() = default;
         // New members that were invited to the video chat
-        std::vector<User::Ptr> users;
+        std::vector<User::Ptr> users = std::vector<User::Ptr>();
     };
     void to_json(json& j, const VideoChatParticipantsInvited& value);
     void from_json(const json& j, VideoChatParticipantsInvited& value);

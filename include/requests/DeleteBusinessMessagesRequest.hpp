@@ -21,10 +21,10 @@ namespace TgBot {
     struct DeleteBusinessMessagesRequest {
         typedef std::shared_ptr<DeleteBusinessMessagesRequest> Ptr;
         // Unique identifier of the business connection on behalf of which to delete the messages
-        std::string business_connection_id;
+        std::string business_connection_id = "";
 
         // A JSON-serialized list of 1-100 identifiers of messages to delete. All messages must be from the same chat. See deleteMessage for limitations on which messages can be deleted
-        std::vector<int64_t> message_ids;
+        std::vector<std::int64_t> message_ids = std::vector<std::int64_t>();
     };
     void to_json(json& j, const DeleteBusinessMessagesRequest& value);
     void from_json(const json& j, DeleteBusinessMessagesRequest& value);

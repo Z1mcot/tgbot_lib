@@ -36,19 +36,19 @@ namespace TgBot {
 
         virtual ~KeyboardButton() = default;
         // Text of the button. If none of the fields other than text, icon_custom_emoji_id, and style are used, it will be sent as a message when the button is pressed
-        std::string text;
+        std::string text = "";
 
         // Optional. Unique identifier of the custom emoji shown before the text of the button. Can only be used by bots that purchased additional usernames on Fragment or in the messages directly sent by the bot to private, group and supergroup chats if the owner of the bot has a Telegram Premium subscription.
-        std::string icon_custom_emoji_id;
+        std::string icon_custom_emoji_id = "";
 
         // Optional. Style of the button. Must be one of “danger” (red), “success” (green) or “primary” (blue). If omitted, then an app-specific style is used.
-        std::string style;
+        std::string style = "";
 
         // Optional. If specified, pressing the button will open a list of suitable users. Identifiers of selected users will be sent to the bot in a “users_shared” service message. Available in private chats only.
-        KeyboardButtonRequestUsers::Ptr request_users;
+        KeyboardButtonRequestUsers::Ptr request_users = nullptr;
 
         // Optional. If specified, pressing the button will open a list of suitable chats. Tapping on a chat will send its identifier to the bot in a “chat_shared” service message. Available in private chats only.
-        KeyboardButtonRequestChat::Ptr request_chat;
+        KeyboardButtonRequestChat::Ptr request_chat = nullptr;
 
         // Optional. If True, the user's phone number will be sent as a contact when the button is pressed. Available in private chats only.
         bool request_contact = false;
@@ -57,10 +57,10 @@ namespace TgBot {
         bool request_location = false;
 
         // Optional. If specified, the user will be asked to create a poll and send it to the bot when the button is pressed. Available in private chats only.
-        KeyboardButtonPollType::Ptr request_poll;
+        KeyboardButtonPollType::Ptr request_poll = nullptr;
 
         // Optional. If specified, the described Web App will be launched when the button is pressed. The Web App will be able to send a “web_app_data” service message. Available in private chats only.
-        WebAppInfo::Ptr web_app;
+        WebAppInfo::Ptr web_app = nullptr;
     };
     void to_json(json& j, const KeyboardButton& value);
     void from_json(const json& j, KeyboardButton& value);

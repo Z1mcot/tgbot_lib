@@ -28,16 +28,16 @@ namespace TgBot {
 
         virtual ~ChatMemberMember() = default;
         // The member's status in the chat, always “member”
-        std::string status;
+        std::string status = "";
 
         // Information about the user
-        User::Ptr user;
+        User::Ptr user = nullptr;
 
         // Optional. Tag of the member
-        std::string tag;
+        std::string tag = "";
 
         // Optional. Date when the user's subscription will expire; Unix time
-        int64_t until_date = 0;
+        std::int64_t until_date = 0;
     };
     void to_json(json& j, const ChatMemberMember& value);
     void from_json(const json& j, ChatMemberMember& value);

@@ -25,10 +25,10 @@ namespace TgBot {
 
         virtual ~BusinessOpeningHoursInterval() = default;
         // The minute's sequence number in a week, starting on Monday, marking the start of the time interval during which the business is open; 0 - 7 * 24 * 60
-        int64_t opening_minute = 0;
+        std::int64_t opening_minute = 0;
 
         // The minute's sequence number in a week, starting on Monday, marking the end of the time interval during which the business is open; 0 - 8 * 24 * 60
-        int64_t closing_minute = 0;
+        std::int64_t closing_minute = 0;
     };
     void to_json(json& j, const BusinessOpeningHoursInterval& value);
     void from_json(const json& j, BusinessOpeningHoursInterval& value);

@@ -30,7 +30,7 @@ namespace TgBot {
 
         virtual ~KeyboardButtonRequestUsers() = default;
         // Signed 32-bit identifier of the request that will be received back in the UsersShared object. Must be unique within the message
-        int64_t request_id = 0;
+        std::int64_t request_id = 0;
 
         // Optional. Pass True to request bots, pass False to request regular users. If not specified, no additional restrictions are applied.
         bool user_is_bot = false;
@@ -39,7 +39,7 @@ namespace TgBot {
         bool user_is_premium = false;
 
         // Optional. The maximum number of users to be selected; 1-10. Defaults to 1.
-        int64_t max_quantity = 0;
+        std::int64_t max_quantity = 0;
 
         // Optional. Pass True to request the users' first and last names
         bool request_name = false;

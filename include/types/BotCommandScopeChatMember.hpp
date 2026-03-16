@@ -26,13 +26,13 @@ namespace TgBot {
 
         virtual ~BotCommandScopeChatMember() = default;
         // Scope type, must be chat_member
-        std::string type_;
+        std::string type_ = "";
 
         // Unique identifier for the target chat or username of the target supergroup (in the format @supergroupusername). Channel direct messages chats and channel chats aren't supported.
-        int64_t chat_id = 0;
+        std::int64_t chat_id = 0;
 
         // Unique identifier of the target user
-        int64_t user_id = 0;
+        std::int64_t user_id = 0;
     };
     void to_json(json& j, const BotCommandScopeChatMember& value);
     void from_json(const json& j, BotCommandScopeChatMember& value);

@@ -25,16 +25,16 @@ namespace TgBot {
     struct RepostStoryRequest {
         typedef std::shared_ptr<RepostStoryRequest> Ptr;
         // Unique identifier of the business connection
-        std::string business_connection_id;
+        std::string business_connection_id = "";
 
         // Unique identifier of the chat which posted the story that should be reposted
-        int64_t from_chat_id = 0;
+        std::int64_t from_chat_id = 0;
 
         // Unique identifier of the story that should be reposted
-        int64_t from_story_id = 0;
+        std::int64_t from_story_id = 0;
 
         // Period after which the story is moved to the archive, in seconds; must be one of 6 * 3600, 12 * 3600, 86400, or 2 * 86400
-        int64_t active_period = 0;
+        std::int64_t active_period = 0;
 
         // Pass True to keep the story accessible after it expires
         bool post_to_chat_page = false;

@@ -27,16 +27,16 @@ namespace TgBot {
 
         virtual ~LocationAddress() = default;
         // The two-letter ISO 3166-1 alpha-2 country code of the country where the location is located
-        std::string country_code;
+        std::string country_code = "";
 
         // Optional. State of the location
-        std::string state;
+        std::string state = "";
 
         // Optional. City of the location
-        std::string city;
+        std::string city = "";
 
         // Optional. Street address of the location
-        std::string street;
+        std::string street = "";
     };
     void to_json(json& j, const LocationAddress& value);
     void from_json(const json& j, LocationAddress& value);

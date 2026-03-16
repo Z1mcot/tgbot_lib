@@ -26,13 +26,13 @@ namespace TgBot {
 
         virtual ~Birthdate() = default;
         // Day of the user's birth; 1-31
-        int64_t day = 0;
+        std::int64_t day = 0;
 
         // Month of the user's birth; 1-12
-        int64_t month = 0;
+        std::int64_t month = 0;
 
         // Optional. Year of the user's birth
-        int64_t year = 0;
+        std::int64_t year = 0;
     };
     void to_json(json& j, const Birthdate& value);
     void from_json(const json& j, Birthdate& value);

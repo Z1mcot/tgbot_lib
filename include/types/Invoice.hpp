@@ -28,19 +28,19 @@ namespace TgBot {
 
         virtual ~Invoice() = default;
         // Product name
-        std::string title;
+        std::string title = "";
 
         // Product description
-        std::string description;
+        std::string description = "";
 
         // Unique bot deep-linking parameter that can be used to generate this invoice
-        std::string start_parameter;
+        std::string start_parameter = "";
 
         // Three-letter ISO 4217 currency code, or “XTR” for payments in Telegram Stars
-        std::string currency;
+        std::string currency = "";
 
         // Total price in the smallest units of the currency (integer, not float/double). For example, for a price of US$ 1.45 pass amount = 145. See the exp parameter in currencies.json, it shows the number of digits past the decimal point for each currency (2 for the majority of currencies).
-        int64_t total_amount = 0;
+        std::int64_t total_amount = 0;
     };
     void to_json(json& j, const Invoice& value);
     void from_json(const json& j, Invoice& value);

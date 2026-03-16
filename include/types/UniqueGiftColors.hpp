@@ -29,22 +29,22 @@ namespace TgBot {
 
         virtual ~UniqueGiftColors() = default;
         // Custom emoji identifier of the unique gift's model
-        std::string model_custom_emoji_id;
+        std::string model_custom_emoji_id = "";
 
         // Custom emoji identifier of the unique gift's symbol
-        std::string symbol_custom_emoji_id;
+        std::string symbol_custom_emoji_id = "";
 
         // Main color used in light themes; RGB format
-        int64_t light_theme_main_color = 0;
+        std::int64_t light_theme_main_color = 0;
 
         // List of 1-3 additional colors used in light themes; RGB format
-        std::vector<int64_t> light_theme_other_colors;
+        std::vector<std::int64_t> light_theme_other_colors = std::vector<std::int64_t>();
 
         // Main color used in dark themes; RGB format
-        int64_t dark_theme_main_color = 0;
+        std::int64_t dark_theme_main_color = 0;
 
         // List of 1-3 additional colors used in dark themes; RGB format
-        std::vector<int64_t> dark_theme_other_colors;
+        std::vector<std::int64_t> dark_theme_other_colors = std::vector<std::int64_t>();
     };
     void to_json(json& j, const UniqueGiftColors& value);
     void from_json(const json& j, UniqueGiftColors& value);

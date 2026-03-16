@@ -21,10 +21,10 @@ namespace TgBot {
     struct RevokeChatInviteLinkRequest {
         typedef std::shared_ptr<RevokeChatInviteLinkRequest> Ptr;
         // Unique identifier of the target chat or username of the target channel (in the format @channelusername)
-        int64_t chat_id = 0;
+        std::int64_t chat_id = 0;
 
         // The invite link to revoke
-        std::string invite_link;
+        std::string invite_link = "";
     };
     void to_json(json& j, const RevokeChatInviteLinkRequest& value);
     void from_json(const json& j, RevokeChatInviteLinkRequest& value);

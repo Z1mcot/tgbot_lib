@@ -37,31 +37,31 @@ namespace TgBot {
         double longitude = 0.0;
 
         // Unique identifier of the business connection on behalf of which the message to be edited was sent
-        std::string business_connection_id;
+        std::string business_connection_id = "";
 
         // Required if inline_message_id is not specified. Unique identifier for the target chat or username of the target channel (in the format @channelusername)
-        int64_t chat_id = 0;
+        std::int64_t chat_id = 0;
 
         // Required if inline_message_id is not specified. Identifier of the message to edit
-        int64_t message_id = 0;
+        std::int64_t message_id = 0;
 
         // Required if chat_id and message_id are not specified. Identifier of the inline message
-        std::string inline_message_id;
+        std::string inline_message_id = "";
 
         // New period in seconds during which the location can be updated, starting from the message send date. If 0x7FFFFFFF is specified, then the location can be updated forever. Otherwise, the new value must not exceed the current live_period by more than a day, and the live location expiration date must remain within the next 90 days. If not specified, then live_period remains unchanged
-        int64_t live_period = 0;
+        std::int64_t live_period = 0;
 
         // The radius of uncertainty for the location, measured in meters; 0-1500
         double horizontal_accuracy = 0.0;
 
         // Direction in which the user is moving, in degrees. Must be between 1 and 360 if specified.
-        int64_t heading = 0;
+        std::int64_t heading = 0;
 
         // The maximum distance for proximity alerts about approaching another chat member, in meters. Must be between 1 and 100000 if specified.
-        int64_t proximity_alert_radius = 0;
+        std::int64_t proximity_alert_radius = 0;
 
         // A JSON-serialized object for a new inline keyboard.
-        InlineKeyboardMarkup::Ptr reply_markup;
+        InlineKeyboardMarkup::Ptr reply_markup = nullptr;
     };
     void to_json(json& j, const EditMessageLiveLocationRequest& value);
     void from_json(const json& j, EditMessageLiveLocationRequest& value);

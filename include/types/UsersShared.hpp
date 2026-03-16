@@ -26,10 +26,10 @@ namespace TgBot {
 
         virtual ~UsersShared() = default;
         // Identifier of the request
-        int64_t request_id = 0;
+        std::int64_t request_id = 0;
 
         // Information about users shared with the bot.
-        std::vector<SharedUser::Ptr> users;
+        std::vector<SharedUser::Ptr> users = std::vector<SharedUser::Ptr>();
     };
     void to_json(json& j, const UsersShared& value);
     void from_json(const json& j, UsersShared& value);

@@ -25,7 +25,7 @@ namespace TgBot {
 
         virtual ~Gifts() = default;
         // The list of gifts
-        std::vector<Gift::Ptr> gifts;
+        std::vector<Gift::Ptr> gifts = std::vector<Gift::Ptr>();
     };
     void to_json(json& j, const Gifts& value);
     void from_json(const json& j, Gifts& value);

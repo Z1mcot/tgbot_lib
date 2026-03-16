@@ -29,19 +29,19 @@ namespace TgBot {
 
         virtual ~MessageOriginChannel() = default;
         // Type of the message origin, always “channel”
-        std::string type_;
+        std::string type_ = "";
 
         // Date the message was sent originally in Unix time
-        int64_t date = 0;
+        std::int64_t date = 0;
 
         // Channel chat to which the message was originally sent
-        Chat::Ptr chat;
+        Chat::Ptr chat = nullptr;
 
         // Unique message identifier inside the chat
-        int64_t message_id = 0;
+        std::int64_t message_id = 0;
 
         // Optional. Signature of the original post author
-        std::string author_signature;
+        std::string author_signature = "";
     };
     void to_json(json& j, const MessageOriginChannel& value);
     void from_json(const json& j, MessageOriginChannel& value);

@@ -27,25 +27,25 @@ namespace TgBot {
     struct SendGiftRequest {
         typedef std::shared_ptr<SendGiftRequest> Ptr;
         // Identifier of the gift; limited gifts can't be sent to channel chats
-        std::string gift_id;
+        std::string gift_id = "";
 
         // Required if chat_id is not specified. Unique identifier of the target user who will receive the gift.
-        int64_t user_id = 0;
+        std::int64_t user_id = 0;
 
         // Required if user_id is not specified. Unique identifier for the chat or username of the channel (in the format @channelusername) that will receive the gift.
-        int64_t chat_id = 0;
+        std::int64_t chat_id = 0;
 
         // Pass True to pay for the gift upgrade from the bot's balance, thereby making the upgrade free for the receiver
         bool pay_for_upgrade = false;
 
         // Text that will be shown along with the gift; 0-128 characters
-        std::string text;
+        std::string text = "";
 
         // Mode for parsing entities in the text. See formatting options for more details. Entities other than “bold”, “italic”, “underline”, “strikethrough”, “spoiler”, and “custom_emoji” are ignored.
-        std::string text_parse_mode;
+        std::string text_parse_mode = "";
 
         // A JSON-serialized list of special entities that appear in the gift text. It can be specified instead of text_parse_mode. Entities other than “bold”, “italic”, “underline”, “strikethrough”, “spoiler”, and “custom_emoji” are ignored.
-        std::vector<MessageEntity::Ptr> text_entities;
+        std::vector<MessageEntity::Ptr> text_entities = std::vector<MessageEntity::Ptr>();
     };
     void to_json(json& j, const SendGiftRequest& value);
     void from_json(const json& j, SendGiftRequest& value);
